@@ -1,0 +1,12 @@
+SUBDESIGN contador_mod_10
+(
+	clock,enable : INPUT;
+	q[3..0], tc : OUTPUT;
+)
+
+VARIABLE
+	count[3..0] : DFF;
+	
+BEGIN
+	
+END;

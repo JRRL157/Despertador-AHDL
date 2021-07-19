@@ -1,0 +1,45 @@
+SUBDESIGN contador_mod_24
+(
+	clk,ena : INPUT;
+	lsd[3..0],msd[2..0] : OUTPUT;
+)
+VARIABLE
+	low[3..0] : DFF;
+	high[2..0] : DFF;
+	time : NODE;
+	
+BEGIN
+	low[].clk = clk;
+	high[].clk = clk;
+
+	
+	IF ena THEN
+		IF low[].q < 9 & high[].q == 0 THEN
+			low[].d = low[].q + 1;
+			high[].d = high[].q;
+		ELSIF low[].q == 9 & high[].q == 0 THEN
+			low[].d = GND;
+			high[].d = 1;
+		ELSIF high[].q == 1 & low[].q < 9 THEN
+			low[].d = low[].q + 1;
+			high[].d = high[].q;
+		ELSIF high[].q == 1 & low[].q == 9 THEN
+			low[].d = GND;
+			high[].d = 2;
+		ELSIF high[].q == 2 & low[].q < 3 THEN
+			low[].d = low[].q + 1;
+			high[].d = high[].q;
+		ELSIF high[].q == 2 & low[].q == 3 THEN
+			low[].d = GND;
+			high[].d = GND;
+		END IF;
+	ELSE
+		low[].d = low[].q;
+		high[].d = high[].q;
+	END IF;
+	
+	%time = high[1..0].q == 2 & low[3..0].q == 3 & ena;%
+	
+	msd[] = high[].q;
+	lsd[] = low[].q;
+END;

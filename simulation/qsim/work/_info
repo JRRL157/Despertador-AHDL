@@ -1,0 +1,103 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dG:/Projetos_ELND/Projeto_2/simulation/qsim
+vcontador_mod_24
+Z0 !s110 1626651962
+!i10b 1
+!s100 :Cg1_lcY?6DXD<Cm?N@EY1
+Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
+ICNdaMSm=0=@faZaHGH1TC0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 dD:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim
+w1626651961
+Z4 8Projeto_2.vo
+Z5 FProjeto_2.vo
+!i122 24
+L0 32 599
+Z6 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z7 !s108 1626651962.000000
+Z8 !s107 Projeto_2.vo|
+Z9 !s90 -work|work|Projeto_2.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+vcontador_mod_24_vlg_vec_tst
+R0
+!i10b 1
+!s100 [S[F3Pge:B:`5OO_QY>f43
+R1
+I:o]]PYWa=?m8T06dRSSSJ1
+R2
+R3
+w1626651960
+8Waveform1.vwf.vt
+FWaveform1.vwf.vt
+!i122 25
+Z12 L0 30 36
+R6
+r1
+!s85 0
+31
+R7
+!s107 Waveform1.vwf.vt|
+!s90 -work|work|Waveform1.vwf.vt|
+!i113 1
+R10
+R11
+vcontador_mod_6
+Z13 !s110 1626649716
+!i10b 1
+!s100 D?hI?]MKIQb;>Zd[Yj4Zk0
+R1
+Ie5>EYDedoNEC]f77]0k5j0
+R2
+R3
+w1626638472
+R4
+R5
+!i122 4
+L0 32 227
+R6
+r1
+!s85 0
+31
+Z14 !s108 1626649716.000000
+R8
+R9
+!i113 1
+R10
+R11
+vcontador_mod_6_vlg_vec_tst
+R13
+!i10b 1
+!s100 ABAYHfzzOV9jWT?ERnKQe2
+R1
+I=e_o2HfS52_P8<FcAGYQ_1
+R2
+R3
+w1626649714
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+!i122 5
+R12
+R6
+r1
+!s85 0
+31
+R14
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R10
+R11

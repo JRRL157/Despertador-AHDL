@@ -1,0 +1,7 @@
+SUBDESIGN contador_mod_24
+(
+	clk,ena : INPUT;
+	low[4..0],high[1..0] : OUTPUT;
+)
+VARIABLE
+	
