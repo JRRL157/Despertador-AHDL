@@ -9,31 +9,54 @@ z2
 !i10f 100
 cModel Technology
 dG:/Projetos_ELND/Projeto_2/simulation/qsim
-vcontador_mod_24
-Z0 !s110 1626651962
+vcontador_mod_2
+Z0 !s110 1626988375
 !i10b 1
-!s100 :Cg1_lcY?6DXD<Cm?N@EY1
+!s100 05Q36o@Og9UP0gfcnRiG:2
 Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
-ICNdaMSm=0=@faZaHGH1TC0
+IjNhP1=K^<Jn;U2OW8V4b22
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 Z3 dD:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim
-w1626651961
+w1626988372
 Z4 8Projeto_2.vo
 Z5 FProjeto_2.vo
-!i122 24
-L0 32 599
+!i122 92
+L0 32 177
 Z6 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z7 !s108 1626651962.000000
+Z7 !s108 1626988375.000000
 Z8 !s107 Projeto_2.vo|
 Z9 !s90 -work|work|Projeto_2.vo|
 !i113 1
 Z10 o-work work
 Z11 tCvgOpt 0
+vcontador_mod_24
+Z12 !s110 1626651962
+!i10b 1
+!s100 :Cg1_lcY?6DXD<Cm?N@EY1
+R1
+ICNdaMSm=0=@faZaHGH1TC0
+R2
+R3
+w1626651961
+R4
+R5
+!i122 24
+L0 32 599
+R6
+r1
+!s85 0
+31
+Z13 !s108 1626651962.000000
+R8
+R9
+!i113 1
+R10
+R11
 vcontador_mod_24_vlg_vec_tst
-R0
+R12
 !i10b 1
 !s100 [S[F3Pge:B:`5OO_QY>f43
 R1
@@ -41,22 +64,45 @@ I:o]]PYWa=?m8T06dRSSSJ1
 R2
 R3
 w1626651960
-8Waveform1.vwf.vt
-FWaveform1.vwf.vt
+Z14 8Waveform1.vwf.vt
+Z15 FWaveform1.vwf.vt
 !i122 25
-Z12 L0 30 36
+Z16 L0 30 36
+R6
+r1
+!s85 0
+31
+R13
+!s107 Waveform1.vwf.vt|
+Z17 !s90 -work|work|Waveform1.vwf.vt|
+!i113 1
+R10
+R11
+vcontador_mod_2_vlg_vec_tst
+R0
+!i10b 1
+!s100 D8IR;oNIGY@^5g52TLiUz2
+R1
+IS4dnd<1[=d^z`jBRCFnK?2
+R2
+R3
+w1626988371
+R14
+R15
+!i122 93
+R16
 R6
 r1
 !s85 0
 31
 R7
-!s107 Waveform1.vwf.vt|
-!s90 -work|work|Waveform1.vwf.vt|
+Z18 !s107 Waveform1.vwf.vt|
+R17
 !i113 1
 R10
 R11
 vcontador_mod_6
-Z13 !s110 1626649716
+Z19 !s110 1626649716
 !i10b 1
 !s100 D?hI?]MKIQb;>Zd[Yj4Zk0
 R1
@@ -72,14 +118,14 @@ R6
 r1
 !s85 0
 31
-Z14 !s108 1626649716.000000
+Z20 !s108 1626649716.000000
 R8
 R9
 !i113 1
 R10
 R11
 vcontador_mod_6_vlg_vec_tst
-R13
+R19
 !i10b 1
 !s100 ABAYHfzzOV9jWT?ERnKQe2
 R1
@@ -87,29 +133,29 @@ I=e_o2HfS52_P8<FcAGYQ_1
 R2
 R3
 w1626649714
-Z15 8Waveform.vwf.vt
-Z16 FWaveform.vwf.vt
+Z21 8Waveform.vwf.vt
+Z22 FWaveform.vwf.vt
 !i122 5
-R12
+R16
 R6
 r1
 !s85 0
 31
-R14
-!s107 Waveform.vwf.vt|
-Z17 !s90 -work|work|Waveform.vwf.vt|
+R20
+Z23 !s107 Waveform.vwf.vt|
+Z24 !s90 -work|work|Waveform.vwf.vt|
 !i113 1
 R10
 R11
 vdivisor_clock
-Z18 !s110 1626914064
+Z25 !s110 1626914064
 !i10b 1
 !s100 d@1Pjl_zEcTbQZAZd66;31
 R1
 I_^:U2PmQ]2bU2aVcedR=V0
 R2
 R3
-Z19 w1626914063
+Z26 w1626914063
 R4
 R5
 !i122 90
@@ -118,32 +164,32 @@ R6
 r1
 !s85 0
 31
-Z20 !s108 1626914064.000000
+Z27 !s108 1626914064.000000
 R8
 R9
 !i113 1
 R10
 R11
 vdivisor_clock_vlg_vec_tst
-R18
+R25
 !i10b 1
 !s100 @<cGKYPEDh?n[16oA4D[K2
 R1
 INX8P;@D=FnOgRdDenB;z@0
 R2
 R3
-R19
-R15
-R16
+R26
+R21
+R22
 !i122 91
 L0 30 34
 R6
 r1
 !s85 0
 31
-R20
-Z21 !s107 Waveform.vwf.vt|
-R17
+R27
+R23
+R24
 !i113 1
 R10
 R11

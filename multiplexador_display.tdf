@@ -1,0 +1,14 @@
+SUBDESIGN multiplexador_display
+(
+	ch0[3..0],ch1[3..0],ch2[3..0],ch3[3..0] : INPUT;
+	s[1..0] 											 : INPUT;
+	dout[3..0] 										 : OUTPUT;
+)
+BEGIN
+	CASE s[] IS
+		WHEN 0 => dout[] = ch0[];
+		WHEN 1 => dout[] = ch1[];
+		WHEN 2 => dout[] = ch2[];
+		WHEN 3 => dout[] = ch3[];
+	END CASE;
+END;

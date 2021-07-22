@@ -1,13 +1,12 @@
-|divisor_clock
-clock => count[5].CLK
-clock => count[4].CLK
-clock => count[3].CLK
-clock => count[2].CLK
+|contador_mod_2
 clock => count[1].CLK
 clock => count[0].CLK
-enable => clock_saida.IN0
 enable => _.IN0
 enable => _.IN0
-clock_saida <= clock_saida.DB_MAX_OUTPUT_PORT_TYPE
+enable => _.IN0
+enable => tc.IN0
+q[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
 
 

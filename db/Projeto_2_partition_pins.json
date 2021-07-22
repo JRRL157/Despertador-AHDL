@@ -4,7 +4,15 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "clock_saida",
+					"name" : "q[0]",
+					"strict" : false
+				},
+				{
+					"name" : "q[1]",
+					"strict" : false
+				},
+				{
+					"name" : "tc",
 					"strict" : false
 				},
 				{

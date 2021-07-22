@@ -1,9 +1,29 @@
 SUBDESIGN BCD_7Segment_Decoder
 (
-	
+	bcd [3..0] : INPUT;
+	lt,bi,rbi : INPUT;
+	a,b,c,d,e,f,g,rbo : OUTPUT;
 )
-VARIABLE
-	
 BEGIN
-
+	IF !bi THEN
+		(a,b,c,d,e,f,g,rbo) = (1,1,1,1,1,1,1,0);
+	ELSIF !lt THEN
+		(a,b,c,d,e,f,g,rbo) = (0,0,0,0,0,0,0,1);
+	ELSIF !rbi & bcd[] == 0 THEN
+		(a,b,c,d,e,f,g,rbo) = (1,1,1,1,1,1,1,0);
+	ELSE
+		TABLE
+		bcd[] => a,b,c,d,e,f,g,rbo;
+			 0 => 0,0,0,0,0,0,1,1;
+			 1 => 1,0,0,1,1,1,1,1;
+			 2 => 0,0,1,0,0,1,0,1;
+			 3 => 0,0,0,0,1,1,0,1;
+			 4 => 1,0,0,1,1,0,0,1;
+			 5 => 0,1,0,0,1,0,0,1;
+			 6 => 1,1,0,0,0,0,0,1;
+			 7 => 0,0,0,1,1,1,1,1;
+			 8 => 0,0,0,0,0,0,0,1;
+			 9 => 0,0,0,1,1,0,0,1;
+		END TABLE;
+	END IF;
 END;

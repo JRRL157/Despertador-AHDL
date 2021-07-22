@@ -1,0 +1,15 @@
+SUBDESIGN 2x4_decoder
+(
+	sel[1..0] : INPUT;
+	saida[3..0] : OUTPUT;
+)
+
+BEGIN
+	TABLE
+		sel[] => saida[];
+			 0 => B"1000";
+			 1 => B"0100";
+			 2 => B"0010";
+			 3 => B"0001";
+	END TABLE;
+END;
