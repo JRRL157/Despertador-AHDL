@@ -1,20 +1,13 @@
-|contador_mod_24
-clk => low[3].CLK
-clk => low[2].CLK
-clk => low[1].CLK
-clk => low[0].CLK
-clk => high[2].CLK
-clk => high[1].CLK
-clk => high[0].CLK
-ena => _.IN0
-ena => _.IN0
-ena => _.IN0
-lsd[0] <= low[0].DB_MAX_OUTPUT_PORT_TYPE
-lsd[1] <= low[1].DB_MAX_OUTPUT_PORT_TYPE
-lsd[2] <= low[2].DB_MAX_OUTPUT_PORT_TYPE
-lsd[3] <= low[3].DB_MAX_OUTPUT_PORT_TYPE
-msd[0] <= high[0].DB_MAX_OUTPUT_PORT_TYPE
-msd[1] <= high[1].DB_MAX_OUTPUT_PORT_TYPE
-msd[2] <= high[2].DB_MAX_OUTPUT_PORT_TYPE
+|divisor_clock
+clock => count[5].CLK
+clock => count[4].CLK
+clock => count[3].CLK
+clock => count[2].CLK
+clock => count[1].CLK
+clock => count[0].CLK
+enable => clock_saida.IN0
+enable => _.IN0
+enable => _.IN0
+clock_saida <= clock_saida.DB_MAX_OUTPUT_PORT_TYPE
 
 

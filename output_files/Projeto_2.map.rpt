@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Projeto_2
-Sun Jul 18 20:45:57 2021
+Wed Jul 21 21:34:17 2021
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -44,16 +44,16 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Jul 18 20:45:57 2021       ;
+; Analysis & Synthesis Status        ; Successful - Wed Jul 21 21:34:17 2021       ;
 ; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                      ; Projeto_2                                   ;
-; Top-level Entity Name              ; contador_mod_24                             ;
+; Top-level Entity Name              ; divisor_clock                               ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 20                                          ;
-;     Total combinational functions  ; 20                                          ;
-;     Dedicated logic registers      ; 6                                           ;
-; Total registers                    ; 6                                           ;
-; Total pins                         ; 9                                           ;
+; Total logic elements               ; 15                                          ;
+;     Total combinational functions  ; 15                                          ;
+;     Dedicated logic registers      ; 5                                           ;
+; Total registers                    ; 5                                           ;
+; Total pins                         ; 3                                           ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                           ; EP4CE6E22C8        ;                    ;
-; Top-level entity name                                            ; contador_mod_24    ; Projeto_2          ;
+; Top-level entity name                                            ; divisor_clock      ; Projeto_2          ;
 ; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
 ; Use smart compilation                                            ; Off                ; Off                ;
 ; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
@@ -160,58 +160,59 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                           ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                    ; Library ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------+---------+
-; contador_mod_24.tdf              ; yes             ; User AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_24.tdf ;         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                         ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                  ; Library ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------+---------+
+; divisor_clock.tdf                ; yes             ; User AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/divisor_clock.tdf ;         ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary           ;
-+---------------------------------------------+---------+
-; Resource                                    ; Usage   ;
-+---------------------------------------------+---------+
-; Estimated Total logic elements              ; 20      ;
-;                                             ;         ;
-; Total combinational functions               ; 20      ;
-; Logic element usage by number of LUT inputs ;         ;
-;     -- 4 input functions                    ; 14      ;
-;     -- 3 input functions                    ; 3       ;
-;     -- <=2 input functions                  ; 3       ;
-;                                             ;         ;
-; Logic elements by mode                      ;         ;
-;     -- normal mode                          ; 20      ;
-;     -- arithmetic mode                      ; 0       ;
-;                                             ;         ;
-; Total registers                             ; 6       ;
-;     -- Dedicated logic registers            ; 6       ;
-;     -- I/O registers                        ; 0       ;
-;                                             ;         ;
-; I/O pins                                    ; 9       ;
-;                                             ;         ;
-; Embedded Multiplier 9-bit elements          ; 0       ;
-;                                             ;         ;
-; Maximum fan-out node                        ; high[1] ;
-; Maximum fan-out                             ; 9       ;
-; Total fan-out                               ; 98      ;
-; Average fan-out                             ; 2.23    ;
-+---------------------------------------------+---------+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimated Total logic elements              ; 15           ;
+;                                             ;              ;
+; Total combinational functions               ; 15           ;
+; Logic element usage by number of LUT inputs ;              ;
+;     -- 4 input functions                    ; 6            ;
+;     -- 3 input functions                    ; 3            ;
+;     -- <=2 input functions                  ; 6            ;
+;                                             ;              ;
+; Logic elements by mode                      ;              ;
+;     -- normal mode                          ; 11           ;
+;     -- arithmetic mode                      ; 4            ;
+;                                             ;              ;
+; Total registers                             ; 5            ;
+;     -- Dedicated logic registers            ; 5            ;
+;     -- I/O registers                        ; 0            ;
+;                                             ;              ;
+; I/O pins                                    ; 3            ;
+;                                             ;              ;
+; Embedded Multiplier 9-bit elements          ; 0            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; enable~input ;
+; Maximum fan-out                             ; 7            ;
+; Total fan-out                               ; 58           ;
+; Average fan-out                             ; 2.23         ;
++---------------------------------------------+--------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                          ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-----------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name     ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-----------------+--------------+
-; |contador_mod_24           ; 20 (20)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 9    ; 0            ; |contador_mod_24    ; contador_mod_24 ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-----------------+--------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                        ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+---------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name   ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+---------------+--------------+
+; |divisor_clock             ; 15 (15)             ; 5 (5)                     ; 0           ; 0            ; 0       ; 0         ; 3    ; 0            ; |divisor_clock      ; divisor_clock ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -220,7 +221,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------+----------------------------------------+
 ; Register name                         ; Reason for Removal                     ;
 +---------------------------------------+----------------------------------------+
-; high[2]                               ; Stuck at GND due to stuck port data_in ;
+; count[0]                              ; Stuck at GND due to stuck port data_in ;
 ; Total Number of Removed Registers = 1 ;                                        ;
 +---------------------------------------+----------------------------------------+
 
@@ -230,7 +231,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 6     ;
+; Total registers                              ; 5     ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -245,18 +246,20 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 9                           ;
-; cycloneiii_ff         ; 6                           ;
-;     plain             ; 6                           ;
-; cycloneiii_lcell_comb ; 21                          ;
-;     normal            ; 21                          ;
-;         0 data inputs ; 1                           ;
-;         2 data inputs ; 3                           ;
+; boundary_port         ; 3                           ;
+; cycloneiii_ff         ; 5                           ;
+;     plain             ; 5                           ;
+; cycloneiii_lcell_comb ; 15                          ;
+;     arith             ; 4                           ;
+;         2 data inputs ; 4                           ;
+;     normal            ; 11                          ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 1                           ;
 ;         3 data inputs ; 3                           ;
-;         4 data inputs ; 14                          ;
+;         4 data inputs ; 6                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 3.69                        ;
+; Max LUT depth         ; 3.10                        ;
+; Average LUT depth     ; 2.50                        ;
 +-----------------------+-----------------------------+
 
 
@@ -275,7 +278,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Sun Jul 18 20:45:46 2021
+    Info: Processing started: Wed Jul 21 21:34:06 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Projeto_2 -c Projeto_2
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -286,19 +289,19 @@ Info (12021): Found 1 design units, including 1 entities, in source file contado
 Warning (287013): Variable or input pin "time" is defined but never used. File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_24.tdf Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file contador_mod_24.tdf
     Info (12023): Found entity 1: contador_mod_24 File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_24.tdf Line: 1
-Info (12127): Elaborating entity "contador_mod_24" for the top level hierarchy
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "msd[2]" is stuck at GND File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_24.tdf Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file divisor_clock.tdf
+    Info (12023): Found entity 1: divisor_clock File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/divisor_clock.tdf Line: 1
+Info (12127): Elaborating entity "divisor_clock" for the top level hierarchy
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 29 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 18 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 7 output pins
-    Info (21061): Implemented 20 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
+    Info (21059): Implemented 1 output pins
+    Info (21061): Implemented 15 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 615 megabytes
-    Info: Processing ended: Sun Jul 18 20:45:57 2021
+    Info: Processing ended: Wed Jul 21 21:34:17 2021
     Info: Elapsed time: 00:00:11
     Info: Total CPU time (on all processors): 00:00:23
 

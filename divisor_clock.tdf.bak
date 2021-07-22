@@ -1,0 +1,5 @@
+SUBDESIGN divisor_clock
+(
+	clock : INPUT;
+	clk : OUTPUT;
+)

@@ -1,0 +1,9 @@
+SUBDESIGN BCD_7Segment_Decoder
+(
+	
+)
+VARIABLE
+	
+BEGIN
+
+END;

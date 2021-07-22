@@ -1,0 +1,26 @@
+SUBDESIGN divisor_clock
+(
+	clock,enable : INPUT;	
+	clock_saida : OUTPUT;
+)
+VARIABLE
+	count[5..0] : DFF;
+BEGIN
+	count[].clk = clock;	
+	
+	IF enable THEN
+		IF count[] >= 0 & count[] <= 10 THEN		
+			
+			IF count[] == 0 THEN
+				count[] = 14;
+			END IF;
+			
+			clock_saida = VCC;		
+		ELSE
+			count[].d = count[].q -2;			
+		END IF;
+	ELSE
+		count[] = count[];
+	END IF;
+	
+END;
