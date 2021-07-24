@@ -2,16 +2,27 @@ INCLUDE "contador_mod_4.inc";
 INCLUDE "contador_mod_6.inc";
 INCLUDE "contador_mod_10.inc";
 INCLUDE "contador_mod_24.inc";
-INCLUDE "divisor_clock.inc";
+INCLUDE "contador_clock.inc";
+INCLUDE "display_clock.inc";
+INCLUDE "multiplexador_display.inc";
+INCLUDE "2x4_decoder.inc";
+INCLUDE "BCD_7Segment_Decoder.inc";
 
 SUBDESIGN despertador
 (
 	clk, ena : INPUT;
-	sec_unidades[3..0],sec_dezenas[2..0],min_unidades[3..0],min_dezenas[2..0],horas_unidades[3..0],horas_dezenas[2..0] : OUTPUT;
-	tc_segundos,tc_minutos,tc_horas : OUTPUT;
+	sec_unidades[3..0],sec_dezenas[3..0],min_unidades[3..0],min_dezenas[3..0],horas_unidades[3..0],horas_dezenas[3..0] : OUTPUT;
+	tc_segundos,tc_minutos,tc_horas : OUTPUT;	
+	
+	Seg7Output[6..0] : OUTPUT;
+	AnodeOutput[3..0] : OUTPUT;
 )
 
 VARIABLE
+	%Clocks para testar na placa%
+	cont_clock : contador_clock;
+	refresh_clock : display_clock;
+	
 	% Horas%
 	mod24 : contador_mod_24;
 	% Minutos%
@@ -20,39 +31,94 @@ VARIABLE
 	% Segundos %
 	mod6_seg : contador_mod_6;
 	mod10_seg : contador_mod_10;
+	
+	%Chave do display a ser exibido%
+	chaveador : contador_mod_4;
+	
+	%Multiplexador do Display%
+	mux : multiplexador_display;
+	
+	%Decoder de 7 segmentos%
+	bcd_7Seg_dec : BCD_7Segment_Decoder;
+	
+	%Decoder 2 : 4 %
+	decoder : 2x4_decoder;
+	
 BEGIN
+	%Divisão de frequência% 
+	
+	refresh_clock.clock = clk;
+	refresh_clock.enable = ena;
+	cont_clock.clock = clk;
+	cont_clock.enable = ena;
+	
 	
 	% Começando a contar os segundos %
-	mod10_seg.clock = clk;
-	mod6_seg.clock = clk;
+	mod10_seg.clock = cont_clock.clock_saida;
+	mod6_seg.clock = cont_clock.clock_saida;
 	
 	mod10_seg.enable = ena;
 	mod6_seg.enable = mod10_seg.tc;
 	
 	sec_unidades[3..0] = mod10_seg.q[3..0];
-	sec_dezenas[2..0] = mod6_seg.q[2..0];
+	sec_dezenas[3..0] = mod6_seg.q[3..0];
 	
 	tc_segundos = mod6_seg.tc;
 	
 	%Começando a contar os minutos %
-	mod10_min.clock = clk;
-	mod6_min.clock = clk;
+	mod10_min.clock = cont_clock.clock_saida;
+	mod6_min.clock = cont_clock.clock_saida;
 	
 	mod10_min.enable = tc_segundos;
 	mod6_min.enable = mod10_min.tc;
 	
 	min_unidades[3..0] = mod10_min.q[3..0];
-	min_dezenas[2..0] = mod6_min.q[2..0];
+	min_dezenas[3..0] = mod6_min.q[3..0];
 	
 	tc_minutos = mod6_min.tc;
 	
 	%Começando a contar as horas %
 	
-	mod24.clock = clk;
+	mod24.clock = cont_clock.clock_saida;
 	mod24.enable = tc_minutos;
 	
 	horas_unidades[3..0] = mod24.lsd[3..0];
-	horas_dezenas[2..0] = mod24.msd[2..0];
+	horas_dezenas[3..0] = mod24.msd[3..0];
 	
 	tc_horas = mod24.tc;
+	
+	%Selecionando o display a ser exibido %
+	chaveador.enable = ena;
+	chaveador.clock = refresh_clock.clock_saida;
+	
+	% Multiplexador do Display%
+	
+	mux.ch0[] = horas_dezenas[];
+	mux.ch1[] = horas_unidades[];
+	mux.ch2[] = min_dezenas[];
+	mux.ch3[] = min_unidades[];
+	mux.s[1..0] = chaveador.q[1..0];
+	
+	%Controle do Anodo %
+	decoder.sel[] = chaveador.q[];
+	
+	% Decodificar BCD para 7 Segmentos%
+	bcd_7Seg_dec.bcd[] = mux.dout[];
+	bcd_7Seg_dec.lt = VCC;
+	bcd_7Seg_dec.bi = VCC;
+	bcd_7Seg_dec.rbi = VCC;
+	
+	%Saídas%
+	Seg7Output[0] = bcd_7Seg_dec.a;
+	Seg7Output[1] = bcd_7Seg_dec.b;
+	Seg7Output[2] = bcd_7Seg_dec.c;
+	Seg7Output[3] = bcd_7Seg_dec.d;
+	Seg7Output[4] = bcd_7Seg_dec.e;
+	Seg7Output[5] = bcd_7Seg_dec.f;
+	Seg7Output[6] = bcd_7Seg_dec.g;	
+	
+	AnodeOutput[0] = decoder.saida[0];
+	AnodeOutput[1] = decoder.saida[1];
+	AnodeOutput[2] = decoder.saida[2];
+	AnodeOutput[3] = decoder.saida[3];
 END;

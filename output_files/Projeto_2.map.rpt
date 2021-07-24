@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Projeto_2
-Sat Jul 24 01:21:45 2021
+Sat Jul 24 15:05:51 2021
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -44,16 +44,16 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Jul 24 01:21:45 2021       ;
+; Analysis & Synthesis Status        ; Successful - Sat Jul 24 15:05:51 2021       ;
 ; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                      ; Projeto_2                                   ;
 ; Top-level Entity Name              ; despertador                                 ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 44                                          ;
-;     Total combinational functions  ; 44                                          ;
-;     Dedicated logic registers      ; 20                                          ;
-; Total registers                    ; 20                                          ;
-; Total pins                         ; 26                                          ;
+; Total logic elements               ; 125                                         ;
+;     Total combinational functions  ; 125                                         ;
+;     Dedicated logic registers      ; 63                                          ;
+; Total registers                    ; 63                                          ;
+; Total pins                         ; 40                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -160,25 +160,40 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                 ;
-+----------------------------------+-----------------+-----------------------+-----------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type             ; File Name with Absolute Path                                    ; Library ;
-+----------------------------------+-----------------+-----------------------+-----------------------------------------------------------------+---------+
-; contador_mod_6.tdf               ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_6.tdf  ;         ;
-; contador_mod_10.tdf              ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_10.tdf ;         ;
-; contador_mod_24.tdf              ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_24.tdf ;         ;
-; despertador.tdf                  ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf     ;         ;
-; contador_mod_4.inc               ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_4.inc  ;         ;
-; contador_mod_6.inc               ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_6.inc  ;         ;
-; contador_mod_10.inc              ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_10.inc ;         ;
-; contador_mod_24.inc              ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_24.inc ;         ;
-; divisor_clock.inc                ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/divisor_clock.inc   ;         ;
-+----------------------------------+-----------------+-----------------------+-----------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                       ;
++----------------------------------+-----------------+-----------------------+-----------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type             ; File Name with Absolute Path                                          ; Library ;
++----------------------------------+-----------------+-----------------------+-----------------------------------------------------------------------+---------+
+; contador_mod_6.tdf               ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_6.tdf        ;         ;
+; contador_mod_10.tdf              ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_10.tdf       ;         ;
+; contador_mod_24.tdf              ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_24.tdf       ;         ;
+; BCD_7Segment_Decoder.tdf         ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/BCD_7Segment_Decoder.tdf  ;         ;
+; multiplexador_display.tdf        ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/multiplexador_display.tdf ;         ;
+; 2x4_decoder.tdf                  ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/2x4_decoder.tdf           ;         ;
+; contador_mod_4.tdf               ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_4.tdf        ;         ;
+; despertador.tdf                  ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf           ;         ;
+; contador_mod_5.tdf               ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_5.tdf        ;         ;
+; display_clock.tdf                ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/display_clock.tdf         ;         ;
+; contador_clock.tdf               ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_clock.tdf        ;         ;
+; contador_mod_25.tdf              ; yes             ; User AHDL File        ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_25.tdf       ;         ;
+; contador_mod_5.inc               ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_5.inc        ;         ;
+; contador_mod_10.inc              ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_10.inc       ;         ;
+; contador_mod_4.inc               ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_4.inc        ;         ;
+; contador_mod_6.inc               ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_6.inc        ;         ;
+; contador_mod_24.inc              ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_24.inc       ;         ;
+; contador_clock.inc               ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_clock.inc        ;         ;
+; display_clock.inc                ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/display_clock.inc         ;         ;
+; multiplexador_display.inc        ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/multiplexador_display.inc ;         ;
+; 2x4_decoder.inc                  ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/2x4_decoder.inc           ;         ;
+; bcd_7segment_decoder.inc         ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/bcd_7segment_decoder.inc  ;         ;
+; contador_mod_25.inc              ; yes             ; Auto-Found AHDL File  ; D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_25.inc       ;         ;
++----------------------------------+-----------------+-----------------------+-----------------------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------+
@@ -186,56 +201,77 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 44        ;
+; Estimated Total logic elements              ; 125       ;
 ;                                             ;           ;
-; Total combinational functions               ; 44        ;
+; Total combinational functions               ; 125       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 28        ;
-;     -- 3 input functions                    ; 13        ;
-;     -- <=2 input functions                  ; 3         ;
+;     -- 4 input functions                    ; 71        ;
+;     -- 3 input functions                    ; 39        ;
+;     -- <=2 input functions                  ; 15        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 44        ;
-;     -- arithmetic mode                      ; 0         ;
+;     -- normal mode                          ; 122       ;
+;     -- arithmetic mode                      ; 3         ;
 ;                                             ;           ;
-; Total registers                             ; 20        ;
-;     -- Dedicated logic registers            ; 20        ;
+; Total registers                             ; 63        ;
+;     -- Dedicated logic registers            ; 63        ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 26        ;
+; I/O pins                                    ; 40        ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
-; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 20        ;
-; Total fan-out                               ; 254       ;
-; Average fan-out                             ; 2.19      ;
+; Maximum fan-out node                        ; ena~input ;
+; Maximum fan-out                             ; 58        ;
+; Total fan-out                               ; 650       ;
+; Average fan-out                             ; 2.43      ;
 +---------------------------------------------+-----------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                 ;
-+--------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------+-----------------+--------------+
-; Compilation Hierarchy Node     ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                    ; Entity Name     ; Library Name ;
-+--------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------+-----------------+--------------+
-; |despertador                   ; 44 (0)              ; 20 (0)                    ; 0           ; 0            ; 0       ; 0         ; 26   ; 0            ; |despertador                           ; despertador     ; work         ;
-;    |contador_mod_10:mod10_min| ; 8 (8)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_10:mod10_min ; contador_mod_10 ; work         ;
-;    |contador_mod_10:mod10_seg| ; 8 (8)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_10:mod10_seg ; contador_mod_10 ; work         ;
-;    |contador_mod_24:mod24|     ; 20 (20)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_24:mod24     ; contador_mod_24 ; work         ;
-;    |contador_mod_6:mod6_min|   ; 3 (3)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_6:mod6_min   ; contador_mod_6  ; work         ;
-;    |contador_mod_6:mod6_seg|   ; 5 (5)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_6:mod6_seg   ; contador_mod_6  ; work         ;
-+--------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------+-----------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                       ;
++----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------+-----------------------+--------------+
+; Compilation Hierarchy Node             ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                            ; Entity Name           ; Library Name ;
++----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------+-----------------------+--------------+
+; |despertador                           ; 125 (0)             ; 63 (0)                    ; 0           ; 0            ; 0       ; 0         ; 40   ; 0            ; |despertador                                                   ; despertador           ; work         ;
+;    |2x4_decoder:decoder|               ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|2x4_decoder:decoder                               ; 2x4_decoder           ; work         ;
+;    |BCD_7Segment_Decoder:bcd_7Seg_dec| ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|BCD_7Segment_Decoder:bcd_7Seg_dec                 ; BCD_7Segment_Decoder  ; work         ;
+;    |contador_clock:cont_clock|         ; 36 (1)              ; 24 (1)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_clock:cont_clock                         ; contador_clock        ; work         ;
+;       |contador_mod_25:mod25|          ; 11 (11)             ; 5 (5)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_clock:cont_clock|contador_mod_25:mod25   ; contador_mod_25       ; work         ;
+;       |contador_mod_5:mod5_2|          ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_clock:cont_clock|contador_mod_5:mod5_2   ; contador_mod_5        ; work         ;
+;       |contador_mod_5:mod5_3|          ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_clock:cont_clock|contador_mod_5:mod5_3   ; contador_mod_5        ; work         ;
+;       |contador_mod_5:mod5_4|          ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_clock:cont_clock|contador_mod_5:mod5_4   ; contador_mod_5        ; work         ;
+;       |contador_mod_5:mod5_5|          ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_clock:cont_clock|contador_mod_5:mod5_5   ; contador_mod_5        ; work         ;
+;       |contador_mod_5:mod5_6|          ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_clock:cont_clock|contador_mod_5:mod5_6   ; contador_mod_5        ; work         ;
+;       |contador_mod_5:mod5|            ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_clock:cont_clock|contador_mod_5:mod5     ; contador_mod_5        ; work         ;
+;    |contador_mod_10:mod10_min|         ; 8 (8)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_10:mod10_min                         ; contador_mod_10       ; work         ;
+;    |contador_mod_10:mod10_seg|         ; 8 (8)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_10:mod10_seg                         ; contador_mod_10       ; work         ;
+;    |contador_mod_24:mod24|             ; 18 (18)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_24:mod24                             ; contador_mod_24       ; work         ;
+;    |contador_mod_4:chaveador|          ; 2 (2)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_4:chaveador                          ; contador_mod_4        ; work         ;
+;    |contador_mod_6:mod6_min|           ; 5 (5)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_6:mod6_min                           ; contador_mod_6        ; work         ;
+;    |contador_mod_6:mod6_seg|           ; 5 (5)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_6:mod6_seg                           ; contador_mod_6        ; work         ;
+;    |display_clock:refresh_clock|       ; 25 (1)              ; 17 (1)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock                       ; display_clock         ; work         ;
+;       |contador_mod_10:mod10|          ; 8 (8)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock|contador_mod_10:mod10 ; contador_mod_10       ; work         ;
+;       |contador_mod_5:mod5_2|          ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock|contador_mod_5:mod5_2 ; contador_mod_5        ; work         ;
+;       |contador_mod_5:mod5_3|          ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock|contador_mod_5:mod5_3 ; contador_mod_5        ; work         ;
+;       |contador_mod_5:mod5_4|          ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock|contador_mod_5:mod5_4 ; contador_mod_5        ; work         ;
+;       |contador_mod_5:mod5|            ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock|contador_mod_5:mod5   ; contador_mod_5        ; work         ;
+;    |multiplexador_display:mux|         ; 10 (10)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|multiplexador_display:mux                         ; multiplexador_display ; work         ;
++----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------+-----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+--------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                             ;
-+---------------------------------------+----------------------------------------+
-; Register name                         ; Reason for Removal                     ;
-+---------------------------------------+----------------------------------------+
-; contador_mod_24:mod24|high[2]         ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 1 ;                                        ;
-+---------------------------------------+----------------------------------------+
++-----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                ;
++---------------------------------------+-------------------------------------------+
+; Register name                         ; Reason for Removal                        ;
++---------------------------------------+-------------------------------------------+
+; contador_mod_24:mod24|high[3]         ; Merged with contador_mod_24:mod24|high[2] ;
+; contador_mod_24:mod24|high[2]         ; Stuck at GND due to stuck port data_in    ;
+; contador_mod_6:mod6_seg|count[3]      ; Stuck at GND due to stuck port data_in    ;
+; contador_mod_6:mod6_min|count[3]      ; Stuck at GND due to stuck port data_in    ;
+; Total Number of Removed Registers = 4 ;                                           ;
++---------------------------------------+-------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -243,12 +279,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 20    ;
+; Total registers                              ; 63    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 8     ;
+; Number of registers using Clock Enable       ; 23    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -258,19 +294,23 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 26                          ;
-; cycloneiii_ff         ; 20                          ;
-;     ENA               ; 8                           ;
-;     plain             ; 12                          ;
-; cycloneiii_lcell_comb ; 45                          ;
-;     normal            ; 45                          ;
+; boundary_port         ; 40                          ;
+; cycloneiii_ff         ; 63                          ;
+;     ENA               ; 23                          ;
+;     plain             ; 40                          ;
+; cycloneiii_lcell_comb ; 128                         ;
+;     arith             ; 3                           ;
+;         2 data inputs ; 2                           ;
+;         3 data inputs ; 1                           ;
+;     normal            ; 125                         ;
 ;         0 data inputs ; 1                           ;
-;         2 data inputs ; 3                           ;
-;         3 data inputs ; 13                          ;
-;         4 data inputs ; 28                          ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 9                           ;
+;         3 data inputs ; 38                          ;
+;         4 data inputs ; 71                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 3.09                        ;
+; Max LUT depth         ; 5.00                        ;
+; Average LUT depth     ; 2.14                        ;
 +-----------------------+-----------------------------+
 
 
@@ -289,7 +329,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Sat Jul 24 01:21:36 2021
+    Info: Processing started: Sat Jul 24 15:05:41 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Projeto_2 -c Projeto_2
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -299,8 +339,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file contado
     Info (12023): Found entity 1: contador_mod_10 File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_10.tdf Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file contador_mod_24.tdf
     Info (12023): Found entity 1: contador_mod_24 File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_24.tdf Line: 1
+Warning (287013): Variable or input pin "t" is defined but never used. File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/divisor_clock.tdf Line: 18
 Info (12021): Found 1 design units, including 1 entities, in source file divisor_clock.tdf
-    Info (12023): Found entity 1: divisor_clock File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/divisor_clock.tdf Line: 1
+    Info (12023): Found entity 1: divisor_clock File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/divisor_clock.tdf Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file bcd_7segment_decoder.tdf
     Info (12023): Found entity 1: BCD_7Segment_Decoder File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/BCD_7Segment_Decoder.tdf Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file multiplexador_display.tdf
@@ -310,24 +351,46 @@ Info (12021): Found 1 design units, including 1 entities, in source file 2x4_dec
 Info (12021): Found 1 design units, including 1 entities, in source file contador_mod_4.tdf
     Info (12023): Found entity 1: contador_mod_4 File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_4.tdf Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file despertador.tdf
-    Info (12023): Found entity 1: despertador File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 7
+    Info (12023): Found entity 1: despertador File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 11
+Info (12021): Found 1 design units, including 1 entities, in source file contador_mod_5.tdf
+    Info (12023): Found entity 1: contador_mod_5 File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_5.tdf Line: 1
+Warning (287013): Variable or input pin "t" is defined but never used. File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/display_clock.tdf Line: 20
+Info (12021): Found 1 design units, including 1 entities, in source file display_clock.tdf
+    Info (12023): Found entity 1: display_clock File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/display_clock.tdf Line: 6
+Warning (287013): Variable or input pin "t" is defined but never used. File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_clock.tdf Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file contador_clock.tdf
+    Info (12023): Found entity 1: contador_clock File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_clock.tdf Line: 7
+Info (12021): Found 1 design units, including 1 entities, in source file contador_mod_25.tdf
+    Info (12023): Found entity 1: contador_mod_25 File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_mod_25.tdf Line: 1
 Info (12127): Elaborating entity "despertador" for the top level hierarchy
-Info (12128): Elaborating entity "contador_mod_24" for hierarchy "contador_mod_24:mod24" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 16
-Info (12128): Elaborating entity "contador_mod_6" for hierarchy "contador_mod_6:mod6_min" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 18
-Info (12128): Elaborating entity "contador_mod_10" for hierarchy "contador_mod_10:mod10_min" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 19
+Info (12128): Elaborating entity "contador_clock" for hierarchy "contador_clock:cont_clock" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 23
+Info (12128): Elaborating entity "contador_mod_5" for hierarchy "contador_clock:cont_clock|contador_mod_5:mod5" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_clock.tdf Line: 14
+Info (12128): Elaborating entity "contador_mod_25" for hierarchy "contador_clock:cont_clock|contador_mod_25:mod25" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/contador_clock.tdf Line: 20
+Info (12128): Elaborating entity "display_clock" for hierarchy "display_clock:refresh_clock" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 24
+Info (12128): Elaborating entity "contador_mod_10" for hierarchy "display_clock:refresh_clock|contador_mod_10:mod10" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/display_clock.tdf Line: 17
+Info (12128): Elaborating entity "contador_mod_24" for hierarchy "contador_mod_24:mod24" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 27
+Info (12128): Elaborating entity "contador_mod_6" for hierarchy "contador_mod_6:mod6_min" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 29
+Info (12128): Elaborating entity "contador_mod_10" for hierarchy "contador_mod_10:mod10_min" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 30
+Info (12128): Elaborating entity "contador_mod_4" for hierarchy "contador_mod_4:chaveador" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 36
+Info (12128): Elaborating entity "multiplexador_display" for hierarchy "multiplexador_display:mux" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 39
+Info (12128): Elaborating entity "BCD_7Segment_Decoder" for hierarchy "BCD_7Segment_Decoder:bcd_7Seg_dec" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 42
+Info (12128): Elaborating entity "2x4_decoder" for hierarchy "2x4_decoder:decoder" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 45
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "horas_dezenas[2]" is stuck at GND File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 10
+    Warning (13410): Pin "sec_dezenas[3]" is stuck at GND File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 14
+    Warning (13410): Pin "min_dezenas[3]" is stuck at GND File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 14
+    Warning (13410): Pin "horas_dezenas[2]" is stuck at GND File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 14
+    Warning (13410): Pin "horas_dezenas[3]" is stuck at GND File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 14
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 70 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 165 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 24 output pins
-    Info (21061): Implemented 44 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 616 megabytes
-    Info: Processing ended: Sat Jul 24 01:21:45 2021
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:21
+    Info (21059): Implemented 38 output pins
+    Info (21061): Implemented 125 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 617 megabytes
+    Info: Processing ended: Sat Jul 24 15:05:51 2021
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:22
 
 

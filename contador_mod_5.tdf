@@ -1,0 +1,27 @@
+SUBDESIGN contador_mod_5
+(
+	clock,enable : INPUT;
+	q[2..0], tc : OUTPUT;
+)
+
+VARIABLE
+	count[2..0] : DFF;
+	
+BEGIN
+	count[].clk = clock;
+	
+	IF enable THEN
+		IF count[].q < 4 THEN
+			count[].d = count[].q + 1;
+		ELSE
+			count[].d = 0;
+		END IF;
+	ELSE
+		count[].d = count[].q;
+	END IF;
+	
+	tc = enable & count[].q == 4;
+	
+	q[] = count[].q;
+
+END;

@@ -96,6 +96,50 @@
 					"strict" : false
 				},
 				{
+					"name" : "Seg7Output[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[6]",
+					"strict" : false
+				},
+				{
+					"name" : "AnodeOutput[0]",
+					"strict" : false
+				},
+				{
+					"name" : "AnodeOutput[1]",
+					"strict" : false
+				},
+				{
+					"name" : "AnodeOutput[2]",
+					"strict" : false
+				},
+				{
+					"name" : "AnodeOutput[3]",
+					"strict" : false
+				},
+				{
 					"name" : "ena",
 					"strict" : false
 				},

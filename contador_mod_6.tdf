@@ -1,11 +1,11 @@
 SUBDESIGN contador_mod_6
 (
 	clock, enable : INPUT;
-	q[2..0], tc : OUTPUT;
+	q[3..0], tc : OUTPUT;
 )
 
 VARIABLE
-	count[2..0] : DFF;
+	count[3..0] : DFF;
 	
 BEGIN
 	count[].clk = clock;

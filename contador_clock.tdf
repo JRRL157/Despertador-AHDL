@@ -1,0 +1,56 @@
+INCLUDE "contador_mod_5.inc";
+INCLUDE "contador_mod_10.inc";
+INCLUDE "contador_mod_25.inc";
+
+%CLOCK = 1Hz %
+
+SUBDESIGN contador_clock
+(
+	clock,enable : INPUT;	
+	clock_saida : OUTPUT;
+	
+)
+VARIABLE
+	mod5 : contador_mod_5;
+	mod5_2 : contador_mod_5;
+	mod5_3 : contador_mod_5;
+	mod5_4 : contador_mod_5;
+	mod5_5 : contador_mod_5;
+	mod5_6 : contador_mod_5;
+	mod25 : contador_mod_25;
+	clk_saida : JKFF;
+	t : NODE;
+BEGIN
+	
+	% Parâmetros do Flip-Flop JK %
+	clk_saida.j = VCC;
+	clk_saida.k = VCC;
+	
+	% Contadores em cascata %
+	mod5.clock = clock;
+	mod5.enable = enable;
+	
+	mod5_2.enable = enable;
+	mod5_2.clock = mod5.tc;
+	
+	mod5_3.enable = enable;
+	mod5_3.clock = mod5_2.tc;
+	
+	mod5_4.enable = enable;
+	mod5_4.clock = mod5_3.tc;
+	
+	mod5_5.enable = enable;
+	mod5_5.clock = mod5_4.tc;
+	
+	mod5_6.enable = enable;
+	mod5_6.clock = mod5_5.tc;
+	
+	mod25.enable = enable;
+	mod25.clock = mod5_6.tc;
+	
+	% Clock de saída %
+	clk_saida.clk = mod25.tc;
+	
+	clock_saida = clk_saida.q;
+	
+END;
