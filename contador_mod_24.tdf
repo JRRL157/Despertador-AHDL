@@ -1,7 +1,8 @@
 SUBDESIGN contador_mod_24
 (
-	clk,ena : INPUT;
+	clock,enable : INPUT;
 	lsd[3..0],msd[2..0] : OUTPUT;
+	tc : OUTPUT;
 )
 VARIABLE
 	low[3..0] : DFF;
@@ -9,11 +10,11 @@ VARIABLE
 	time : NODE;
 	
 BEGIN
-	low[].clk = clk;
-	high[].clk = clk;
+	low[].clk = clock;
+	high[].clk = clock;
 
 	
-	IF ena THEN
+	IF enable THEN
 		IF low[].q < 9 & high[].q == 0 THEN
 			low[].d = low[].q + 1;
 			high[].d = high[].q;
@@ -38,8 +39,9 @@ BEGIN
 		high[].d = high[].q;
 	END IF;
 	
-	%time = high[1..0].q == 2 & low[3..0].q == 3 & ena;%
+	time = high[1..0].q == 2 & low[3..0].q == 3 & enable;
 	
+	tc = time;	
 	msd[] = high[].q;
 	lsd[] = low[].q;
 END;

@@ -4,23 +4,103 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "q[0]",
+					"name" : "sec_unidades[0]",
 					"strict" : false
 				},
 				{
-					"name" : "q[1]",
+					"name" : "sec_unidades[1]",
 					"strict" : false
 				},
 				{
-					"name" : "tc",
+					"name" : "sec_unidades[2]",
 					"strict" : false
 				},
 				{
-					"name" : "enable",
+					"name" : "sec_unidades[3]",
 					"strict" : false
 				},
 				{
-					"name" : "clock",
+					"name" : "sec_dezenas[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sec_dezenas[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sec_dezenas[2]",
+					"strict" : false
+				},
+				{
+					"name" : "min_unidades[0]",
+					"strict" : false
+				},
+				{
+					"name" : "min_unidades[1]",
+					"strict" : false
+				},
+				{
+					"name" : "min_unidades[2]",
+					"strict" : false
+				},
+				{
+					"name" : "min_unidades[3]",
+					"strict" : false
+				},
+				{
+					"name" : "min_dezenas[0]",
+					"strict" : false
+				},
+				{
+					"name" : "min_dezenas[1]",
+					"strict" : false
+				},
+				{
+					"name" : "min_dezenas[2]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_unidades[0]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_unidades[1]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_unidades[2]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_unidades[3]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_dezenas[0]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_dezenas[1]",
+					"strict" : false
+				},
+				{
+					"name" : "tc_segundos",
+					"strict" : false
+				},
+				{
+					"name" : "tc_minutos",
+					"strict" : false
+				},
+				{
+					"name" : "tc_horas",
+					"strict" : false
+				},
+				{
+					"name" : "ena",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
 					"strict" : false
 				}
 			]

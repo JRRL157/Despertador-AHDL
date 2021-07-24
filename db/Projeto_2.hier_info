@@ -1,4 +1,60 @@
-|contador_mod_2
+|despertador
+clk => contador_mod_10:mod10_seg.clock
+clk => contador_mod_6:mod6_seg.clock
+clk => contador_mod_10:mod10_min.clock
+clk => contador_mod_6:mod6_min.clock
+clk => contador_mod_24:mod24.clock
+ena => contador_mod_10:mod10_seg.enable
+sec_unidades[0] <= contador_mod_10:mod10_seg.q[0]
+sec_unidades[1] <= contador_mod_10:mod10_seg.q[1]
+sec_unidades[2] <= contador_mod_10:mod10_seg.q[2]
+sec_unidades[3] <= contador_mod_10:mod10_seg.q[3]
+sec_dezenas[0] <= contador_mod_6:mod6_seg.q[0]
+sec_dezenas[1] <= contador_mod_6:mod6_seg.q[1]
+sec_dezenas[2] <= contador_mod_6:mod6_seg.q[2]
+min_unidades[0] <= contador_mod_10:mod10_min.q[0]
+min_unidades[1] <= contador_mod_10:mod10_min.q[1]
+min_unidades[2] <= contador_mod_10:mod10_min.q[2]
+min_unidades[3] <= contador_mod_10:mod10_min.q[3]
+min_dezenas[0] <= contador_mod_6:mod6_min.q[0]
+min_dezenas[1] <= contador_mod_6:mod6_min.q[1]
+min_dezenas[2] <= contador_mod_6:mod6_min.q[2]
+horas_unidades[0] <= contador_mod_24:mod24.lsd[0]
+horas_unidades[1] <= contador_mod_24:mod24.lsd[1]
+horas_unidades[2] <= contador_mod_24:mod24.lsd[2]
+horas_unidades[3] <= contador_mod_24:mod24.lsd[3]
+horas_dezenas[0] <= contador_mod_24:mod24.msd[0]
+horas_dezenas[1] <= contador_mod_24:mod24.msd[1]
+horas_dezenas[2] <= contador_mod_24:mod24.msd[2]
+tc_segundos <= contador_mod_6:mod6_seg.tc
+tc_minutos <= contador_mod_6:mod6_min.tc
+tc_horas <= contador_mod_24:mod24.tc
+
+
+|despertador|contador_mod_24:mod24
+clock => low[3].CLK
+clock => low[2].CLK
+clock => low[1].CLK
+clock => low[0].CLK
+clock => high[2].CLK
+clock => high[1].CLK
+clock => high[0].CLK
+enable => _.IN0
+enable => _.IN0
+enable => _.IN0
+enable => time.IN1
+lsd[0] <= low[0].DB_MAX_OUTPUT_PORT_TYPE
+lsd[1] <= low[1].DB_MAX_OUTPUT_PORT_TYPE
+lsd[2] <= low[2].DB_MAX_OUTPUT_PORT_TYPE
+lsd[3] <= low[3].DB_MAX_OUTPUT_PORT_TYPE
+msd[0] <= high[0].DB_MAX_OUTPUT_PORT_TYPE
+msd[1] <= high[1].DB_MAX_OUTPUT_PORT_TYPE
+msd[2] <= high[2].DB_MAX_OUTPUT_PORT_TYPE
+tc <= time.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|contador_mod_6:mod6_min
+clock => count[2].CLK
 clock => count[1].CLK
 clock => count[0].CLK
 enable => _.IN0
@@ -7,6 +63,53 @@ enable => _.IN0
 enable => tc.IN0
 q[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
 q[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|contador_mod_10:mod10_min
+clock => count[3].CLK
+clock => count[2].CLK
+clock => count[1].CLK
+clock => count[0].CLK
+enable => _.IN0
+enable => _.IN0
+enable => _.IN0
+enable => tc.IN0
+q[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
+tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|contador_mod_6:mod6_seg
+clock => count[2].CLK
+clock => count[1].CLK
+clock => count[0].CLK
+enable => _.IN0
+enable => _.IN0
+enable => _.IN0
+enable => tc.IN0
+q[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|contador_mod_10:mod10_seg
+clock => count[3].CLK
+clock => count[2].CLK
+clock => count[1].CLK
+clock => count[0].CLK
+enable => _.IN0
+enable => _.IN0
+enable => _.IN0
+enable => tc.IN0
+q[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
 tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
 
 

@@ -1,0 +1,58 @@
+INCLUDE "contador_mod_4.inc";
+INCLUDE "contador_mod_6.inc";
+INCLUDE "contador_mod_10.inc";
+INCLUDE "contador_mod_24.inc";
+INCLUDE "divisor_clock.inc";
+
+SUBDESIGN despertador
+(
+	clk, ena : INPUT;
+	sec_unidades[3..0],sec_dezenas[2..0],min_unidades[3..0],min_dezenas[2..0],horas_unidades[3..0],horas_dezenas[2..0] : OUTPUT;
+	tc_segundos,tc_minutos,tc_horas : OUTPUT;
+)
+
+VARIABLE
+	% Horas%
+	mod24 : contador_mod_24;
+	% Minutos%
+	mod6_min : contador_mod_6;
+	mod10_min : contador_mod_10;
+	% Segundos %
+	mod6_seg : contador_mod_6;
+	mod10_seg : contador_mod_10;
+BEGIN
+	
+	% Começando a contar os segundos %
+	mod10_seg.clock = clk;
+	mod6_seg.clock = clk;
+	
+	mod10_seg.enable = ena;
+	mod6_seg.enable = mod10_seg.tc;
+	
+	sec_unidades[3..0] = mod10_seg.q[3..0];
+	sec_dezenas[2..0] = mod6_seg.q[2..0];
+	
+	tc_segundos = mod6_seg.tc;
+	
+	%Começando a contar os minutos %
+	mod10_min.clock = clk;
+	mod6_min.clock = clk;
+	
+	mod10_min.enable = tc_segundos;
+	mod6_min.enable = mod10_min.tc;
+	
+	min_unidades[3..0] = mod10_min.q[3..0];
+	min_dezenas[2..0] = mod6_min.q[2..0];
+	
+	tc_minutos = mod6_min.tc;
+	
+	%Começando a contar as horas %
+	
+	mod24.clock = clk;
+	mod24.enable = tc_minutos;
+	
+	horas_unidades[3..0] = mod24.lsd[3..0];
+	horas_dezenas[2..0] = mod24.msd[2..0];
+	
+	tc_horas = mod24.tc;
+END;
