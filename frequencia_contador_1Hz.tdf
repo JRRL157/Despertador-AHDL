@@ -12,10 +12,10 @@ BEGIN
 	count[].clk = clock;
 	
 	IF enable THEN	
-		IF count[].q < 25000000 THEN
+		IF count[].q < 26214400 THEN
 			count[].d = count[].q + 1;
 			flag = GND;
-		ELSIF count[].q >= 25000000 & count[].q < 50000000 THEN
+		ELSIF count[].q >= 26214400 & count[].q < 52428800 THEN
 			count[].d = count[].q + 1;
 			flag = VCC;
 		ELSE
