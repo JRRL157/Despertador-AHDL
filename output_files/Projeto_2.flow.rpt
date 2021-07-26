@@ -1,5 +1,5 @@
 Flow report for Projeto_2
-Mon Jul 26 17:17:44 2021
+Mon Jul 26 17:37:10 2021
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Mon Jul 26 17:17:44 2021       ;
+; Flow Status                        ; Successful - Mon Jul 26 17:37:10 2021       ;
 ; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                      ; Projeto_2                                   ;
 ; Top-level Entity Name              ; despertador                                 ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE6E22C8                                 ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 92                                          ;
-;     Total combinational functions  ; 92                                          ;
+; Total logic elements               ; 94                                          ;
+;     Total combinational functions  ; 94                                          ;
 ;     Dedicated logic registers      ; 43                                          ;
 ; Total registers                    ; 43                                          ;
 ; Total pins                         ; 43                                          ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/26/2021 17:16:12 ;
+; Start date & time ; 07/26/2021 17:35:16 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Projeto_2           ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 11960136588300.162733057204532         ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 11960136588300.162733171508020         ; --            ; --          ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
 ; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --          ; --         ;
@@ -93,10 +93,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 615 MB              ; 00:00:22                           ;
+; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 616 MB              ; 00:00:23                           ;
 ; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 511 MB              ; 00:00:00                           ;
 ; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 513 MB              ; 00:00:01                           ;
-; Total                ; 00:00:11     ; --                      ; --                  ; 00:00:23                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 509 MB              ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 513 MB              ; 00:00:01                           ;
+; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:26                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -108,6 +110,8 @@ https://fpgasoftware.intel.com/eula.
 ; Analysis & Synthesis ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
 ; EDA Netlist Writer   ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
 ; EDA Netlist Writer   ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
+; EDA Netlist Writer   ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
+; EDA Netlist Writer   ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
 +----------------------+------------------+-------------+------------+----------------+
 
 
@@ -115,6 +119,8 @@ https://fpgasoftware.intel.com/eula.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off Projeto_2 -c Projeto_2
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Projeto_2 -c Projeto_2 --vector_source=D:/GitHub/Despertador_AHDL/Despertador-AHDL/Waveform.vwf --testbench_file=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Waveform.vwf.vt
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/ Projeto_2 -c Projeto_2
 quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Projeto_2 -c Projeto_2 --vector_source=D:/GitHub/Despertador_AHDL/Despertador-AHDL/Waveform.vwf --testbench_file=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Waveform.vwf.vt
 quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/ Projeto_2 -c Projeto_2
 

@@ -1,7 +1,11 @@
 |despertador
 clk => display_clock:refresh_clock.clock
 clk => frequencia_contador_1Hz:cont_clock.clock
-ajuste => ~NO_FANOUT~
+ajuste => _.IN0
+ajuste => _.IN0
+ajuste => _.IN0
+ajuste => _.IN0
+ajuste => _.IN0
 up => ~NO_FANOUT~
 trocar => ~NO_FANOUT~
 troca_modo => ~NO_FANOUT~

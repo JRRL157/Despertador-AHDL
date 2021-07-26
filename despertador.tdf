@@ -65,8 +65,8 @@ BEGIN
 	cont_clock.enable = VCC;
 	
 	% Começando a contar os segundos %
-	mod10_seg.clock = cont_clock.clock_saida;
-	mod6_seg.clock = cont_clock.clock_saida;
+	mod10_seg.clock = cont_clock.clock_saida & !ajuste;
+	mod6_seg.clock = cont_clock.clock_saida & !ajuste;
 	
 	mod10_seg.enable = VCC;
 	mod6_seg.enable = mod10_seg.tc;
@@ -77,8 +77,8 @@ BEGIN
 	tc_segundos = mod6_seg.tc;
 	
 	%Começando a contar os minutos %
-	mod10_min.clock = cont_clock.clock_saida;
-	mod6_min.clock = cont_clock.clock_saida;
+	mod10_min.clock = cont_clock.clock_saida & !ajuste;
+	mod6_min.clock = cont_clock.clock_saida & !ajuste;
 	
 	mod10_min.enable = tc_segundos;
 	mod6_min.enable = mod10_min.tc;
@@ -90,7 +90,7 @@ BEGIN
 	
 	%Começando a contar as horas %
 	
-	mod24.clock = cont_clock.clock_saida;
+	mod24.clock = cont_clock.clock_saida & !ajuste;
 	mod24.enable = tc_minutos;
 	
 	horas_unidades[3..0] = mod24.lsd[3..0];
