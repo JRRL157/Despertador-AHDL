@@ -1,10 +1,7 @@
 |despertador
 clk => display_clock:refresh_clock.clock
 clk => contador_clock:cont_clock.clock
-ena => display_clock:refresh_clock.enable
-ena => contador_clock:cont_clock.enable
-ena => contador_mod_10:mod10_seg.enable
-ena => contador_mod_4:chaveador.enable
+ena => ~NO_FANOUT~
 sec_unidades[0] <= contador_mod_10:mod10_seg.q[0]
 sec_unidades[1] <= contador_mod_10:mod10_seg.q[1]
 sec_unidades[2] <= contador_mod_10:mod10_seg.q[2]
@@ -39,10 +36,10 @@ Seg7Output[3] <= BCD_7Segment_Decoder:bcd_7Seg_dec.d
 Seg7Output[4] <= BCD_7Segment_Decoder:bcd_7Seg_dec.e
 Seg7Output[5] <= BCD_7Segment_Decoder:bcd_7Seg_dec.f
 Seg7Output[6] <= BCD_7Segment_Decoder:bcd_7Seg_dec.g
-AnodeOutput[0] <= 2x4_decoder:decoder.saida[0]
-AnodeOutput[1] <= 2x4_decoder:decoder.saida[1]
-AnodeOutput[2] <= 2x4_decoder:decoder.saida[2]
-AnodeOutput[3] <= 2x4_decoder:decoder.saida[3]
+AnodeOutput[0] <= AnodeOutput[0].DB_MAX_OUTPUT_PORT_TYPE
+AnodeOutput[1] <= AnodeOutput[1].DB_MAX_OUTPUT_PORT_TYPE
+AnodeOutput[2] <= AnodeOutput[2].DB_MAX_OUTPUT_PORT_TYPE
+AnodeOutput[3] <= AnodeOutput[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |despertador|contador_clock:cont_clock

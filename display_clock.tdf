@@ -19,7 +19,6 @@ VARIABLE
 	clk_saida : JKFF;
 	t : NODE;
 BEGIN
-	
 	% Parâmetros do Flip-Flop JK %
 	clk_saida.j = VCC;
 	clk_saida.k = VCC;

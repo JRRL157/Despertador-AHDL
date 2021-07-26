@@ -48,16 +48,16 @@ BEGIN
 	%Divisão de frequência% 
 	
 	refresh_clock.clock = clk;
-	refresh_clock.enable = ena;
+	refresh_clock.enable = VCC;
 	cont_clock.clock = clk;
-	cont_clock.enable = ena;
+	cont_clock.enable = VCC;
 	
 	
 	% Começando a contar os segundos %
 	mod10_seg.clock = cont_clock.clock_saida;
 	mod6_seg.clock = cont_clock.clock_saida;
 	
-	mod10_seg.enable = ena;
+	mod10_seg.enable = VCC;
 	mod6_seg.enable = mod10_seg.tc;
 	
 	sec_unidades[3..0] = mod10_seg.q[3..0];
@@ -88,7 +88,7 @@ BEGIN
 	tc_horas = mod24.tc;
 	
 	%Selecionando o display a ser exibido %
-	chaveador.enable = ena;
+	chaveador.enable = VCC;
 	chaveador.clock = refresh_clock.clock_saida;
 	
 	% Multiplexador do Display%
@@ -100,10 +100,10 @@ BEGIN
 	mux.s[1..0] = chaveador.q[1..0];
 	
 	%Controle do Anodo %
-	decoder.sel[] = chaveador.q[];
+	decoder.sel[1..0] = chaveador.q[1..0];
 	
 	% Decodificar BCD para 7 Segmentos%
-	bcd_7Seg_dec.bcd[] = mux.dout[];
+	bcd_7Seg_dec.bcd[3..0] = mux.dout[3..0];
 	bcd_7Seg_dec.lt = VCC;
 	bcd_7Seg_dec.bi = VCC;
 	bcd_7Seg_dec.rbi = VCC;
@@ -115,10 +115,10 @@ BEGIN
 	Seg7Output[3] = bcd_7Seg_dec.d;
 	Seg7Output[4] = bcd_7Seg_dec.e;
 	Seg7Output[5] = bcd_7Seg_dec.f;
-	Seg7Output[6] = bcd_7Seg_dec.g;	
+	Seg7Output[6] = bcd_7Seg_dec.g;
 	
-	AnodeOutput[0] = decoder.saida[0];
-	AnodeOutput[1] = decoder.saida[1];
-	AnodeOutput[2] = decoder.saida[2];
-	AnodeOutput[3] = decoder.saida[3];
+	AnodeOutput[0] = !decoder.saida[0];
+	AnodeOutput[1] = !decoder.saida[1];
+	AnodeOutput[2] = !decoder.saida[2];
+	AnodeOutput[3] = !decoder.saida[3];
 END;

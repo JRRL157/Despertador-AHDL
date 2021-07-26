@@ -140,10 +140,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "ena",
-					"strict" : false
-				},
-				{
 					"name" : "clk",
 					"strict" : false
 				}
