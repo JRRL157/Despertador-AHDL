@@ -61,7 +61,6 @@ set_global_assignment -name AHDL_FILE contador_mod_5.tdf
 set_global_assignment -name AHDL_FILE display_clock.tdf
 set_global_assignment -name AHDL_FILE contador_clock.tdf
 set_global_assignment -name AHDL_FILE contador_mod_25.tdf
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_location_assignment PIN_23 -to clk
 set_location_assignment PIN_133 -to AnodeOutput[0]
 set_location_assignment PIN_135 -to AnodeOutput[1]
@@ -77,8 +76,8 @@ set_location_assignment PIN_124 -to Seg7Output[6]
 set_location_assignment PIN_88 -to ena
 set_global_assignment -name AHDL_FILE contador_mod_60.tdf
 set_global_assignment -name AHDL_FILE frequencia_contador_1Hz.tdf
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform1.vwf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf

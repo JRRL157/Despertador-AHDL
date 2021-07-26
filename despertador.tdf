@@ -53,10 +53,8 @@ VARIABLE
 	%Hora de acordar %	
 	acorda[3..0]	: DFF;
 	
-BEGIN
-	%Divisão de frequência% 
-	
-	
+BEGIN	
+	%Divisão de frequência% 	
 	%Visor %
 	refresh_clock.clock = clk;
 	refresh_clock.enable = VCC;

@@ -7,7 +7,7 @@ Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-A
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Projeto_2 -c Projeto_2 --vector_source="D:/GitHub/Despertador_AHDL/Despertador-AHDL/Waveform1.vwf" --testbench_file="D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Waveform1.vwf.vt"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Projeto_2 -c Projeto_2 --vector_source="D:/GitHub/Despertador_AHDL/Despertador-AHDL/Waveform.vwf" --testbench_file="D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Waveform.vwf.vt"
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
@@ -26,10 +26,12 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details, at
     Info: https://fpgasoftware.intel.com/eula.
-    Info: Processing started: Mon Jul 26 15:29:39 2021
-Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Projeto_2 -c Projeto_2 --vector_source=D:/GitHub/Despertador_AHDL/Despertador-AHDL/Waveform1.vwf --testbench_file=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Waveform1.vwf.vt
+    Info: Processing started: Mon Jul 26 17:17:43 2021
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Projeto_2 -c Projeto_2 --vector_source=D:/GitHub/Despertador_AHDL/Despertador-AHDL/Waveform.vwf --testbench_file=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Waveform.vwf.vt
 Info (119006): Selected device EP4CE6E22C8 for design "Projeto_2"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+
+ades[3]" in vector source file when writing test bench files
 
 Completed successfully. 
 
@@ -56,15 +58,15 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details, at
     Info: https://fpgasoftware.intel.com/eula.
-    Info: Processing started: Mon Jul 26 15:29:40 2021
+    Info: Processing started: Mon Jul 26 17:17:43 2021
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/ Projeto_2 -c Projeto_2
 Info (119006): Selected device EP4CE6E22C8 for design "Projeto_2"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file Projeto_2.vo in folder "D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 516 megabytes
-    Info: Processing ended: Mon Jul 26 15:29:40 2021
-    Info: Elapsed time: 00:00:00
+    Info: Processing ended: Mon Jul 26 17:17:44 2021
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 Completed successfully. 
@@ -87,53 +89,52 @@ Reading pref.tcl
 
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 15:29:41 on Jul 26,2021
+# Start time: 17:17:45 on Jul 26,2021
 # vlog -work work Projeto_2.vo 
-# -- Compiling module frequencia_contador_1Hz
+# -- Compiling module despertador
+
 # 
 # Top level modules:
-# 	frequencia_contador_1Hz
-# End time: 15:29:41 on Jul 26,2021, Elapsed time: 0:00:00
+# 	despertador
+# End time: 17:17:45 on Jul 26,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-
 # Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 15:29:41 on Jul 26,2021
-# vlog -work work Waveform1.vwf.vt 
+# Start time: 17:17:45 on Jul 26,2021
+# vlog -work work Waveform.vwf.vt 
 
-# -- Compiling module frequencia_contador_1Hz_vlg_vec_tst
+# -- Compiling module despertador_vlg_vec_tst
 # 
 # Top level modules:
-# 	frequencia_contador_1Hz_vlg_vec_tst
-# End time: 15:29:41 on Jul 26,2021, Elapsed time: 0:00:00
+# 	despertador_vlg_vec_tst
+# End time: 17:17:45 on Jul 26,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
-# vsim -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.frequencia_contador_1Hz_vlg_vec_tst 
-# Start time: 15:29:41 on Jul 26,2021
-# Loading work.frequencia_contador_1Hz_vlg_vec_tst
-# Loading work.frequencia_contador_1Hz
+# vsim -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.despertador_vlg_vec_tst 
+# Start time: 17:17:45 on Jul 26,2021
+# Loading work.despertador_vlg_vec_tst
+# Loading work.despertador
 # Loading cycloneive_ver.cycloneive_io_obuf
 # Loading cycloneive_ver.cycloneive_io_ibuf
 # Loading cycloneive_ver.cycloneive_lcell_comb
 # Loading altera_ver.dffeas
 # Loading altera_ver.PRIM_GDFF_LOW
 # after#25
-# ** Note: $finish    : Waveform1.vwf.vt(47)
-#    Time: 1 us  Iteration: 0  Instance: /frequencia_contador_1Hz_vlg_vec_tst
-
-# End time: 15:29:42 on Jul 26,2021, Elapsed time: 0:00:01
+# ** Note: $finish    : Waveform.vwf.vt(73)
+#    Time: 1 us  Iteration: 0  Instance: /despertador_vlg_vec_tst
+# End time: 17:17:45 on Jul 26,2021, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading D:/GitHub/Despertador_AHDL/Despertador-AHDL/Waveform1.vwf...
+Reading D:/GitHub/Despertador_AHDL/Despertador-AHDL/Waveform.vwf...
 
 Reading D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Projeto_2.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Projeto_2_20210726152942.sim.vwf
+Writing the resulting VWF to D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Projeto_2_20210726171745.sim.vwf
 
 Finished VCD to VWF conversion.
 
