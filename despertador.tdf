@@ -11,7 +11,7 @@ INCLUDE "frequencia_contador_1Hz";
 
 SUBDESIGN despertador
 (
-	clk: INPUT;
+	clk: INPUT;						%50Mhz%
 	ajuste : INPUT; 				%key1 %
 	up : INPUT; 					%key2/button2 %
 	trocar : INPUT; 				%key3/button3 %
@@ -56,8 +56,13 @@ VARIABLE
 BEGIN
 	%Divisão de frequência% 
 	
+	
+	%Visor %
 	refresh_clock.clock = clk;
 	refresh_clock.enable = VCC;
+	
+	%Contador %
+	
 	cont_clock.clock = clk;
 	cont_clock.enable = VCC;
 	
