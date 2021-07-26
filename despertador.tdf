@@ -7,10 +7,16 @@ INCLUDE "display_clock.inc";
 INCLUDE "multiplexador_display.inc";
 INCLUDE "2x4_decoder.inc";
 INCLUDE "BCD_7Segment_Decoder.inc";
+INCLUDE "frequencia_contador_1Hz";
 
 SUBDESIGN despertador
 (
-	clk, ena : INPUT;
+	clk: INPUT;
+	ajuste : INPUT; 				%key1 %
+	up : INPUT; 					%key2/button2 %
+	trocar : INPUT; 				%key3/button3 %
+	troca_modo : INPUT;			%key4/button4 %
+	
 	sec_unidades[3..0],sec_dezenas[3..0],min_unidades[3..0],min_dezenas[3..0],horas_unidades[3..0],horas_dezenas[3..0] : OUTPUT;
 	tc_segundos,tc_minutos,tc_horas : OUTPUT;	
 	
@@ -20,7 +26,7 @@ SUBDESIGN despertador
 
 VARIABLE
 	%Clocks para testar na placa%
-	cont_clock : contador_clock;
+	cont_clock : frequencia_contador_1Hz;
 	refresh_clock : display_clock;
 	
 	% Horas%
@@ -44,6 +50,9 @@ VARIABLE
 	%Decoder 2 : 4 %
 	decoder : 2x4_decoder;
 	
+	%Hora de acordar %	
+	acorda[3..0]	: DFF;
+	
 BEGIN
 	%Divisão de frequência% 
 	
@@ -51,7 +60,6 @@ BEGIN
 	refresh_clock.enable = VCC;
 	cont_clock.clock = clk;
 	cont_clock.enable = VCC;
-	
 	
 	% Começando a contar os segundos %
 	mod10_seg.clock = cont_clock.clock_saida;
@@ -121,4 +129,5 @@ BEGIN
 	AnodeOutput[1] = !decoder.saida[1];
 	AnodeOutput[2] = !decoder.saida[2];
 	AnodeOutput[3] = !decoder.saida[3];
+	
 END;

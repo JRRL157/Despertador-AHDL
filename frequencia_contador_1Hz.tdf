@@ -1,0 +1,30 @@
+SUBDESIGN frequencia_contador_1Hz
+(
+	clock,enable : INPUT;	
+	clock_saida: OUTPUT;
+)
+
+VARIABLE
+	count[25..0] : DFF;
+	flag : NODE;
+	
+BEGIN
+	count[].clk = clock;
+	
+	IF enable THEN	
+		IF count[].q < 25000000 THEN
+			count[].d = count[].q + 1;
+			flag = GND;
+		ELSIF count[].q >= 25000000 & count[].q < 50000000 THEN
+			count[].d = count[].q + 1;
+			flag = VCC;
+		ELSE
+			count[].d = 0;		
+		END IF;
+	ELSE
+		count[].d = count[].q;
+	END IF;
+	
+	clock_saida = flag;
+
+END;

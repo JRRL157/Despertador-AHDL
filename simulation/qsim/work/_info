@@ -377,3 +377,51 @@ R23
 !i113 1
 R11
 R12
+vfrequencia_contador_1Hz
+Z37 !s110 1627324181
+!i10b 1
+!s100 Q:Q;OnN;o5F<ggjU;3<NJ0
+R1
+I[bDf6QTR9lVZ_d:ll4CUP1
+R2
+R3
+w1627324180
+R4
+R5
+!i122 251
+L0 32 1220
+R7
+r1
+!s85 0
+31
+Z38 !s108 1627324181.000000
+R9
+R10
+!i113 1
+R11
+R12
+nfrequencia_contador_1@hz
+vfrequencia_contador_1Hz_vlg_vec_tst
+R37
+!i10b 1
+!s100 iDFkT7@W5mW[`E;D5^[Rn3
+R1
+I8mlcZKA;A>ncDG@O7z38H2
+R2
+R3
+w1627324179
+R15
+R16
+!i122 252
+R21
+R7
+r1
+!s85 0
+31
+R38
+R17
+R18
+!i113 1
+R11
+R12
+nfrequencia_contador_1@hz_vlg_vec_tst

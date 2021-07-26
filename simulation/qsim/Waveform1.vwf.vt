@@ -19,30 +19,28 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "07/24/2021 13:43:59"
+// Generated on "07/26/2021 15:29:39"
                                                                                 
-// Verilog Test Bench (with test vectors) for design :                          contador_mod_5
+// Verilog Test Bench (with test vectors) for design :                          frequencia_contador_1Hz
 // 
 // Simulation tool : 3rd Party
 // 
 
 `timescale 1 ps/ 1 ps
-module contador_mod_5_vlg_vec_tst();
+module frequencia_contador_1Hz_vlg_vec_tst();
 // constants                                           
 // general purpose registers
 reg clock;
-reg enable;
+reg teste;
 // wires                                               
-wire [2:0] q;
-wire tc;
+wire clock_saida;
 
 // assign statements (if any)                          
-contador_mod_5 i1 (
+frequencia_contador_1Hz i1 (
 // port map - connection between master ports and signals/registers   
 	.clock(clock),
-	.enable(enable),
-	.q(q),
-	.tc(tc)
+	.clock_saida(clock_saida),
+	.teste(teste)
 );
 initial 
 begin 
@@ -57,10 +55,12 @@ begin
 	#1000;
 end 
 
-// enable
-initial
+// teste
+always
 begin
-	enable = 1'b1;
+	teste = 1'b0;
+	teste = #20000 1'b1;
+	#20000;
 end 
 endmodule
 

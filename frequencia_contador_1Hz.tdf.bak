@@ -1,0 +1,32 @@
+SUBDESIGN divisor_clock_50Mhz
+(
+	clock,enable : INPUT;
+	q[3..0], tc : OUTPUT;
+)
+
+VARIABLE
+	count[3..0] : DFF;
+	flag : NODE := 0;
+	
+BEGIN
+	count[].clk = clock;
+	
+	IF enable THEN
+		IF count[].q < 25000000 THEN
+			count[].d = count[].q + 1;
+			flag = GND;
+		ELSIF count[].q >= 25000000 & count[].q < 50000000 THEN
+			count[].d = count[].q + 1;
+			flag = VCC;
+		ELSE
+			count[].d = 0;			
+		END IF;
+	ELSE
+		count[].d = count[].q;
+	END IF;
+	
+	tc = enable & count[].q == 49999999;
+	
+	q[] = count[].q;
+
+END;
