@@ -6,8 +6,19 @@ ajuste => _.IN0
 ajuste => _.IN0
 ajuste => _.IN0
 ajuste => _.IN0
-up => ~NO_FANOUT~
-trocar => ~NO_FANOUT~
+ajuste => _.IN1
+ajuste => _.IN0
+ajuste => _.IN1
+ajuste => _.IN0
+ajuste => _.IN0
+ajuste => _.IN0
+ajuste => _.IN1
+ajuste => contador_mod_24:mod24.ajuste
+up => _.IN0
+up => _.IN0
+up => _.IN0
+up => _.IN0
+trocar => selecionador_digito:select_dig.trocar
 troca_modo => ~NO_FANOUT~
 sec_unidades[0] <= contador_mod_10:mod10_seg.q[0]
 sec_unidades[1] <= contador_mod_10:mod10_seg.q[1]
@@ -47,6 +58,10 @@ AnodeOutput[0] <= AnodeOutput[0].DB_MAX_OUTPUT_PORT_TYPE
 AnodeOutput[1] <= AnodeOutput[1].DB_MAX_OUTPUT_PORT_TYPE
 AnodeOutput[2] <= AnodeOutput[2].DB_MAX_OUTPUT_PORT_TYPE
 AnodeOutput[3] <= AnodeOutput[3].DB_MAX_OUTPUT_PORT_TYPE
+digito_selecionado[0] <= selecionador_digito:select_dig.digito[0]
+digito_selecionado[1] <= selecionador_digito:select_dig.digito[1]
+digito_selecionado[2] <= selecionador_digito:select_dig.digito[2]
+digito_selecionado[3] <= selecionador_digito:select_dig.digito[3]
 
 
 |despertador|frequencia_contador_1Hz:cont_clock
@@ -143,18 +158,19 @@ tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |despertador|contador_mod_24:mod24
-clock => low[3].CLK
-clock => low[2].CLK
-clock => low[1].CLK
-clock => low[0].CLK
-clock => high[3].CLK
-clock => high[2].CLK
-clock => high[1].CLK
-clock => high[0].CLK
-enable => _.IN0
+clock_low => low[3].CLK
+clock_low => low[2].CLK
+clock_low => low[1].CLK
+clock_low => low[0].CLK
+clock_high => high[3].CLK
+clock_high => high[2].CLK
+clock_high => high[1].CLK
+clock_high => high[0].CLK
 enable => _.IN0
 enable => _.IN0
 enable => time.IN1
+ajuste => _.IN0
+ajuste => _.IN1
 lsd[0] <= low[0].DB_MAX_OUTPUT_PORT_TYPE
 lsd[1] <= low[1].DB_MAX_OUTPUT_PORT_TYPE
 lsd[2] <= low[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -228,6 +244,16 @@ q[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
 q[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
 q[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
 tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|selecionador_digito:select_dig
+trocar => count[2].CLK
+trocar => count[1].CLK
+trocar => count[0].CLK
+digito[0] <= digito[0].DB_MAX_OUTPUT_PORT_TYPE
+digito[1] <= digito[1].DB_MAX_OUTPUT_PORT_TYPE
+digito[2] <= digito[2].DB_MAX_OUTPUT_PORT_TYPE
+digito[3] <= digito[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |despertador|contador_mod_4:chaveador

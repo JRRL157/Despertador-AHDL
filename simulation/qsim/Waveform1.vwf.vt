@@ -19,48 +19,38 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "07/26/2021 15:29:39"
+// Generated on "07/26/2021 20:55:18"
                                                                                 
-// Verilog Test Bench (with test vectors) for design :                          frequencia_contador_1Hz
+// Verilog Test Bench (with test vectors) for design :                          selecionador_digito
 // 
 // Simulation tool : 3rd Party
 // 
 
 `timescale 1 ps/ 1 ps
-module frequencia_contador_1Hz_vlg_vec_tst();
+module selecionador_digito_vlg_vec_tst();
 // constants                                           
 // general purpose registers
-reg clock;
-reg teste;
+reg trocar;
 // wires                                               
-wire clock_saida;
+wire [3:0] digito;
 
 // assign statements (if any)                          
-frequencia_contador_1Hz i1 (
+selecionador_digito i1 (
 // port map - connection between master ports and signals/registers   
-	.clock(clock),
-	.clock_saida(clock_saida),
-	.teste(teste)
+	.digito(digito),
+	.trocar(trocar)
 );
 initial 
 begin 
 #1000000 $finish;
 end 
 
-// clock
+// trocar
 always
 begin
-	clock = 1'b0;
-	clock = #1000 1'b1;
-	#1000;
-end 
-
-// teste
-always
-begin
-	teste = 1'b0;
-	teste = #20000 1'b1;
-	#20000;
+	trocar = 1'b0;
+	trocar = #100000 1'b1;
+	#100000;
 end 
 endmodule
 

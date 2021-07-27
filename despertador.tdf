@@ -7,7 +7,8 @@ INCLUDE "display_clock.inc";
 INCLUDE "multiplexador_display.inc";
 INCLUDE "2x4_decoder.inc";
 INCLUDE "BCD_7Segment_Decoder.inc";
-INCLUDE "frequencia_contador_1Hz";
+INCLUDE "frequencia_contador_1Hz.inc";
+INCLUDE "selecionador_digito.inc";
 
 SUBDESIGN despertador
 (
@@ -22,6 +23,7 @@ SUBDESIGN despertador
 	
 	Seg7Output[6..0] : OUTPUT;
 	AnodeOutput[3..0] : OUTPUT;
+	digito_selecionado[3..0] : OUTPUT;
 )
 
 VARIABLE
@@ -37,6 +39,9 @@ VARIABLE
 	% Segundos %
 	mod6_seg : contador_mod_6;
 	mod10_seg : contador_mod_10;
+	
+	%Cuida do dígito que está sendo incrementado%
+	select_dig : selecionador_digito;
 	
 	%Chave do display a ser exibido%
 	chaveador : contador_mod_4;
@@ -54,6 +59,10 @@ VARIABLE
 	acorda[3..0]	: DFF;
 	
 BEGIN	
+	select_dig.trocar = trocar;
+	
+	digito_selecionado[] = select_dig.digito[];
+	
 	%Divisão de frequência% 	
 	%Visor %
 	refresh_clock.clock = clk;
@@ -77,11 +86,11 @@ BEGIN
 	tc_segundos = mod6_seg.tc;
 	
 	%Começando a contar os minutos %
-	mod10_min.clock = cont_clock.clock_saida & !ajuste;
-	mod6_min.clock = cont_clock.clock_saida & !ajuste;
+	mod10_min.clock = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[0]);
+	mod6_min.clock = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[1]);
 	
-	mod10_min.enable = tc_segundos;
-	mod6_min.enable = mod10_min.tc;
+	mod10_min.enable = (tc_segundos & !ajuste) # (ajuste & VCC);
+	mod6_min.enable = (mod10_min.tc & !ajuste) # (ajuste & VCC);
 	
 	min_unidades[3..0] = mod10_min.q[3..0];
 	min_dezenas[3..0] = mod6_min.q[3..0];
@@ -90,8 +99,10 @@ BEGIN
 	
 	%Começando a contar as horas %
 	
-	mod24.clock = cont_clock.clock_saida & !ajuste;
-	mod24.enable = tc_minutos;
+	mod24.clock_low = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[2]);
+	mod24.clock_high = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[3]);
+	mod24.enable = (tc_minutos & !ajuste) # (ajuste & VCC);
+	mod24.ajuste = ajuste;
 	
 	horas_unidades[3..0] = mod24.lsd[3..0];
 	horas_dezenas[3..0] = mod24.msd[3..0];
