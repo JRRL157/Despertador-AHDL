@@ -45,7 +45,7 @@ VARIABLE
 	select_dig : selecionador_digito;
 	
 	%Seleciona se vai ajustar o Relógio ou o Alarme%
-	modo_ajuste : JKFF;
+	modo_ajuste_alarme : JKFF;
 		
 	%Chave do display a ser exibido%
 	chaveador : contador_mod_4;
@@ -65,16 +65,33 @@ VARIABLE
 	acorda_min_d[3..0]	: DFFE;
 	acorda_min_u[3..0]	: DFFE;
 	
+	%Verifica se a hora atual é igual a hora de acordar%
+	comparador : NODE;
+	
 BEGIN	
-	modo_ajuste.j = VCC;
-	modo_ajuste.k = VCC;
-	modo_ajuste.clk = troca_modo & ajuste;
+	%Controla o modo de alarme ou de relógio %
+	modo_ajuste_alarme.j = VCC;
+	modo_ajuste_alarme.k = VCC;
+	modo_ajuste_alarme.clk = troca_modo & ajuste;	
+	
+	%Controla a variável de trocar o dígito no modo de ajuste%
+	select_dig.trocar = trocar & ajuste;
+		
+	%Apenas para DEBUGGAR%
+	digito_selecionado[] = select_dig.digito[];
 	modo_selecionado = modo_ajuste.q;
 	
-	select_dig.trocar = trocar;
-	digito_selecionado[] = select_dig.digito[];
-		
-	IF !modo_ajuste.q THEN				
+	%Guardando a hora do despertador%		
+	acorda_hora_d[].d = acorda_hora_d[].q;
+	acorda_hora_u[].d = acorda_hora_u[].q;
+	acorda_min_d[].d = acorda_min_d[].q;
+	acorda_min_d[].d = acorda_min_d[].q;
+	
+	comparador = (!ajuste & (acorda_hora_d[] == horas_dezenas[]) & (acorda_hora_u[] == horas_unidades[]) 
+					         & (acorda_min_d[] == min_dezenas[]) & (acorda_min_u[] == min_unidades[])) & !(trocar & trocar_modo);
+	
+	
+	IF !modo_ajuste_alarme.q & !comparador THEN				
 		%Divisão de frequência% 	
 		%Visor %
 		refresh_clock.clock = clk;
@@ -119,16 +136,8 @@ BEGIN
 		horas_unidades[3..0] = mod24.lsd[3..0];
 		horas_dezenas[3..0] = mod24.msd[3..0];
 		
-		tc_horas = mod24.tc;
-		
-		%Guardando a hora do despertador%
-		
-		acorda_hora_d[].d = acorda_hora_d[].q;
-		acorda_hora_u[].d = acorda_hora_u[].q;
-		acorda_min_d[].d = acorda_min_d[].q;
-		acorda_min_d[].d = acorda_min_d[].q;
-		
-	ELSE
+		tc_horas = mod24.tc;		
+	ELSIF modo_ajuste_alarme.q & !comparador THEN
 		IF select_dig.digito[] == B"1000" THEN
 			acorda_hora_d[].clk = up;
 			acorda_hora_d[].ena = VCC;
@@ -175,19 +184,27 @@ BEGIN
 			END IF;
 		END IF;
 		
+		sec_unidades[3..0] = mod10_seg.q[3..0];
+		sec_dezenas[3..0] = mod6_seg.q[3..0];
+		
 		horas_dezenas[] = acorda_hora_d[];
 		horas_unidades[] = acorda_hora_u[];
 		min_dezenas[] = acorda_min_d[];
 		min_unidades[] = acorda_min_u[];
-		
+	ELSE		
+		sec_unidades[3..0] = mod10_seg.q[3..0];
+		sec_dezenas[3..0] = mod6_seg.q[3..0];
+		min_unidades[3..0] = mod10_min.q[3..0];
+		min_dezenas[3..0] = mod6_min.q[3..0];
+		horas_unidades[3..0] = mod24.lsd[3..0];
+		horas_dezenas[3..0] = mod24.msd[3..0];
 	END IF;
 	
 	%Selecionando o display a ser exibido %
 	chaveador.enable = VCC;
 	chaveador.clock = refresh_clock.clock_saida;
 	
-	% Multiplexador do Display%
-	
+	% Multiplexador do Display%	
 	mux.ch0[] = horas_dezenas[];
 	mux.ch1[] = horas_unidades[];
 	mux.ch2[] = min_dezenas[];

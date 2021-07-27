@@ -1,5 +1,5 @@
 Flow report for Projeto_2
-Tue Jul 27 08:25:44 2021
+Tue Jul 27 10:50:59 2021
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Jul 27 08:25:44 2021       ;
+; Flow Status                        ; Successful - Tue Jul 27 10:50:59 2021       ;
 ; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                      ; Projeto_2                                   ;
 ; Top-level Entity Name              ; despertador                                 ;
@@ -96,7 +96,11 @@ https://fpgasoftware.intel.com/eula.
 ; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 617 MB              ; 00:00:23                           ;
 ; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 512 MB              ; 00:00:00                           ;
 ; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 513 MB              ; 00:00:01                           ;
-; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:24                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 513 MB              ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 513 MB              ; 00:00:01                           ;
+; EDA Netlist Writer   ; 00:00:00     ; 1.0                     ; 513 MB              ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 513 MB              ; 00:00:01                           ;
+; Total                ; 00:00:15     ; --                      ; --                  ; 00:00:26                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -108,6 +112,10 @@ https://fpgasoftware.intel.com/eula.
 ; Analysis & Synthesis ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
 ; EDA Netlist Writer   ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
 ; EDA Netlist Writer   ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
+; EDA Netlist Writer   ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
+; EDA Netlist Writer   ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
+; EDA Netlist Writer   ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
+; EDA Netlist Writer   ; STRIKEX          ; Windows 8.1 ; 6.3        ; x86_64         ;
 +----------------------+------------------+-------------+------------+----------------+
 
 
@@ -115,6 +123,10 @@ https://fpgasoftware.intel.com/eula.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off Projeto_2 -c Projeto_2
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Projeto_2 -c Projeto_2 --vector_source=D:/GitHub/Despertador_AHDL/Despertador-AHDL/Waveform.vwf --testbench_file=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Waveform.vwf.vt
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/ Projeto_2 -c Projeto_2
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Projeto_2 -c Projeto_2 --vector_source=D:/GitHub/Despertador_AHDL/Despertador-AHDL/Waveform.vwf --testbench_file=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Waveform.vwf.vt
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/ Projeto_2 -c Projeto_2
 quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Projeto_2 -c Projeto_2 --vector_source=D:/GitHub/Despertador_AHDL/Despertador-AHDL/Waveform.vwf --testbench_file=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/Waveform.vwf.vt
 quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory=D:/GitHub/Despertador_AHDL/Despertador-AHDL/simulation/qsim/ Projeto_2 -c Projeto_2
 
