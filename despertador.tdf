@@ -24,6 +24,7 @@ SUBDESIGN despertador
 	Seg7Output[6..0] : OUTPUT;
 	AnodeOutput[3..0] : OUTPUT;
 	digito_selecionado[3..0] : OUTPUT;
+	modo_selecionado : OUTPUT;
 )
 
 VARIABLE
@@ -43,6 +44,9 @@ VARIABLE
 	%Cuida do dígito que está sendo incrementado%
 	select_dig : selecionador_digito;
 	
+	%Seleciona se vai ajustar o Relógio ou o Alarme%
+	modo_ajuste : JKFF;
+		
 	%Chave do display a ser exibido%
 	chaveador : contador_mod_4;
 	
@@ -56,58 +60,127 @@ VARIABLE
 	decoder : 2x4_decoder;
 	
 	%Hora de acordar %	
-	acorda[3..0]	: DFF;
+	acorda_hora_d[3..0]	: DFFE;
+	acorda_hora_u[3..0]	: DFFE;
+	acorda_min_d[3..0]	: DFFE;
+	acorda_min_u[3..0]	: DFFE;
 	
 BEGIN	
+	modo_ajuste.j = VCC;
+	modo_ajuste.k = VCC;
+	modo_ajuste.clk = troca_modo & ajuste;
+	modo_selecionado = modo_ajuste.q;
+	
 	select_dig.trocar = trocar;
-	
 	digito_selecionado[] = select_dig.digito[];
-	
-	%Divisão de frequência% 	
-	%Visor %
-	refresh_clock.clock = clk;
-	refresh_clock.enable = VCC;
-	
-	%Contador %
-	
-	cont_clock.clock = clk;
-	cont_clock.enable = VCC;
-	
-	% Começando a contar os segundos %
-	mod10_seg.clock = cont_clock.clock_saida & !ajuste;
-	mod6_seg.clock = cont_clock.clock_saida & !ajuste;
-	
-	mod10_seg.enable = VCC;
-	mod6_seg.enable = mod10_seg.tc;
-	
-	sec_unidades[3..0] = mod10_seg.q[3..0];
-	sec_dezenas[3..0] = mod6_seg.q[3..0];
-	
-	tc_segundos = mod6_seg.tc;
-	
-	%Começando a contar os minutos %
-	mod10_min.clock = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[0]);
-	mod6_min.clock = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[1]);
-	
-	mod10_min.enable = (tc_segundos & !ajuste) # (ajuste & VCC);
-	mod6_min.enable = (mod10_min.tc & !ajuste) # (ajuste & VCC);
-	
-	min_unidades[3..0] = mod10_min.q[3..0];
-	min_dezenas[3..0] = mod6_min.q[3..0];
-	
-	tc_minutos = mod6_min.tc;
-	
-	%Começando a contar as horas %
-	
-	mod24.clock_low = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[2]);
-	mod24.clock_high = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[3]);
-	mod24.enable = (tc_minutos & !ajuste) # (ajuste & VCC);
-	mod24.ajuste = ajuste;
-	
-	horas_unidades[3..0] = mod24.lsd[3..0];
-	horas_dezenas[3..0] = mod24.msd[3..0];
-	
-	tc_horas = mod24.tc;
+		
+	IF !modo_ajuste.q THEN				
+		%Divisão de frequência% 	
+		%Visor %
+		refresh_clock.clock = clk;
+		refresh_clock.enable = VCC;
+		
+		%Contador %
+		
+		cont_clock.clock = clk;
+		cont_clock.enable = VCC;
+		
+		% Começando a contar os segundos %
+		mod10_seg.clock = cont_clock.clock_saida & !ajuste;
+		mod6_seg.clock = cont_clock.clock_saida & !ajuste;
+		
+		mod10_seg.enable = VCC;
+		mod6_seg.enable = mod10_seg.tc;
+		
+		sec_unidades[3..0] = mod10_seg.q[3..0];
+		sec_dezenas[3..0] = mod6_seg.q[3..0];
+		
+		tc_segundos = mod6_seg.tc;
+		
+		%Começando a contar os minutos %
+		mod10_min.clock = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[0]);
+		mod6_min.clock = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[1]);
+		
+		mod10_min.enable = (tc_segundos & !ajuste) # (ajuste & VCC);
+		mod6_min.enable = (mod10_min.tc & !ajuste) # (ajuste & VCC);
+		
+		min_unidades[3..0] = mod10_min.q[3..0];
+		min_dezenas[3..0] = mod6_min.q[3..0];
+		
+		tc_minutos = mod6_min.tc;
+		
+		%Começando a contar as horas %
+		
+		mod24.clock_low = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[2]);
+		mod24.clock_high = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[3]);
+		mod24.enable = (tc_minutos & !ajuste) # (ajuste & VCC);
+		mod24.ajuste = ajuste;
+		
+		horas_unidades[3..0] = mod24.lsd[3..0];
+		horas_dezenas[3..0] = mod24.msd[3..0];
+		
+		tc_horas = mod24.tc;
+		
+		%Guardando a hora do despertador%
+		
+		acorda_hora_d[].d = acorda_hora_d[].q;
+		acorda_hora_u[].d = acorda_hora_u[].q;
+		acorda_min_d[].d = acorda_min_d[].q;
+		acorda_min_d[].d = acorda_min_d[].q;
+		
+	ELSE
+		IF select_dig.digito[] == B"1000" THEN
+			acorda_hora_d[].clk = up;
+			acorda_hora_d[].ena = VCC;
+			
+			IF acorda_hora_d[].q < 2 THEN
+				acorda_hora_d[].d = acorda_hora_d[].q + 1;
+			ELSE
+				acorda_hora_d[].d = 0;
+			END IF;						
+		ELSIF select_dig.digito[] == B"0100" THEN
+			acorda_hora_u[].clk = up;
+			acorda_hora_u[].ena = VCC;
+			
+			IF acorda_hora_d[].q < 2 THEN			
+				IF acorda_hora_u[].q < 9 THEN
+					acorda_hora_u[].d = acorda_hora_u[].q + 1;
+				ELSE
+					acorda_hora_u[].d = 0;
+				END IF;
+			ELSE
+				IF acorda_hora_u[].q < 3 THEN
+					acorda_hora_u[].d = acorda_hora_u[].q + 1;
+				ELSE
+					acorda_hora_u[].d = 0;
+				END IF;
+			END IF;			
+		ELSIF select_dig.digito[] == B"0010" THEN
+			acorda_min_d[].clk = up;
+			acorda_min_d[].ena = VCC;
+			
+			IF acorda_min_d[].q < 5 THEN
+				acorda_min_d[].d = acorda_min_d[].q + 1;
+			ELSE
+				acorda_min_d[].d = 0;
+			END IF;	
+		ELSIF select_dig.digito[] == B"0001" THEN
+			acorda_min_u[].clk = up;
+			acorda_min_u[].ena = VCC;
+			
+			IF acorda_min_u[].q < 9 THEN
+				acorda_min_u[].d = acorda_min_u[].q + 1;
+			ELSE
+				acorda_min_u[].d = 0;
+			END IF;
+		END IF;
+		
+		horas_dezenas[] = acorda_hora_d[];
+		horas_unidades[] = acorda_hora_u[];
+		min_dezenas[] = acorda_min_d[];
+		min_unidades[] = acorda_min_u[];
+		
+	END IF;
 	
 	%Selecionando o display a ser exibido %
 	chaveador.enable = VCC;

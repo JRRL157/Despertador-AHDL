@@ -156,11 +156,19 @@
 					"strict" : false
 				},
 				{
+					"name" : "modo_selecionado",
+					"strict" : false
+				},
+				{
 					"name" : "ajuste",
 					"strict" : false
 				},
 				{
 					"name" : "trocar",
+					"strict" : false
+				},
+				{
+					"name" : "troca_modo",
 					"strict" : false
 				},
 				{
