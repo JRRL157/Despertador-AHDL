@@ -152,6 +152,7 @@
 					"strict" : false
 				},
 				{
+<<<<<<< HEAD
 					"name" : "digito_selecionado[0]",
 					"strict" : false
 				},
@@ -172,10 +173,13 @@
 					"strict" : false
 				},
 				{
+=======
+>>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 					"name" : "ajuste",
 					"strict" : false
 				},
 				{
+<<<<<<< HEAD
 					"name" : "trocar",
 					"strict" : false
 				},
@@ -188,6 +192,8 @@
 					"strict" : false
 				},
 				{
+=======
+>>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 					"name" : "clk",
 					"strict" : false
 				}

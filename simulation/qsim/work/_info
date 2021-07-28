@@ -286,6 +286,7 @@ R23
 R11
 R12
 vdespertador
+<<<<<<< HEAD
 Z31 !s110 1627393860
 !i10b 1
 !s100 ^X8S6T;Q2bfRKmJfmFA;k0
@@ -298,11 +299,29 @@ R4
 R5
 !i122 327
 L0 32 5058
+=======
+Z31 !s110 1627331831
+!i10b 1
+!s100 S79<31N5bEeSj>^lW]KY[3
+R1
+IDeYI6KZQ7Pn7SQhmcM2TF3
+R2
+R3
+w1627331830
+R4
+R5
+!i122 257
+L0 32 3054
+>>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 R7
 r1
 !s85 0
 31
+<<<<<<< HEAD
 Z32 !s108 1627393860.000000
+=======
+Z32 !s108 1627331831.000000
+>>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 R9
 R10
 !i113 1
@@ -311,6 +330,7 @@ R12
 vdespertador_vlg_vec_tst
 R31
 !i10b 1
+<<<<<<< HEAD
 !s100 keKY?CSnDDEP9BlYfPRzJ0
 R1
 IT34`egQ?]Ib]VTK57KT[c1
@@ -321,6 +341,18 @@ R19
 R20
 !i122 328
 L0 30 102
+=======
+!s100 TzWhhXBCgUS?3QOGmXm7f1
+R1
+IMdlNEHgl^M3Qo>G6]en1J0
+R2
+R3
+w1627331829
+R19
+R20
+!i122 258
+L0 30 80
+>>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 R7
 r1
 !s85 0
@@ -425,6 +457,7 @@ R18
 R11
 R12
 nfrequencia_contador_1@hz_vlg_vec_tst
+<<<<<<< HEAD
 vhard_block
 !s110 1627346279
 !i10b 1
@@ -494,3 +527,5 @@ R23
 !i113 1
 R11
 R12
+=======
+>>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)

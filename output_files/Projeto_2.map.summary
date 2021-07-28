@@ -1,13 +1,25 @@
+<<<<<<< HEAD
 Analysis & Synthesis Status : Successful - Tue Jul 27 21:15:43 2021
+=======
+Analysis & Synthesis Status : Successful - Mon Jul 26 17:35:26 2021
+>>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 Revision Name : Projeto_2
 Top-level Entity Name : despertador
 Family : Cyclone IV E
+<<<<<<< HEAD
 Total logic elements : 155
     Total combinational functions : 155
     Dedicated logic registers : 51
 Total registers : 51
 Total pins : 48
+=======
+Total logic elements : 94
+    Total combinational functions : 94
+    Dedicated logic registers : 43
+Total registers : 43
+Total pins : 43
+>>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

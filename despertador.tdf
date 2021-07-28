@@ -7,8 +7,7 @@ INCLUDE "display_clock.inc";
 INCLUDE "multiplexador_display.inc";
 INCLUDE "2x4_decoder.inc";
 INCLUDE "BCD_7Segment_Decoder.inc";
-INCLUDE "frequencia_contador_1Hz.inc";
-INCLUDE "selecionador_digito.inc";
+INCLUDE "frequencia_contador_1Hz";
 
 SUBDESIGN despertador
 (
@@ -23,8 +22,11 @@ SUBDESIGN despertador
 	
 	Seg7Output[6..0] : OUTPUT;
 	AnodeOutput[3..0] : OUTPUT;
+<<<<<<< HEAD
 	digito_selecionado[3..0] : OUTPUT;
 	modo_selecionado : OUTPUT;
+=======
+>>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 )
 
 VARIABLE
@@ -41,12 +43,15 @@ VARIABLE
 	mod6_seg : contador_mod_6;
 	mod10_seg : contador_mod_10;
 	
+<<<<<<< HEAD
 	%Cuida do dígito que está sendo incrementado%
 	select_dig : selecionador_digito;
 	
 	%Seleciona se vai ajustar o Relógio ou o Alarme%
 	modo_ajuste_alarme : JKFF;
 		
+=======
+>>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 	%Chave do display a ser exibido%
 	chaveador : contador_mod_4;
 	
@@ -65,6 +70,7 @@ VARIABLE
 	acorda_min_d[3..0]	: DFFE;
 	acorda_min_u[3..0]	: DFFE;
 	
+<<<<<<< HEAD
 	%Verifica se a hora atual é igual a hora de acordar%
 	comparador : NODE;
 	
@@ -199,6 +205,52 @@ BEGIN
 		horas_unidades[3..0] = mod24.lsd[3..0];
 		horas_dezenas[3..0] = mod24.msd[3..0];
 	END IF;
+=======
+BEGIN	
+	%Divisão de frequência% 	
+	%Visor %
+	refresh_clock.clock = clk;
+	refresh_clock.enable = VCC;
+	
+	%Contador %
+	
+	cont_clock.clock = clk;
+	cont_clock.enable = VCC;
+	
+	% Começando a contar os segundos %
+	mod10_seg.clock = cont_clock.clock_saida & !ajuste;
+	mod6_seg.clock = cont_clock.clock_saida & !ajuste;
+	
+	mod10_seg.enable = VCC;
+	mod6_seg.enable = mod10_seg.tc;
+	
+	sec_unidades[3..0] = mod10_seg.q[3..0];
+	sec_dezenas[3..0] = mod6_seg.q[3..0];
+	
+	tc_segundos = mod6_seg.tc;
+	
+	%Começando a contar os minutos %
+	mod10_min.clock = cont_clock.clock_saida & !ajuste;
+	mod6_min.clock = cont_clock.clock_saida & !ajuste;
+	
+	mod10_min.enable = tc_segundos;
+	mod6_min.enable = mod10_min.tc;
+	
+	min_unidades[3..0] = mod10_min.q[3..0];
+	min_dezenas[3..0] = mod6_min.q[3..0];
+	
+	tc_minutos = mod6_min.tc;
+	
+	%Começando a contar as horas %
+	
+	mod24.clock = cont_clock.clock_saida & !ajuste;
+	mod24.enable = tc_minutos;
+	
+	horas_unidades[3..0] = mod24.lsd[3..0];
+	horas_dezenas[3..0] = mod24.msd[3..0];
+	
+	tc_horas = mod24.tc;
+>>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 	
 	%Selecionando o display a ser exibido %
 	chaveador.enable = VCC;

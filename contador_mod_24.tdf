@@ -1,6 +1,6 @@
 SUBDESIGN contador_mod_24
 (
-	clock_low,clock_high,enable,ajuste : INPUT;
+	clock,enable : INPUT;
 	lsd[3..0],msd[3..0] : OUTPUT;
 	tc : OUTPUT;
 )
@@ -10,10 +10,11 @@ VARIABLE
 	time : NODE;
 	
 BEGIN
-	low[].clk = clock_low;
-	high[].clk = clock_high;
+	low[].clk = clock;
+	high[].clk = clock;
 
-	IF enable & !ajuste THEN
+	
+	IF enable THEN
 		IF low[].q < 9 & high[].q == 0 THEN
 			low[].d = low[].q + 1;
 			high[].d = high[].q;
@@ -31,22 +32,6 @@ BEGIN
 			high[].d = high[].q;
 		ELSIF high[].q == 2 & low[].q == 3 THEN
 			low[].d = GND;
-			high[].d = GND;
-		END IF;
-	ELSIF enable & ajuste THEN
-		IF low[].q < 9 & high[].q <= 1 THEN
-			low[].d = low[].q + 1;		
-		ELSIF low[].q == 9 & high[].q <= 1 THEN
-			low[].d = GND;
-		ELSIF low[].q < 3 & high[].q == 2 THEN
-			low[].d = low[].q + 1;
-		ELSIF low[].q == 3 & high[].q == 2 THEN
-			low[].d = GND;		
-		END IF;
-		
-		IF high[].q < 2 THEN
-			high[].d = high[].q +1;
-		ELSIF high[].q == 2 THEN
 			high[].d = GND;
 		END IF;
 	ELSE
