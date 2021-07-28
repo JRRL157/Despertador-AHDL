@@ -7,7 +7,8 @@ INCLUDE "display_clock.inc";
 INCLUDE "multiplexador_display.inc";
 INCLUDE "2x4_decoder.inc";
 INCLUDE "BCD_7Segment_Decoder.inc";
-INCLUDE "frequencia_contador_1Hz";
+INCLUDE "frequencia_contador_1Hz.inc";
+INCLUDE "selecionador_digito.inc";
 
 SUBDESIGN despertador
 (
@@ -22,11 +23,7 @@ SUBDESIGN despertador
 	
 	Seg7Output[6..0] : OUTPUT;
 	AnodeOutput[3..0] : OUTPUT;
-<<<<<<< HEAD
 	digito_selecionado[3..0] : OUTPUT;
-	modo_selecionado : OUTPUT;
-=======
->>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 )
 
 VARIABLE
@@ -43,15 +40,17 @@ VARIABLE
 	mod6_seg : contador_mod_6;
 	mod10_seg : contador_mod_10;
 	
-<<<<<<< HEAD
 	%Cuida do dígito que está sendo incrementado%
 	select_dig : selecionador_digito;
 	
-	%Seleciona se vai ajustar o Relógio ou o Alarme%
-	modo_ajuste_alarme : JKFF;
-		
-=======
->>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
+	%Hora de acordar %	
+	acorda_hora : contador_mod_24;
+	acorda_min_d : contador_mod_6;
+	acorda_min_u : contador_mod_10;
+	
+	%Flip-Flop JK que controlará quando entra no modo de ajuste do Alarme %
+	controle_modo_alarme : JKFF;	
+	
 	%Chave do display a ser exibido%
 	chaveador : contador_mod_4;
 	
@@ -64,51 +63,28 @@ VARIABLE
 	%Decoder 2 : 4 %
 	decoder : 2x4_decoder;
 	
-	%Hora de acordar %	
-	acorda_hora_d[3..0]	: DFFE;
-	acorda_hora_u[3..0]	: DFFE;
-	acorda_min_d[3..0]	: DFFE;
-	acorda_min_u[3..0]	: DFFE;
-	
-<<<<<<< HEAD
-	%Verifica se a hora atual é igual a hora de acordar%
-	comparador : NODE;
 	
 BEGIN	
-	%Controla o modo de alarme ou de relógio %
-	modo_ajuste_alarme.j = VCC;
-	modo_ajuste_alarme.k = VCC;
-	modo_ajuste_alarme.clk = troca_modo & ajuste;
-	
-	%Controla a variável de trocar o dígito no modo de ajuste%
-	select_dig.trocar = trocar & ajuste;
-		
-	%Apenas para DEBUGGAR%
+	select_dig.trocar = trocar;
 	digito_selecionado[] = select_dig.digito[];
-	modo_selecionado = modo_ajuste_alarme.q;
+
+	controle_modo_alarme.j = VCC;
+	controle_modo_alarme.k = VCC;
+	controle_modo_alarme.clk = ajuste & troca_modo;
+
 	
-	%Guardando a hora do despertador%		
-	acorda_hora_d[].d = acorda_hora_d[].q;
-	acorda_hora_u[].d = acorda_hora_u[].q;
-	acorda_min_d[].d = acorda_min_d[].q;
-	acorda_min_d[].d = acorda_min_d[].q;
+	%Divisão de frequência% 	
+	%Visor %
+	refresh_clock.clock = clk;
+	refresh_clock.enable = VCC;
 	
-	comparador = (!ajuste & (acorda_hora_d[] == horas_dezenas[]) & (acorda_hora_u[] == horas_unidades[]) 
-					         & (acorda_min_d[] == min_dezenas[]) & (acorda_min_u[] == min_unidades[])) & !(trocar & troca_modo);
+	%Contador %
 	
+	cont_clock.clock = clk;
+	cont_clock.enable = VCC;
 	
-	IF !modo_ajuste_alarme.q & !comparador THEN				
-		%Divisão de frequência% 	
-		%Visor %
-		refresh_clock.clock = clk;
-		refresh_clock.enable = VCC;
-		
-		%Contador %
-		
-		cont_clock.clock = clk;
-		cont_clock.enable = VCC;
-		
-		% Começando a contar os segundos %
+	if !controle_modo_alarme.q THEN
+		%Começando a contar os segundos%
 		mod10_seg.clock = cont_clock.clock_saida & !ajuste;
 		mod6_seg.clock = cont_clock.clock_saida & !ajuste;
 		
@@ -120,7 +96,7 @@ BEGIN
 		
 		tc_segundos = mod6_seg.tc;
 		
-		%Começando a contar os minutos %
+		%Começando a contar os minutos%
 		mod10_min.clock = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[0]);
 		mod6_min.clock = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[1]);
 		
@@ -132,131 +108,40 @@ BEGIN
 		
 		tc_minutos = mod6_min.tc;
 		
-		%Começando a contar as horas %
-		
+		%Começando a contar as horas %	
+		mod24.ajuste = ajuste;
 		mod24.clock_low = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[2]);
 		mod24.clock_high = (cont_clock.clock_saida & !ajuste) # (up & select_dig.digito[3]);
-		mod24.enable = (tc_minutos & !ajuste) # (ajuste & VCC);
-		mod24.ajuste = ajuste;
+		mod24.enable = (tc_minutos & !ajuste) # (ajuste & VCC);	
 		
 		horas_unidades[3..0] = mod24.lsd[3..0];
 		horas_dezenas[3..0] = mod24.msd[3..0];
 		
-		tc_horas = mod24.tc;		
-	ELSIF modo_ajuste_alarme.q & !comparador THEN
-		IF select_dig.digito[] == B"1000" THEN
-			acorda_hora_d[].clk = up;
-			acorda_hora_d[].ena = VCC;
-			
-			IF acorda_hora_d[].q < 2 THEN
-				acorda_hora_d[].d = acorda_hora_d[].q + 1;
-			ELSE
-				acorda_hora_d[].d = 0;
-			END IF;						
-		ELSIF select_dig.digito[] == B"0100" THEN
-			acorda_hora_u[].clk = up;
-			acorda_hora_u[].ena = VCC;
-			
-			IF acorda_hora_d[].q < 2 THEN			
-				IF acorda_hora_u[].q < 9 THEN
-					acorda_hora_u[].d = acorda_hora_u[].q + 1;
-				ELSE
-					acorda_hora_u[].d = 0;
-				END IF;
-			ELSE
-				IF acorda_hora_u[].q < 3 THEN
-					acorda_hora_u[].d = acorda_hora_u[].q + 1;
-				ELSE
-					acorda_hora_u[].d = 0;
-				END IF;
-			END IF;			
-		ELSIF select_dig.digito[] == B"0010" THEN
-			acorda_min_d[].clk = up;
-			acorda_min_d[].ena = VCC;
-			
-			IF acorda_min_d[].q < 5 THEN
-				acorda_min_d[].d = acorda_min_d[].q + 1;
-			ELSE
-				acorda_min_d[].d = 0;
-			END IF;	
-		ELSIF select_dig.digito[] == B"0001" THEN
-			acorda_min_u[].clk = up;
-			acorda_min_u[].ena = VCC;
-			
-			IF acorda_min_u[].q < 9 THEN
-				acorda_min_u[].d = acorda_min_u[].q + 1;
-			ELSE
-				acorda_min_u[].d = 0;
-			END IF;
-		END IF;
+		tc_horas = mod24.tc;
+	ELSE
+		acorda_min_u.enable = VCC;
+		acorda_min_u.clock = up & select_dig.digito[0];
 		
-		sec_unidades[3..0] = mod10_seg.q[3..0];
-		sec_dezenas[3..0] = mod6_seg.q[3..0];
+		acorda_min_d.enable = VCC;
+		acorda_min_d.clock = up & select_dig.digito[1];
 		
-		horas_dezenas[] = acorda_hora_d[];
-		horas_unidades[] = acorda_hora_u[];
-		min_dezenas[] = acorda_min_d[];
-		min_unidades[] = acorda_min_u[];
-	ELSE		
-		sec_unidades[3..0] = mod10_seg.q[3..0];
-		sec_dezenas[3..0] = mod6_seg.q[3..0];
-		min_unidades[3..0] = mod10_min.q[3..0];
-		min_dezenas[3..0] = mod6_min.q[3..0];
-		horas_unidades[3..0] = mod24.lsd[3..0];
-		horas_dezenas[3..0] = mod24.msd[3..0];
+		acorda_hora.enable = VCC;
+		acorda_hora.ajuste = VCC;		
+		acorda_hora.clock_low = up & select_dig.digito[2];
+		acorda_hora.clock_high = up & select_dig.digito[3];
+		
+		min_unidades[] = acorda_min_u.q[];
+		min_dezenas[] = acorda_min_d.q[];
+		horas_unidades[] = acorda_hora.lsd[];
+		horas_dezenas[] = acorda_hora.msd[];		
 	END IF;
-=======
-BEGIN	
-	%Divisão de frequência% 	
-	%Visor %
-	refresh_clock.clock = clk;
-	refresh_clock.enable = VCC;
-	
-	%Contador %
-	
-	cont_clock.clock = clk;
-	cont_clock.enable = VCC;
-	
-	% Começando a contar os segundos %
-	mod10_seg.clock = cont_clock.clock_saida & !ajuste;
-	mod6_seg.clock = cont_clock.clock_saida & !ajuste;
-	
-	mod10_seg.enable = VCC;
-	mod6_seg.enable = mod10_seg.tc;
-	
-	sec_unidades[3..0] = mod10_seg.q[3..0];
-	sec_dezenas[3..0] = mod6_seg.q[3..0];
-	
-	tc_segundos = mod6_seg.tc;
-	
-	%Começando a contar os minutos %
-	mod10_min.clock = cont_clock.clock_saida & !ajuste;
-	mod6_min.clock = cont_clock.clock_saida & !ajuste;
-	
-	mod10_min.enable = tc_segundos;
-	mod6_min.enable = mod10_min.tc;
-	
-	min_unidades[3..0] = mod10_min.q[3..0];
-	min_dezenas[3..0] = mod6_min.q[3..0];
-	
-	tc_minutos = mod6_min.tc;
-	
-	%Começando a contar as horas %
-	
-	mod24.clock = cont_clock.clock_saida & !ajuste;
-	mod24.enable = tc_minutos;
-	
-	horas_unidades[3..0] = mod24.lsd[3..0];
-	horas_dezenas[3..0] = mod24.msd[3..0];
-	
-	tc_horas = mod24.tc;
->>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 	
 	%Selecionando o display a ser exibido %
 	chaveador.enable = VCC;
 	chaveador.clock = refresh_clock.clock_saida;
 	
-	% Multiplexador do Display%	
+	% Multiplexador do Display%
+	
 	mux.ch0[] = horas_dezenas[];
 	mux.ch1[] = horas_unidades[];
 	mux.ch2[] = min_dezenas[];

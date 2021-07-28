@@ -1,0 +1,24 @@
+SUBDESIGN selecionador_digito
+(
+	trocar : INPUT;
+	digito[3..0] : OUTPUT;
+)
+VARIABLE
+	count[2..0] : DFF;
+BEGIN
+	count[].clk = trocar;
+	
+	IF count[] < 4 THEN	
+		count[].d = count[].q + 1;
+	ELSE
+		count[] = 1;
+	END IF;
+	
+	CASE count[] IS
+		WHEN 1 => digito[] = B"1000";
+		WHEN 2 => digito[] = B"0100";
+		WHEN 3 => digito[] = B"0010";
+		WHEN 4 => digito[] = B"0001";	
+	END CASE;
+	
+END;

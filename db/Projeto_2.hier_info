@@ -1,47 +1,30 @@
 |despertador
-clk => _.IN1
-clk => _.IN1
-ajuste => modo_ajuste_alarme.IN1
-ajuste => _.IN1
+clk => display_clock:refresh_clock.clock
+clk => frequencia_contador_1Hz:cont_clock.clock
+ajuste => controle_modo_alarme.IN0
 ajuste => _.IN0
 ajuste => _.IN0
-ajuste => _.IN0
-ajuste => _.IN0
-ajuste => _.IN0
-ajuste => _.IN0
-<<<<<<< HEAD
-ajuste => _.IN1
-ajuste => _.IN0
-ajuste => _.IN1
 ajuste => _.IN0
 ajuste => _.IN0
 ajuste => _.IN0
 ajuste => _.IN1
+ajuste => _.IN0
+ajuste => _.IN1
+ajuste => _.IN1
+ajuste => _.IN0
+ajuste => _.IN0
+ajuste => _.IN0
 ajuste => _.IN1
 up => _.IN0
 up => _.IN0
 up => _.IN0
 up => _.IN0
-up => acorda_hora_d[3].IN1
-up => acorda_hora_d[2].IN1
-up => acorda_hora_d[1].IN1
-up => acorda_hora_d[0].IN1
-up => acorda_hora_u[3].IN1
-up => acorda_hora_u[2].IN1
-up => acorda_hora_u[1].IN1
-up => acorda_hora_u[0].IN1
-up => acorda_min_d[3].IN1
-up => acorda_min_d[2].IN1
-up => acorda_min_d[1].IN1
-up => acorda_min_d[0].IN1
-up => acorda_min_u[3].IN1
-up => acorda_min_u[2].IN1
-up => acorda_min_u[1].IN1
-up => acorda_min_u[0].IN1
-trocar => _.IN0
-trocar => _.IN0
-troca_modo => modo_ajuste_alarme.IN0
-troca_modo => _.IN1
+up => _.IN0
+up => _.IN0
+up => _.IN0
+up => _.IN0
+trocar => selecionador_digito:select_dig.trocar
+troca_modo => controle_modo_alarme.IN1
 sec_unidades[0] <= sec_unidades[0].DB_MAX_OUTPUT_PORT_TYPE
 sec_unidades[1] <= sec_unidades[1].DB_MAX_OUTPUT_PORT_TYPE
 sec_unidades[2] <= sec_unidades[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -69,38 +52,6 @@ horas_dezenas[3] <= horas_dezenas[3].DB_MAX_OUTPUT_PORT_TYPE
 tc_segundos <= tc_segundos.DB_MAX_OUTPUT_PORT_TYPE
 tc_minutos <= tc_minutos.DB_MAX_OUTPUT_PORT_TYPE
 tc_horas <= tc_horas.DB_MAX_OUTPUT_PORT_TYPE
-=======
-up => ~NO_FANOUT~
-trocar => ~NO_FANOUT~
-troca_modo => ~NO_FANOUT~
-sec_unidades[0] <= contador_mod_10:mod10_seg.q[0]
-sec_unidades[1] <= contador_mod_10:mod10_seg.q[1]
-sec_unidades[2] <= contador_mod_10:mod10_seg.q[2]
-sec_unidades[3] <= contador_mod_10:mod10_seg.q[3]
-sec_dezenas[0] <= contador_mod_6:mod6_seg.q[0]
-sec_dezenas[1] <= contador_mod_6:mod6_seg.q[1]
-sec_dezenas[2] <= contador_mod_6:mod6_seg.q[2]
-sec_dezenas[3] <= contador_mod_6:mod6_seg.q[3]
-min_unidades[0] <= contador_mod_10:mod10_min.q[0]
-min_unidades[1] <= contador_mod_10:mod10_min.q[1]
-min_unidades[2] <= contador_mod_10:mod10_min.q[2]
-min_unidades[3] <= contador_mod_10:mod10_min.q[3]
-min_dezenas[0] <= contador_mod_6:mod6_min.q[0]
-min_dezenas[1] <= contador_mod_6:mod6_min.q[1]
-min_dezenas[2] <= contador_mod_6:mod6_min.q[2]
-min_dezenas[3] <= contador_mod_6:mod6_min.q[3]
-horas_unidades[0] <= contador_mod_24:mod24.lsd[0]
-horas_unidades[1] <= contador_mod_24:mod24.lsd[1]
-horas_unidades[2] <= contador_mod_24:mod24.lsd[2]
-horas_unidades[3] <= contador_mod_24:mod24.lsd[3]
-horas_dezenas[0] <= contador_mod_24:mod24.msd[0]
-horas_dezenas[1] <= contador_mod_24:mod24.msd[1]
-horas_dezenas[2] <= contador_mod_24:mod24.msd[2]
-horas_dezenas[3] <= contador_mod_24:mod24.msd[3]
-tc_segundos <= contador_mod_6:mod6_seg.tc
-tc_minutos <= contador_mod_6:mod6_min.tc
-tc_horas <= contador_mod_24:mod24.tc
->>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 Seg7Output[0] <= BCD_7Segment_Decoder:bcd_7Seg_dec.a
 Seg7Output[1] <= BCD_7Segment_Decoder:bcd_7Seg_dec.b
 Seg7Output[2] <= BCD_7Segment_Decoder:bcd_7Seg_dec.c
@@ -112,14 +63,10 @@ AnodeOutput[0] <= AnodeOutput[0].DB_MAX_OUTPUT_PORT_TYPE
 AnodeOutput[1] <= AnodeOutput[1].DB_MAX_OUTPUT_PORT_TYPE
 AnodeOutput[2] <= AnodeOutput[2].DB_MAX_OUTPUT_PORT_TYPE
 AnodeOutput[3] <= AnodeOutput[3].DB_MAX_OUTPUT_PORT_TYPE
-<<<<<<< HEAD
 digito_selecionado[0] <= selecionador_digito:select_dig.digito[0]
 digito_selecionado[1] <= selecionador_digito:select_dig.digito[1]
 digito_selecionado[2] <= selecionador_digito:select_dig.digito[2]
 digito_selecionado[3] <= selecionador_digito:select_dig.digito[3]
-modo_selecionado <= modo_ajuste_alarme.DB_MAX_OUTPUT_PORT_TYPE
-=======
->>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
 
 
 |despertador|frequencia_contador_1Hz:cont_clock
@@ -216,18 +163,19 @@ tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |despertador|contador_mod_24:mod24
-clock => low[3].CLK
-clock => low[2].CLK
-clock => low[1].CLK
-clock => low[0].CLK
-clock => high[3].CLK
-clock => high[2].CLK
-clock => high[1].CLK
-clock => high[0].CLK
-enable => _.IN0
+clock_low => low[3].CLK
+clock_low => low[2].CLK
+clock_low => low[1].CLK
+clock_low => low[0].CLK
+clock_high => high[3].CLK
+clock_high => high[2].CLK
+clock_high => high[1].CLK
+clock_high => high[0].CLK
 enable => _.IN0
 enable => _.IN0
 enable => time.IN1
+ajuste => _.IN0
+ajuste => _.IN1
 lsd[0] <= low[0].DB_MAX_OUTPUT_PORT_TYPE
 lsd[1] <= low[1].DB_MAX_OUTPUT_PORT_TYPE
 lsd[2] <= low[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -288,6 +236,73 @@ tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |despertador|contador_mod_10:mod10_seg
+clock => count[3].CLK
+clock => count[2].CLK
+clock => count[1].CLK
+clock => count[0].CLK
+enable => _.IN0
+enable => _.IN0
+enable => _.IN0
+enable => tc.IN0
+q[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
+tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|selecionador_digito:select_dig
+trocar => count[2].CLK
+trocar => count[1].CLK
+trocar => count[0].CLK
+digito[0] <= digito[0].DB_MAX_OUTPUT_PORT_TYPE
+digito[1] <= digito[1].DB_MAX_OUTPUT_PORT_TYPE
+digito[2] <= digito[2].DB_MAX_OUTPUT_PORT_TYPE
+digito[3] <= digito[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|contador_mod_24:acorda_hora
+clock_low => low[3].CLK
+clock_low => low[2].CLK
+clock_low => low[1].CLK
+clock_low => low[0].CLK
+clock_high => high[3].CLK
+clock_high => high[2].CLK
+clock_high => high[1].CLK
+clock_high => high[0].CLK
+enable => _.IN0
+enable => _.IN0
+enable => time.IN1
+ajuste => _.IN0
+ajuste => _.IN1
+lsd[0] <= low[0].DB_MAX_OUTPUT_PORT_TYPE
+lsd[1] <= low[1].DB_MAX_OUTPUT_PORT_TYPE
+lsd[2] <= low[2].DB_MAX_OUTPUT_PORT_TYPE
+lsd[3] <= low[3].DB_MAX_OUTPUT_PORT_TYPE
+msd[0] <= high[0].DB_MAX_OUTPUT_PORT_TYPE
+msd[1] <= high[1].DB_MAX_OUTPUT_PORT_TYPE
+msd[2] <= high[2].DB_MAX_OUTPUT_PORT_TYPE
+msd[3] <= high[3].DB_MAX_OUTPUT_PORT_TYPE
+tc <= time.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|contador_mod_6:acorda_min_d
+clock => count[3].CLK
+clock => count[2].CLK
+clock => count[1].CLK
+clock => count[0].CLK
+enable => _.IN0
+enable => _.IN0
+enable => _.IN0
+enable => tc.IN0
+q[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+q[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+q[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+q[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
+tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|contador_mod_10:acorda_min_u
 clock => count[3].CLK
 clock => count[2].CLK
 clock => count[1].CLK

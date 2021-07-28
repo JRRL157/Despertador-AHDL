@@ -286,42 +286,23 @@ R23
 R11
 R12
 vdespertador
-<<<<<<< HEAD
-Z31 !s110 1627393860
+Z31 !s110 1627513375
 !i10b 1
-!s100 ^X8S6T;Q2bfRKmJfmFA;k0
+!s100 61@f8YoP=ZQ`421K;G1kz0
 R1
-IaVo9iQ5Rbej1J`3e^WAC93
+IzGo5WIfeTi7ABnX^Za[HA3
 R2
 R3
-w1627393859
+Z32 w1627513374
 R4
 R5
-!i122 327
-L0 32 5058
-=======
-Z31 !s110 1627331831
-!i10b 1
-!s100 S79<31N5bEeSj>^lW]KY[3
-R1
-IDeYI6KZQ7Pn7SQhmcM2TF3
-R2
-R3
-w1627331830
-R4
-R5
-!i122 257
-L0 32 3054
->>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
+!i122 331
+L0 32 5245
 R7
 r1
 !s85 0
 31
-<<<<<<< HEAD
-Z32 !s108 1627393860.000000
-=======
-Z32 !s108 1627331831.000000
->>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
+Z33 !s108 1627513374.000000
 R9
 R10
 !i113 1
@@ -330,48 +311,35 @@ R12
 vdespertador_vlg_vec_tst
 R31
 !i10b 1
-<<<<<<< HEAD
-!s100 keKY?CSnDDEP9BlYfPRzJ0
+!s100 ]CdzU3]_?U`J2Q[VZb8^91
 R1
-IT34`egQ?]Ib]VTK57KT[c1
+IngDmM:ThH3SV`dn`NILki0
 R2
 R3
-w1627393858
+w1627513373
 R19
 R20
-!i122 328
-L0 30 102
-=======
-!s100 TzWhhXBCgUS?3QOGmXm7f1
-R1
-IMdlNEHgl^M3Qo>G6]en1J0
-R2
-R3
-w1627331829
-R19
-R20
-!i122 258
-L0 30 80
->>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)
+!i122 332
+L0 30 90
 R7
 r1
 !s85 0
 31
-R32
+!s108 1627513375.000000
 R22
 R23
 !i113 1
 R11
 R12
 vdivisor_clock
-Z33 !s110 1627145546
+Z34 !s110 1627145546
 !i10b 1
 !s100 QOkZgITAf5mhaK9LIDXB50
 R1
 IP1Q=5m:cnP;^ed3^_VDKG0
 R2
 R3
-Z34 w1627145545
+Z35 w1627145545
 R4
 R5
 !i122 241
@@ -380,21 +348,21 @@ R7
 r1
 !s85 0
 31
-Z35 !s108 1627145546.000000
+Z36 !s108 1627145546.000000
 R9
 R10
 !i113 1
 R11
 R12
 vdivisor_clock_vlg_vec_tst
-R33
+R34
 !i10b 1
 !s100 @<cGKYPEDh?n[16oA4D[K2
 R1
 INX8P;@D=FnOgRdDenB;z@0
 R2
 R3
-R34
+R35
 R19
 R20
 !i122 242
@@ -403,14 +371,14 @@ R7
 r1
 !s85 0
 31
-R35
+R36
 R22
 R23
 !i113 1
 R11
 R12
 vfrequencia_contador_1Hz
-Z36 !s110 1627324181
+Z37 !s110 1627324181
 !i10b 1
 !s100 Q:Q;OnN;o5F<ggjU;3<NJ0
 R1
@@ -426,7 +394,7 @@ R7
 r1
 !s85 0
 31
-Z37 !s108 1627324181.000000
+Z38 !s108 1627324181.000000
 R9
 R10
 !i113 1
@@ -434,7 +402,7 @@ R11
 R12
 nfrequencia_contador_1@hz
 vfrequencia_contador_1Hz_vlg_vec_tst
-R36
+R37
 !i10b 1
 !s100 iDFkT7@W5mW[`E;D5^[Rn3
 R1
@@ -450,39 +418,38 @@ R7
 r1
 !s85 0
 31
-R37
+R38
 R17
 R18
 !i113 1
 R11
 R12
 nfrequencia_contador_1@hz_vlg_vec_tst
-<<<<<<< HEAD
 vhard_block
-!s110 1627346279
+R31
 !i10b 1
-!s100 9oOH7QC5QQIg@=GP_IBhj0
+!s100 Wa4K5<>JPO:SnMIY?I>@L3
 R1
-In[1mKSdK^[>N43k2nS=YC3
+IdEd`e[N_aQ?T6OZP^2WUU3
 R2
 R3
-w1627346278
+R32
 R4
 R5
-!i122 301
-L0 3691 34
+!i122 331
+L0 5278 34
 R7
 r1
 !s85 0
 31
-!s108 1627346278.000000
+R33
 R9
 R10
 !i113 1
 R11
 R12
 vselecionador_digito
-Z38 !s110 1627345220
+Z39 !s110 1627345220
 !i10b 1
 !s100 0ATnzP8EN8C;fZ6NMUDo@3
 R1
@@ -498,14 +465,14 @@ R7
 r1
 !s85 0
 31
-Z39 !s108 1627345220.000000
+Z40 !s108 1627345220.000000
 R9
 R10
 !i113 1
 R11
 R12
 vselecionador_digito_vlg_vec_tst
-R38
+R39
 !i10b 1
 !s100 YIa=nAd^<]Gig_3zjK]jU1
 R1
@@ -521,11 +488,9 @@ R7
 r1
 !s85 0
 31
-R39
+R40
 R22
 R23
 !i113 1
 R11
 R12
-=======
->>>>>>> parent of 68fd2b7 (Botão de troca o dígito e Botão de incrementar)

@@ -19,48 +19,100 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "07/26/2021 15:29:39"
+// Generated on "07/28/2021 19:28:10"
                                                                                 
-// Verilog Test Bench (with test vectors) for design :                          frequencia_contador_1Hz
+// Verilog Test Bench (with test vectors) for design :                          despertador
 // 
 // Simulation tool : 3rd Party
 // 
 
 `timescale 1 ps/ 1 ps
-module frequencia_contador_1Hz_vlg_vec_tst();
+module despertador_vlg_vec_tst();
 // constants                                           
 // general purpose registers
-reg clock;
-reg teste;
+reg ajuste;
+reg clk;
+reg troca_modo;
+reg trocar;
+reg up;
 // wires                                               
-wire clock_saida;
+wire [3:0] AnodeOutput;
+wire [3:0] digito_selecionado;
+wire [3:0] horas_dezenas;
+wire [3:0] horas_unidades;
+wire [3:0] min_dezenas;
+wire [3:0] min_unidades;
+wire [3:0] sec_dezenas;
+wire [3:0] sec_unidades;
+wire [6:0] Seg7Output;
+wire tc_horas;
+wire tc_minutos;
+wire tc_segundos;
 
 // assign statements (if any)                          
-frequencia_contador_1Hz i1 (
+despertador i1 (
 // port map - connection between master ports and signals/registers   
-	.clock(clock),
-	.clock_saida(clock_saida),
-	.teste(teste)
+	.ajuste(ajuste),
+	.AnodeOutput(AnodeOutput),
+	.clk(clk),
+	.digito_selecionado(digito_selecionado),
+	.horas_dezenas(horas_dezenas),
+	.horas_unidades(horas_unidades),
+	.min_dezenas(min_dezenas),
+	.min_unidades(min_unidades),
+	.sec_dezenas(sec_dezenas),
+	.sec_unidades(sec_unidades),
+	.Seg7Output(Seg7Output),
+	.tc_horas(tc_horas),
+	.tc_minutos(tc_minutos),
+	.tc_segundos(tc_segundos),
+	.troca_modo(troca_modo),
+	.trocar(trocar),
+	.up(up)
 );
 initial 
 begin 
 #1000000 $finish;
 end 
 
-// clock
+// clk
 always
 begin
-	clock = 1'b0;
-	clock = #1000 1'b1;
+	clk = 1'b0;
+	clk = #1000 1'b1;
 	#1000;
 end 
 
-// teste
+// ajuste
+initial
+begin
+	ajuste = 1'b1;
+end 
+
+// up
 always
 begin
-	teste = 1'b0;
-	teste = #20000 1'b1;
-	#20000;
+	up = 1'b0;
+	up = #10000 1'b1;
+	#10000;
+end 
+
+// trocar
+initial
+begin
+	repeat(8)
+	begin
+		trocar = 1'b0;
+		trocar = #96000 1'b1;
+		# 24000;
+	end
+	trocar = 1'b0;
+end 
+
+// troca_modo
+initial
+begin
+	troca_modo = 1'b0;
 end 
 endmodule
 
