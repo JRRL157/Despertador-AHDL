@@ -60,6 +60,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "min_dezenas[3]",
+					"strict" : false
+				},
+				{
 					"name" : "horas_unidades[0]",
 					"strict" : false
 				},
@@ -81,6 +85,14 @@
 				},
 				{
 					"name" : "horas_dezenas[1]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_dezenas[2]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_dezenas[3]",
 					"strict" : false
 				},
 				{

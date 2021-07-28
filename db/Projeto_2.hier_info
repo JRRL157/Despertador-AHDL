@@ -1,7 +1,9 @@
 |despertador
 clk => _.IN1
 clk => _.IN1
-ajuste => modo_ajuste.IN1
+ajuste => modo_ajuste_alarme.IN1
+ajuste => _.IN1
+ajuste => _.IN0
 ajuste => _.IN0
 ajuste => _.IN0
 ajuste => _.IN0
@@ -35,8 +37,10 @@ up => acorda_min_u[3].IN1
 up => acorda_min_u[2].IN1
 up => acorda_min_u[1].IN1
 up => acorda_min_u[0].IN1
-trocar => selecionador_digito:select_dig.trocar
-troca_modo => modo_ajuste.IN0
+trocar => _.IN0
+trocar => _.IN0
+troca_modo => modo_ajuste_alarme.IN0
+troca_modo => _.IN1
 sec_unidades[0] <= sec_unidades[0].DB_MAX_OUTPUT_PORT_TYPE
 sec_unidades[1] <= sec_unidades[1].DB_MAX_OUTPUT_PORT_TYPE
 sec_unidades[2] <= sec_unidades[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -79,7 +83,7 @@ digito_selecionado[0] <= selecionador_digito:select_dig.digito[0]
 digito_selecionado[1] <= selecionador_digito:select_dig.digito[1]
 digito_selecionado[2] <= selecionador_digito:select_dig.digito[2]
 digito_selecionado[3] <= selecionador_digito:select_dig.digito[3]
-modo_selecionado <= modo_ajuste.DB_MAX_OUTPUT_PORT_TYPE
+modo_selecionado <= modo_ajuste_alarme.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |despertador|frequencia_contador_1Hz:cont_clock

@@ -72,14 +72,14 @@ BEGIN
 	%Controla o modo de alarme ou de relógio %
 	modo_ajuste_alarme.j = VCC;
 	modo_ajuste_alarme.k = VCC;
-	modo_ajuste_alarme.clk = troca_modo & ajuste;	
+	modo_ajuste_alarme.clk = troca_modo & ajuste;
 	
 	%Controla a variável de trocar o dígito no modo de ajuste%
 	select_dig.trocar = trocar & ajuste;
 		
 	%Apenas para DEBUGGAR%
 	digito_selecionado[] = select_dig.digito[];
-	modo_selecionado = modo_ajuste.q;
+	modo_selecionado = modo_ajuste_alarme.q;
 	
 	%Guardando a hora do despertador%		
 	acorda_hora_d[].d = acorda_hora_d[].q;
@@ -88,7 +88,7 @@ BEGIN
 	acorda_min_d[].d = acorda_min_d[].q;
 	
 	comparador = (!ajuste & (acorda_hora_d[] == horas_dezenas[]) & (acorda_hora_u[] == horas_unidades[]) 
-					         & (acorda_min_d[] == min_dezenas[]) & (acorda_min_u[] == min_unidades[])) & !(trocar & trocar_modo);
+					         & (acorda_min_d[] == min_dezenas[]) & (acorda_min_u[] == min_unidades[])) & !(trocar & troca_modo);
 	
 	
 	IF !modo_ajuste_alarme.q & !comparador THEN				
