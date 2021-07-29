@@ -44,8 +44,12 @@ BEGIN
 			low[].d = GND;		
 		END IF;
 		
-		IF high[].q < 2 THEN
+		IF high[].q < 1 THEN
 			high[].d = high[].q +1;
+		ELSIF high[].q == 1 & low[].q <= 3 THEN
+			high[].d = 2;
+		ELSIF high[].q == 1 & low[].q > 3 THEN
+			high[].d = 0;
 		ELSIF high[].q == 2 THEN
 			high[].d = GND;
 		END IF;

@@ -1,14 +1,14 @@
-Fitter Status : Successful - Wed Jul 28 19:58:25 2021
+Fitter Status : Successful - Wed Jul 28 22:26:24 2021
 Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 Revision Name : Projeto_2
 Top-level Entity Name : despertador
 Family : Cyclone IV E
 Device : EP4CE6E22C8
 Timing Models : Final
-Total logic elements : 173 / 6,272 ( 3 % )
-    Total combinational functions : 165 / 6,272 ( 3 % )
-    Dedicated logic registers : 60 / 6,272 ( < 1 % )
-Total registers : 60
+Total logic elements : 123 / 6,272 ( 2 % )
+    Total combinational functions : 115 / 6,272 ( 2 % )
+    Dedicated logic registers : 46 / 6,272 ( < 1 % )
+Total registers : 46
 Total pins : 47 / 92 ( 51 % )
 Total virtual pins : 0
 Total memory bits : 0 / 276,480 ( 0 % )

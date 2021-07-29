@@ -71,7 +71,7 @@ Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage 
 -------------------------------------------------------------------------------------------------------------
 RESERVED_INPUT_WITH_WEAK_PULLUP : 1         :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 2         :        :                   :         : 1         :                
-sec_dezenas[3]               : 3         : output : 2.5 V             :         : 1         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 3         :        :                   :         : 1         :                
 GND                          : 4         : gnd    :                   :         :           :                
 VCCINT                       : 5         : power  :                   : 1.2V    :           :                
 ~ALTERA_ASDO_DATA1~ / RESERVED_INPUT_WITH_WEAK_PULLUP : 6         : input  : 2.5 V             :         : 1         : N              
@@ -79,7 +79,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : 7         :        :                   :      
 ~ALTERA_FLASH_nCE_nCSO~ / RESERVED_INPUT_WITH_WEAK_PULLUP : 8         : input  : 2.5 V             :         : 1         : N              
 nSTATUS                      : 9         :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 10        :        :                   :         : 1         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 11        :        :                   :         : 1         :                
+sec_dezenas[3]               : 11        : output : 2.5 V             :         : 1         : N              
 ~ALTERA_DCLK~                : 12        : output : 2.5 V             :         : 1         : N              
 ~ALTERA_DATA0~ / RESERVED_INPUT_WITH_WEAK_PULLUP : 13        : input  : 2.5 V             :         : 1         : N              
 nCONFIG                      : 14        :        :                   :         : 1         :                
@@ -111,51 +111,51 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : 39        :        :                   :      
 VCCIO3                       : 40        : power  :                   : 2.5V    : 3         :                
 GND                          : 41        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 42        :        :                   :         : 3         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 43        :        :                   :         : 3         :                
+horas_dezenas[0]             : 43        : output : 2.5 V             :         : 3         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : 44        :        :                   :         : 3         :                
 VCCINT                       : 45        : power  :                   : 1.2V    :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 46        :        :                   :         : 3         :                
+sec_unidades[2]              : 46        : output : 2.5 V             :         : 3         : N              
 VCCIO3                       : 47        : power  :                   : 2.5V    : 3         :                
 GND                          : 48        : gnd    :                   :         :           :                
-horas_dezenas[3]             : 49        : output : 2.5 V             :         : 3         : N              
-horas_dezenas[2]             : 50        : output : 2.5 V             :         : 3         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : 51        :        :                   :         : 3         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 52        :        :                   :         : 3         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 53        :        :                   :         : 3         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 54        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 55        :        :                   :         : 4         :                
+min_unidades[3]              : 49        : output : 2.5 V             :         : 3         : N              
+min_unidades[1]              : 50        : output : 2.5 V             :         : 3         : N              
+sec_unidades[0]              : 51        : output : 2.5 V             :         : 3         : N              
+horas_dezenas[1]             : 52        : output : 2.5 V             :         : 3         : N              
+horas_unidades[0]            : 53        : output : 2.5 V             :         : 3         : N              
+horas_unidades[1]            : 54        : output : 2.5 V             :         : 4         : N              
+min_unidades[0]              : 55        : output : 2.5 V             :         : 4         : N              
 VCCIO4                       : 56        : power  :                   : 2.5V    : 4         :                
 GND                          : 57        : gnd    :                   :         :           :                
-min_unidades[2]              : 58        : output : 2.5 V             :         : 4         : N              
-digito_selecionado[1]        : 59        : output : 2.5 V             :         : 4         : N              
-horas_unidades[2]            : 60        : output : 2.5 V             :         : 4         : N              
+min_dezenas[0]               : 58        : output : 2.5 V             :         : 4         : N              
+tc_minutos                   : 59        : output : 2.5 V             :         : 4         : N              
+min_dezenas[1]               : 60        : output : 2.5 V             :         : 4         : N              
 VCCINT                       : 61        : power  :                   : 1.2V    :           :                
 VCCIO4                       : 62        : power  :                   : 2.5V    : 4         :                
 GND                          : 63        : gnd    :                   :         :           :                
 min_dezenas[2]               : 64        : output : 2.5 V             :         : 4         : N              
-min_unidades[0]              : 65        : output : 2.5 V             :         : 4         : N              
-min_unidades[3]              : 66        : output : 2.5 V             :         : 4         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : 67        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 68        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 69        :        :                   :         : 4         :                
-min_dezenas[3]               : 70        : output : 2.5 V             :         : 4         : N              
+min_unidades[2]              : 65        : output : 2.5 V             :         : 4         : N              
+horas_unidades[2]            : 66        : output : 2.5 V             :         : 4         : N              
+sec_dezenas[2]               : 67        : output : 2.5 V             :         : 4         : N              
+sec_unidades[1]              : 68        : output : 2.5 V             :         : 4         : N              
+tc_segundos                  : 69        : output : 2.5 V             :         : 4         : N              
+sec_dezenas[0]               : 70        : output : 2.5 V             :         : 4         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : 71        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 72        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 73        :        :                   :         : 5         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 74        :        :                   :         : 5         :                
-digito_selecionado[2]        : 75        : output : 2.5 V             :         : 5         : N              
-digito_selecionado[3]        : 76        : output : 2.5 V             :         : 5         : N              
-sec_dezenas[0]               : 77        : output : 2.5 V             :         : 5         : N              
+sec_dezenas[1]               : 72        : output : 2.5 V             :         : 4         : N              
+tc_horas                     : 73        : output : 2.5 V             :         : 5         : N              
+horas_unidades[3]            : 74        : output : 2.5 V             :         : 5         : N              
+sec_unidades[3]              : 75        : output : 2.5 V             :         : 5         : N              
+horas_dezenas[2]             : 76        : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 77        :        :                   :         : 5         :                
 VCCINT                       : 78        : power  :                   : 1.2V    :           :                
 GND                          : 79        : gnd    :                   :         :           :                
-min_dezenas[0]               : 80        : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 80        :        :                   :         : 5         :                
 VCCIO5                       : 81        : power  :                   : 2.5V    : 5         :                
 GND                          : 82        : gnd    :                   :         :           :                
-horas_dezenas[0]             : 83        : output : 2.5 V             :         : 5         : N              
-horas_unidades[0]            : 84        : output : 2.5 V             :         : 5         : N              
-horas_unidades[1]            : 85        : output : 2.5 V             :         : 5         : N              
-min_dezenas[1]               : 86        : output : 2.5 V             :         : 5         : N              
-sec_unidades[3]              : 87        : output : 2.5 V             :         : 5         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 83        :        :                   :         : 5         :                
+digito_selecionado[3]        : 84        : output : 2.5 V             :         : 5         : N              
+digito_selecionado[2]        : 85        : output : 2.5 V             :         : 5         : N              
+digito_selecionado[1]        : 86        : output : 2.5 V             :         : 5         : N              
+digito_selecionado[0]        : 87        : output : 2.5 V             :         : 5         : N              
 ajuste                       : 88        : input  : 2.5 V             :         : 5         : Y              
 up                           : 89        : input  : 2.5 V             :         : 5         : Y              
 trocar                       : 90        : input  : 2.5 V             :         : 6         : Y              
@@ -166,29 +166,29 @@ MSEL0                        : 94        :        :                   :         
 GND                          : 95        : gnd    :                   :         :           :                
 MSEL1                        : 96        :        :                   :         : 6         :                
 MSEL2                        : 97        :        :                   :         : 6         :                
-tc_segundos                  : 98        : output : 2.5 V             :         : 6         : N              
-sec_dezenas[1]               : 99        : output : 2.5 V             :         : 6         : N              
-sec_dezenas[2]               : 100       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 98        :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 99        :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 100       :        :                   :         : 6         :                
 ~ALTERA_nCEO~ / RESERVED_OUTPUT_OPEN_DRAIN : 101       : output : 2.5 V             :         : 6         : N              
 VCCINT                       : 102       : power  :                   : 1.2V    :           :                
-tc_horas                     : 103       : output : 2.5 V             :         : 6         : N              
-sec_unidades[0]              : 104       : output : 2.5 V             :         : 6         : N              
-sec_unidades[2]              : 105       : output : 2.5 V             :         : 6         : N              
-sec_unidades[1]              : 106       : output : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 103       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 104       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 105       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 106       :        :                   :         : 6         :                
 VCCA2                        : 107       : power  :                   : 2.5V    :           :                
 GNDA2                        : 108       : gnd    :                   :         :           :                
 VCCD_PLL2                    : 109       : power  :                   : 1.2V    :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 110       :        :                   :         : 7         :                
-digito_selecionado[0]        : 111       : output : 2.5 V             :         : 7         : N              
-tc_minutos                   : 112       : output : 2.5 V             :         : 7         : N              
-min_unidades[1]              : 113       : output : 2.5 V             :         : 7         : N              
+min_dezenas[3]               : 111       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 112       :        :                   :         : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 113       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 114       :        :                   :         : 7         :                
-horas_dezenas[1]             : 115       : output : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 115       :        :                   :         : 7         :                
 VCCINT                       : 116       : power  :                   : 1.2V    :           :                
 VCCIO7                       : 117       : power  :                   : 2.5V    : 7         :                
 GND                          : 118       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 119       :        :                   :         : 7         :                
-horas_unidades[3]            : 120       : output : 2.5 V             :         : 7         : N              
+horas_dezenas[3]             : 120       : output : 2.5 V             :         : 7         : N              
 Seg7Output[1]                : 121       : output : 2.5 V             :         : 7         : Y              
 VCCIO7                       : 122       : power  :                   : 2.5V    : 7         :                
 GND                          : 123       : gnd    :                   :         :           :                
