@@ -119,56 +119,59 @@ BEGIN
 		
 		tc_horas = mod24.tc;
 	ELSIF ajuste THEN
-		%Começando a contar os segundos%
-		mod10_seg.clock = GND;
-		mod6_seg.clock = GND;
+		IF !controle_modo_alarme THEN
 		
-		mod10_seg.enable = VCC;
-		mod6_seg.enable = mod10_seg.tc;
-		
-		sec_unidades[3..0] = mod10_seg.q[3..0];
-		sec_dezenas[3..0] = mod6_seg.q[3..0];
-		
-		tc_segundos = mod6_seg.tc;
-		
-		%Começando a contar os minutos%
-		mod10_min.clock = up & select_dig.digito[0];
-		mod6_min.clock = up & select_dig.digito[1];
-		
-		mod10_min.enable = VCC;
-		mod6_min.enable = VCC;
-		
-		min_unidades[3..0] = mod10_min.q[3..0];
-		min_dezenas[3..0] = mod6_min.q[3..0];
-		
-		tc_minutos = mod6_min.tc;
-		
-		%Começando a contar as horas%	
-		mod24.ajuste = ajuste;
-		mod24.clock_low = up & select_dig.digito[2];
-		mod24.clock_high = up & select_dig.digito[3];
-		mod24.enable = VCC;
-		
-		horas_unidades[3..0] = mod24.lsd[3..0];
-		horas_dezenas[3..0] = mod24.msd[3..0];
-		
-		tc_horas = mod24.tc;		
-	ELSIF controle_modo_alarme & ajuste THEN
-		acorda_min_u.enable = VCC;
-		acorda_min_u.clock = up & select_dig.digito[0];
-		
-		acorda_min_d.enable = VCC;
-		acorda_min_d.clock = up & select_dig.digito[1];
-		
-		acorda_hora.enable = VCC;
-		acorda_hora.ajuste = VCC;		
-		acorda_hora.clock_low = up & select_dig.digito[2];
-		acorda_hora.clock_high = up & select_dig.digito[3];
-		
-		min_unidades[] = acorda_min_u.q[];
-		min_dezenas[] = acorda_min_d.q[];
-		horas_unidades[] = acorda_hora.lsd[];
-		horas_dezenas[] = acorda_hora.msd[];		
+			%Começando a contar os segundos%
+			mod10_seg.clock = GND;
+			mod6_seg.clock = GND;
+			
+			mod10_seg.enable = VCC;
+			mod6_seg.enable = mod10_seg.tc;
+			
+			sec_unidades[3..0] = mod10_seg.q[3..0];
+			sec_dezenas[3..0] = mod6_seg.q[3..0];
+			
+			tc_segundos = mod6_seg.tc;
+			
+			%Começando a contar os minutos%
+			mod10_min.clock = up & select_dig.digito[0];
+			mod6_min.clock = up & select_dig.digito[1];
+			
+			mod10_min.enable = VCC;
+			mod6_min.enable = VCC;
+			
+			min_unidades[3..0] = mod10_min.q[3..0];
+			min_dezenas[3..0] = mod6_min.q[3..0];
+			
+			tc_minutos = mod6_min.tc;
+			
+			%Começando a contar as horas%	
+			mod24.ajuste = ajuste;
+			mod24.clock_low = up & select_dig.digito[2];
+			mod24.clock_high = up & select_dig.digito[3];
+			mod24.enable = VCC;
+			
+			horas_unidades[3..0] = mod24.lsd[3..0];
+			horas_dezenas[3..0] = mod24.msd[3..0];
+			
+			tc_horas = mod24.tc;		
+		ELSE
+			acorda_min_u.enable = VCC;
+			acorda_min_u.clock = up & select_dig.digito[0];
+			
+			acorda_min_d.enable = VCC;
+			acorda_min_d.clock = up & select_dig.digito[1];
+			
+			acorda_hora.enable = VCC;
+			acorda_hora.ajuste = VCC;		
+			acorda_hora.clock_low = up & select_dig.digito[2];
+			acorda_hora.clock_high = up & select_dig.digito[3];
+			
+			min_unidades[] = acorda_min_u.q[];
+			min_dezenas[] = acorda_min_d.q[];
+			horas_unidades[] = acorda_hora.lsd[];
+			horas_dezenas[] = acorda_hora.msd[];		
+		END IF;
 	END IF;
 	
 	%Selecionando o display a ser exibido %
