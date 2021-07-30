@@ -64,7 +64,10 @@ VARIABLE
 	decoder : 2x4_decoder;
 	
 	
-BEGIN	
+	%Variável booleana para comparar a hora do relógio com a hora do alarme %
+	comparador : NODE;
+	
+BEGIN		
 	select_dig.trocar = trocar;
 	digito_selecionado[] = select_dig.digito[];
 
@@ -72,7 +75,12 @@ BEGIN
 	controle_modo_alarme.k = VCC;
 	controle_modo_alarme.clk = ajuste & troca_modo;
 
+	%Variável Boleana que guarda o valor da comparação entre a hora atual e a hora do desperatador.
+	Além disso, também há dois botões que precisam ser pressionados para que a variável seja falsa %
 	
+	comparador = (acorda_hora.msd[] == mod24.msd[] & acorda_hora.lsd[] == mod24.lsd[] & acorda_min_d.q[] == mod6_min.q[] & acorda_min_u.q[] == mod10_min.q[])
+					& !(trocar & troca_modo);
+		
 	%Divisão de frequência% 	
 	%Visor %
 	refresh_clock.clock = clk;
@@ -83,7 +91,7 @@ BEGIN
 	cont_clock.clock = clk;
 	cont_clock.enable = VCC;
 	
-	IF !ajuste THEN
+	IF !ajuste & !comparador THEN
 		%Começando a contar os segundos%
 		mod10_seg.clock = cont_clock.clock_saida;
 		mod6_seg.clock = cont_clock.clock_saida;
@@ -118,7 +126,7 @@ BEGIN
 		horas_dezenas[3..0] = mod24.msd[3..0];
 		
 		tc_horas = mod24.tc;
-	ELSIF ajuste THEN
+	ELSIF ajuste & !comparador THEN
 		IF !controle_modo_alarme THEN
 		
 			%Começando a contar os segundos%
@@ -172,41 +180,85 @@ BEGIN
 			horas_unidades[] = acorda_hora.lsd[];
 			horas_dezenas[] = acorda_hora.msd[];		
 		END IF;
+	ELSIF comparador THEN
+		horas_unidades[3..0] = mod24.lsd[3..0];
+		horas_dezenas[3..0] = mod24.msd[3..0];
+		min_unidades[3..0] = mod10_min.q[3..0];
+		min_dezenas[3..0] = mod6_min.q[3..0];
+		sec_unidades[3..0] = mod10_seg.q[3..0];
+		sec_dezenas[3..0] = mod6_seg.q[3..0];
 	END IF;
 	
-	%Selecionando o display a ser exibido %
-	chaveador.enable = VCC;
-	chaveador.clock = refresh_clock.clock_saida;
 	
-	% Multiplexador do Display%
-	
-	mux.ch0[] = horas_dezenas[];
-	mux.ch1[] = horas_unidades[];
-	mux.ch2[] = min_dezenas[];
-	mux.ch3[] = min_unidades[];
-	mux.s[1..0] = chaveador.q[1..0];
-	
-	%Controle do Anodo %
-	decoder.sel[1..0] = chaveador.q[1..0];
-	
-	% Decodificar BCD para 7 Segmentos%
-	bcd_7Seg_dec.bcd[3..0] = mux.dout[3..0];
-	bcd_7Seg_dec.lt = VCC;
-	bcd_7Seg_dec.bi = VCC;
-	bcd_7Seg_dec.rbi = VCC;
-	
-	%Saídas%
-	Seg7Output[0] = bcd_7Seg_dec.a;
-	Seg7Output[1] = bcd_7Seg_dec.b;
-	Seg7Output[2] = bcd_7Seg_dec.c;
-	Seg7Output[3] = bcd_7Seg_dec.d;
-	Seg7Output[4] = bcd_7Seg_dec.e;
-	Seg7Output[5] = bcd_7Seg_dec.f;
-	Seg7Output[6] = bcd_7Seg_dec.g;
-	
-	AnodeOutput[0] = !decoder.saida[0];
-	AnodeOutput[1] = !decoder.saida[1];
-	AnodeOutput[2] = !decoder.saida[2];
-	AnodeOutput[3] = !decoder.saida[3];
-	
+	IF !comparador THEN	
+		%Selecionando o display a ser exibido %
+		chaveador.enable = VCC;
+		chaveador.clock = refresh_clock.clock_saida;
+		
+		% Multiplexador do Display%
+		
+		mux.ch0[] = horas_dezenas[];
+		mux.ch1[] = horas_unidades[];
+		mux.ch2[] = min_dezenas[];
+		mux.ch3[] = min_unidades[];
+		mux.s[1..0] = chaveador.q[1..0];
+		
+		%Controle do Anodo %
+		decoder.sel[1..0] = chaveador.q[1..0];
+		
+		% Decodificar BCD para 7 Segmentos%
+		bcd_7Seg_dec.bcd[3..0] = mux.dout[3..0];
+		bcd_7Seg_dec.lt = VCC;
+		bcd_7Seg_dec.bi = VCC;
+		bcd_7Seg_dec.rbi = VCC;
+		
+		%Saídas%
+		Seg7Output[0] = bcd_7Seg_dec.a;
+		Seg7Output[1] = bcd_7Seg_dec.b;
+		Seg7Output[2] = bcd_7Seg_dec.c;
+		Seg7Output[3] = bcd_7Seg_dec.d;
+		Seg7Output[4] = bcd_7Seg_dec.e;
+		Seg7Output[5] = bcd_7Seg_dec.f;
+		Seg7Output[6] = bcd_7Seg_dec.g;
+		
+		AnodeOutput[0] = !decoder.saida[0] & (cont_clock.clock_saida & select_dig.digito[0]);
+		AnodeOutput[1] = !decoder.saida[1] & (cont_clock.clock_saida & select_dig.digito[1]);
+		AnodeOutput[2] = !decoder.saida[2] & (cont_clock.clock_saida & select_dig.digito[2]);
+		AnodeOutput[3] = !decoder.saida[3] & (cont_clock.clock_saida & select_dig.digito[3]);
+	ELSE
+		%Selecionando o display a ser exibido %
+		chaveador.enable = VCC;
+		chaveador.clock = refresh_clock.clock_saida;
+		
+		% Multiplexador do Display%
+		
+		mux.ch0[] = horas_dezenas[];
+		mux.ch1[] = horas_unidades[];
+		mux.ch2[] = min_dezenas[];
+		mux.ch3[] = min_unidades[];
+		mux.s[1..0] = chaveador.q[1..0];
+		
+		%Controle do Anodo %
+		decoder.sel[1..0] = chaveador.q[1..0];
+		
+		% Decodificar BCD para 7 Segmentos%
+		bcd_7Seg_dec.bcd[3..0] = mux.dout[3..0];
+		bcd_7Seg_dec.lt = VCC;
+		bcd_7Seg_dec.bi = VCC;
+		bcd_7Seg_dec.rbi = VCC;
+		
+		%Saídas%
+		Seg7Output[0] = bcd_7Seg_dec.a;
+		Seg7Output[1] = bcd_7Seg_dec.b;
+		Seg7Output[2] = bcd_7Seg_dec.c;
+		Seg7Output[3] = bcd_7Seg_dec.d;
+		Seg7Output[4] = bcd_7Seg_dec.e;
+		Seg7Output[5] = bcd_7Seg_dec.f;
+		Seg7Output[6] = bcd_7Seg_dec.g;
+		
+		AnodeOutput[0] = !decoder.saida[0] & cont_clock.clock_saida;
+		AnodeOutput[1] = !decoder.saida[1] & cont_clock.clock_saida;
+		AnodeOutput[2] = !decoder.saida[2] & cont_clock.clock_saida;
+		AnodeOutput[3] = !decoder.saida[3] & cont_clock.clock_saida;
+	END IF;
 END;

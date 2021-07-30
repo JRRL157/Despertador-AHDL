@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Projeto_2
-Wed Jul 28 23:20:32 2021
+Fri Jul 30 17:01:03 2021
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -44,15 +44,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Jul 28 23:20:32 2021       ;
+; Analysis & Synthesis Status        ; Successful - Fri Jul 30 17:01:03 2021       ;
 ; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                      ; Projeto_2                                   ;
 ; Top-level Entity Name              ; despertador                                 ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 174                                         ;
-;     Total combinational functions  ; 174                                         ;
-;     Dedicated logic registers      ; 60                                          ;
-; Total registers                    ; 60                                          ;
+; Total logic elements               ; 208                                         ;
+;     Total combinational functions  ; 208                                         ;
+;     Dedicated logic registers      ; 63                                          ;
+; Total registers                    ; 63                                          ;
 ; Total pins                         ; 47                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -160,7 +160,7 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
+;     Processor 2            ;   0.1%      ;
 ;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
@@ -197,36 +197,36 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+-----------------------+-------------------------------------------------------------------------+---------+
 
 
-+------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                ;
-+---------------------------------------------+--------------+
-; Resource                                    ; Usage        ;
-+---------------------------------------------+--------------+
-; Estimated Total logic elements              ; 174          ;
-;                                             ;              ;
-; Total combinational functions               ; 174          ;
-; Logic element usage by number of LUT inputs ;              ;
-;     -- 4 input functions                    ; 104          ;
-;     -- 3 input functions                    ; 46           ;
-;     -- <=2 input functions                  ; 24           ;
-;                                             ;              ;
-; Logic elements by mode                      ;              ;
-;     -- normal mode                          ; 174          ;
-;     -- arithmetic mode                      ; 0            ;
-;                                             ;              ;
-; Total registers                             ; 60           ;
-;     -- Dedicated logic registers            ; 60           ;
-;     -- I/O registers                        ; 0            ;
-;                                             ;              ;
-; I/O pins                                    ; 47           ;
-;                                             ;              ;
-; Embedded Multiplier 9-bit elements          ; 0            ;
-;                                             ;              ;
-; Maximum fan-out node                        ; ajuste~input ;
-; Maximum fan-out                             ; 47           ;
-; Total fan-out                               ; 816          ;
-; Average fan-out                             ; 2.49         ;
-+---------------------------------------------+--------------+
++------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                      ;
++---------------------------------------------+--------------------+
+; Resource                                    ; Usage              ;
++---------------------------------------------+--------------------+
+; Estimated Total logic elements              ; 208                ;
+;                                             ;                    ;
+; Total combinational functions               ; 208                ;
+; Logic element usage by number of LUT inputs ;                    ;
+;     -- 4 input functions                    ; 114                ;
+;     -- 3 input functions                    ; 60                 ;
+;     -- <=2 input functions                  ; 34                 ;
+;                                             ;                    ;
+; Logic elements by mode                      ;                    ;
+;     -- normal mode                          ; 208                ;
+;     -- arithmetic mode                      ; 0                  ;
+;                                             ;                    ;
+; Total registers                             ; 63                 ;
+;     -- Dedicated logic registers            ; 63                 ;
+;     -- I/O registers                        ; 0                  ;
+;                                             ;                    ;
+; I/O pins                                    ; 47                 ;
+;                                             ;                    ;
+; Embedded Multiplier 9-bit elements          ; 0                  ;
+;                                             ;                    ;
+; Maximum fan-out node                        ; sec_unidades[0]~12 ;
+; Maximum fan-out                             ; 43                 ;
+; Total fan-out                               ; 921                ;
+; Average fan-out                             ; 2.52               ;
++---------------------------------------------+--------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -234,25 +234,26 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------+-------------------------+--------------+
 ; Compilation Hierarchy Node              ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                            ; Entity Name             ; Library Name ;
 +-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------+-------------------------+--------------+
-; |despertador                            ; 174 (50)            ; 60 (1)                    ; 0           ; 0            ; 0       ; 0         ; 47   ; 0            ; |despertador                                                   ; despertador             ; work         ;
+; |despertador                            ; 208 (68)            ; 63 (1)                    ; 0           ; 0            ; 0       ; 0         ; 47   ; 0            ; |despertador                                                   ; despertador             ; work         ;
+;    |2x4_decoder:decoder|                ; 3 (3)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|2x4_decoder:decoder                               ; 2x4_decoder             ; work         ;
 ;    |BCD_7Segment_Decoder:bcd_7Seg_dec|  ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|BCD_7Segment_Decoder:bcd_7Seg_dec                 ; BCD_7Segment_Decoder    ; work         ;
-;    |contador_mod_10:acorda_min_u|       ; 6 (6)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_10:acorda_min_u                      ; contador_mod_10         ; work         ;
+;    |contador_mod_10:acorda_min_u|       ; 7 (7)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_10:acorda_min_u                      ; contador_mod_10         ; work         ;
 ;    |contador_mod_10:mod10_min|          ; 6 (6)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_10:mod10_min                         ; contador_mod_10         ; work         ;
 ;    |contador_mod_10:mod10_seg|          ; 7 (7)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_10:mod10_seg                         ; contador_mod_10         ; work         ;
 ;    |contador_mod_24:acorda_hora|        ; 12 (12)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_24:acorda_hora                       ; contador_mod_24         ; work         ;
-;    |contador_mod_24:mod24|              ; 28 (28)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_24:mod24                             ; contador_mod_24         ; work         ;
+;    |contador_mod_24:mod24|              ; 31 (31)             ; 6 (6)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_24:mod24                             ; contador_mod_24         ; work         ;
 ;    |contador_mod_4:chaveador|           ; 2 (2)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_4:chaveador                          ; contador_mod_4          ; work         ;
-;    |contador_mod_6:acorda_min_d|        ; 3 (3)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_6:acorda_min_d                       ; contador_mod_6          ; work         ;
-;    |contador_mod_6:mod6_min|            ; 3 (3)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_6:mod6_min                           ; contador_mod_6          ; work         ;
-;    |contador_mod_6:mod6_seg|            ; 3 (3)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_6:mod6_seg                           ; contador_mod_6          ; work         ;
+;    |contador_mod_6:acorda_min_d|        ; 7 (7)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_6:acorda_min_d                       ; contador_mod_6          ; work         ;
+;    |contador_mod_6:mod6_min|            ; 6 (6)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_6:mod6_min                           ; contador_mod_6          ; work         ;
+;    |contador_mod_6:mod6_seg|            ; 6 (6)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|contador_mod_6:mod6_seg                           ; contador_mod_6          ; work         ;
 ;    |display_clock:refresh_clock|        ; 22 (1)              ; 17 (1)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock                       ; display_clock           ; work         ;
 ;       |contador_mod_10:mod10|           ; 5 (5)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock|contador_mod_10:mod10 ; contador_mod_10         ; work         ;
 ;       |contador_mod_5:mod5_2|           ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock|contador_mod_5:mod5_2 ; contador_mod_5          ; work         ;
 ;       |contador_mod_5:mod5_3|           ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock|contador_mod_5:mod5_3 ; contador_mod_5          ; work         ;
 ;       |contador_mod_5:mod5_4|           ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock|contador_mod_5:mod5_4 ; contador_mod_5          ; work         ;
 ;       |contador_mod_5:mod5|             ; 4 (4)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|display_clock:refresh_clock|contador_mod_5:mod5   ; contador_mod_5          ; work         ;
-;    |frequencia_contador_1Hz:cont_clock| ; 6 (6)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|frequencia_contador_1Hz:cont_clock                ; frequencia_contador_1Hz ; work         ;
-;    |multiplexador_display:mux|          ; 13 (13)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|multiplexador_display:mux                         ; multiplexador_display   ; work         ;
+;    |frequencia_contador_1Hz:cont_clock| ; 7 (7)               ; 4 (4)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|frequencia_contador_1Hz:cont_clock                ; frequencia_contador_1Hz ; work         ;
+;    |multiplexador_display:mux|          ; 11 (11)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|multiplexador_display:mux                         ; multiplexador_display   ; work         ;
 ;    |selecionador_digito:select_dig|     ; 6 (6)               ; 3 (3)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |despertador|selecionador_digito:select_dig                    ; selecionador_digito     ; work         ;
 +-----------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------------------+-------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -263,14 +264,11 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------+----------------------------------------+
 ; Register name                         ; Reason for Removal                     ;
 +---------------------------------------+----------------------------------------+
-; contador_mod_24:mod24|high[2]         ; Stuck at GND due to stuck port data_in ;
-; contador_mod_24:acorda_hora|high[2]   ; Stuck at GND due to stuck port data_in ;
 ; contador_mod_24:mod24|high[3]         ; Stuck at GND due to stuck port data_in ;
 ; contador_mod_24:acorda_hora|high[3]   ; Stuck at GND due to stuck port data_in ;
-; contador_mod_6:mod6_seg|count[3]      ; Stuck at GND due to stuck port data_in ;
-; contador_mod_6:acorda_min_d|count[3]  ; Stuck at GND due to stuck port data_in ;
-; contador_mod_6:mod6_min|count[3]      ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 7 ;                                        ;
+; contador_mod_24:mod24|high[2]         ; Stuck at GND due to stuck port data_in ;
+; contador_mod_24:acorda_hora|high[2]   ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 4 ;                                        ;
 +---------------------------------------+----------------------------------------+
 
 
@@ -279,12 +277,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 60    ;
+; Total registers                              ; 63    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 12    ;
+; Number of registers using Clock Enable       ; 8     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -295,19 +293,19 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 47                          ;
-; cycloneiii_ff         ; 60                          ;
-;     ENA               ; 12                          ;
-;     plain             ; 48                          ;
-; cycloneiii_lcell_comb ; 178                         ;
-;     normal            ; 178                         ;
+; cycloneiii_ff         ; 63                          ;
+;     ENA               ; 8                           ;
+;     plain             ; 55                          ;
+; cycloneiii_lcell_comb ; 209                         ;
+;     normal            ; 209                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 21                          ;
-;         3 data inputs ; 46                          ;
-;         4 data inputs ; 104                         ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 30                          ;
+;         3 data inputs ; 60                          ;
+;         4 data inputs ; 114                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 3.21                        ;
+; Max LUT depth         ; 9.00                        ;
+; Average LUT depth     ; 4.88                        ;
 +-----------------------+-----------------------------+
 
 
@@ -326,7 +324,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Wed Jul 28 23:20:20 2021
+    Info: Processing started: Fri Jul 30 17:00:52 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Projeto_2 -c Projeto_2
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -382,23 +380,23 @@ Info (12128): Elaborating entity "multiplexador_display" for hierarchy "multiple
 Info (12128): Elaborating entity "BCD_7Segment_Decoder" for hierarchy "BCD_7Segment_Decoder:bcd_7Seg_dec" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 61
 Info (12128): Elaborating entity "2x4_decoder" for hierarchy "2x4_decoder:decoder" File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 64
 Warning (19016): Clock multiplexers are found and protected
-    Warning (19017): Found clock multiplexer _~10
+    Warning (19017): Found clock multiplexer frequencia_contador_1Hz:cont_clock|flag~0 File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/frequencia_contador_1Hz.tdf Line: 20
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "sec_dezenas[3]" is stuck at GND File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 21
-    Warning (13410): Pin "min_dezenas[3]" is stuck at GND File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 21
     Warning (13410): Pin "horas_dezenas[2]" is stuck at GND File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 21
     Warning (13410): Pin "horas_dezenas[3]" is stuck at GND File: D:/GitHub/Despertador_AHDL/Despertador-AHDL/despertador.tdf Line: 21
 Info (286030): Timing-Driven Synthesis is running
+Info (17016): Found the following redundant logic cells in design
+    Info (17048): Logic cell "_~0"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 222 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 256 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
     Info (21059): Implemented 42 output pins
-    Info (21061): Implemented 175 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 618 megabytes
-    Info: Processing ended: Wed Jul 28 23:20:32 2021
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:24
+    Info (21061): Implemented 209 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
+    Info: Peak virtual memory: 617 megabytes
+    Info: Processing ended: Fri Jul 30 17:01:03 2021
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:23
 
 
