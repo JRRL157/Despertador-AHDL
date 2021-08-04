@@ -224,11 +224,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "trocar",
+					"name" : "clk",
 					"strict" : false
 				},
 				{
-					"name" : "troca_modo",
+					"name" : "troca_modo_sd",
 					"strict" : false
 				},
 				{
@@ -236,11 +236,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "clk",
+					"name" : "trocar_sd",
 					"strict" : false
 				},
 				{
-					"name" : "up",
+					"name" : "up_sd",
 					"strict" : false
 				}
 			]

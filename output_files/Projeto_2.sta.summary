@@ -2,89 +2,65 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow 1200mV 85C Model Setup 'ajuste'
-Slack : -11.315
-TNS   : -352.535
-
-Type  : Slow 1200mV 85C Model Setup 'trocar'
-Slack : -9.425
-TNS   : -304.776
-
 Type  : Slow 1200mV 85C Model Setup 'clk'
-Slack : -1.572
-TNS   : -21.331
+Slack : -11.143
+TNS   : -388.475
 
 Type  : Slow 1200mV 85C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_4|count[0]'
-Slack : -1.180
-TNS   : -2.304
-
-Type  : Slow 1200mV 85C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5|count[0]'
-Slack : -1.021
-TNS   : -1.840
-
-Type  : Slow 1200mV 85C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_3|count[0]'
-Slack : -0.975
-TNS   : -1.775
+Slack : -1.205
+TNS   : -2.375
 
 Type  : Slow 1200mV 85C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_2|count[0]'
-Slack : -0.905
-TNS   : -1.629
+Slack : -1.032
+TNS   : -2.442
+
+Type  : Slow 1200mV 85C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5|count[0]'
+Slack : -0.991
+TNS   : -1.753
+
+Type  : Slow 1200mV 85C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_3|count[0]'
+Slack : -0.864
+TNS   : -1.342
 
 Type  : Slow 1200mV 85C Model Setup 'display_clock:refresh_clock|contador_mod_10:mod10|count[0]'
-Slack : -0.212
-TNS   : -0.212
+Slack : -0.614
+TNS   : -0.614
 
 Type  : Slow 1200mV 85C Model Setup 'display_clock:refresh_clock|clk_saida'
-Slack : -0.001
-TNS   : -0.001
-
-Type  : Slow 1200mV 85C Model Hold 'trocar'
-Slack : -1.426
-TNS   : -24.708
+Slack : 0.000
+TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_4|count[0]'
-Slack : -0.071
-TNS   : -0.081
-
-Type  : Slow 1200mV 85C Model Hold 'display_clock:refresh_clock|contador_mod_10:mod10|count[0]'
-Slack : 0.055
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5|count[0]'
-Slack : 0.247
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Hold 'ajuste'
-Slack : 0.248
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_2|count[0]'
-Slack : 0.274
+Slack : 0.084
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_3|count[0]'
-Slack : 0.360
+Slack : 0.103
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5|count[0]'
+Slack : 0.362
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : 0.364
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_2|count[0]'
+Slack : 0.433
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'display_clock:refresh_clock|clk_saida'
 Slack : 0.454
 TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Hold 'clk'
-Slack : 0.466
+Type  : Slow 1200mV 85C Model Hold 'display_clock:refresh_clock|contador_mod_10:mod10|count[0]'
+Slack : 0.487
 TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ajuste'
-Slack : -3.000
-TNS   : -78.916
-
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'trocar'
-Slack : -3.000
-TNS   : -75.406
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -28.279
+TNS   : -395.877
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'display_clock:refresh_clock|contador_mod_5:mod5_4|count[0]'
 Slack : -1.487
@@ -110,89 +86,65 @@ Type  : Slow 1200mV 85C Model Minimum Pulse Width 'display_clock:refresh_clock|c
 Slack : -1.487
 TNS   : -1.487
 
-Type  : Slow 1200mV 0C Model Setup 'ajuste'
-Slack : -10.392
-TNS   : -328.038
-
-Type  : Slow 1200mV 0C Model Setup 'trocar'
-Slack : -8.666
-TNS   : -285.046
-
 Type  : Slow 1200mV 0C Model Setup 'clk'
-Slack : -1.416
-TNS   : -18.712
+Slack : -10.339
+TNS   : -360.975
 
 Type  : Slow 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_4|count[0]'
-Slack : -1.014
-TNS   : -1.997
-
-Type  : Slow 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5|count[0]'
-Slack : -0.902
-TNS   : -1.743
-
-Type  : Slow 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_3|count[0]'
-Slack : -0.857
-TNS   : -1.669
+Slack : -1.037
+TNS   : -2.039
 
 Type  : Slow 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_2|count[0]'
-Slack : -0.778
-TNS   : -1.563
+Slack : -0.916
+TNS   : -2.376
+
+Type  : Slow 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5|count[0]'
+Slack : -0.862
+TNS   : -1.638
+
+Type  : Slow 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_3|count[0]'
+Slack : -0.758
+TNS   : -1.337
 
 Type  : Slow 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_10:mod10|count[0]'
-Slack : -0.145
-TNS   : -0.145
+Slack : -0.525
+TNS   : -0.525
 
 Type  : Slow 1200mV 0C Model Setup 'display_clock:refresh_clock|clk_saida'
-Slack : 0.091
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Hold 'trocar'
-Slack : -1.396
-TNS   : -22.431
-
-Type  : Slow 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_4|count[0]'
-Slack : -0.112
-TNS   : -0.191
-
-Type  : Slow 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_10:mod10|count[0]'
-Slack : 0.023
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5|count[0]'
-Slack : 0.146
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_2|count[0]'
-Slack : 0.192
+Slack : 0.094
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_3|count[0]'
-Slack : 0.259
+Slack : 0.046
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Hold 'ajuste'
-Slack : 0.317
+Type  : Slow 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_4|count[0]'
+Slack : 0.047
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Hold 'display_clock:refresh_clock|clk_saida'
-Slack : 0.401
+Type  : Slow 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5|count[0]'
+Slack : 0.236
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'clk'
-Slack : 0.420
+Slack : 0.253
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ajuste'
-Slack : -3.000
-TNS   : -80.048
+Type  : Slow 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_2|count[0]'
+Slack : 0.264
+TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'trocar'
-Slack : -3.000
-TNS   : -74.781
+Type  : Slow 1200mV 0C Model Hold 'display_clock:refresh_clock|clk_saida'
+Slack : 0.403
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_10:mod10|count[0]'
+Slack : 0.445
+TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -28.279
+TNS   : -372.024
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'display_clock:refresh_clock|contador_mod_5:mod5_4|count[0]'
 Slack : -1.487
@@ -218,71 +170,55 @@ Type  : Slow 1200mV 0C Model Minimum Pulse Width 'display_clock:refresh_clock|co
 Slack : -1.487
 TNS   : -1.487
 
-Type  : Fast 1200mV 0C Model Setup 'ajuste'
-Slack : -4.183
-TNS   : -134.546
-
-Type  : Fast 1200mV 0C Model Setup 'trocar'
-Slack : -3.594
-TNS   : -116.472
-
 Type  : Fast 1200mV 0C Model Setup 'clk'
-Slack : -0.355
-TNS   : -1.661
-
-Type  : Fast 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_3|count[0]'
-Slack : 0.066
-TNS   : 0.000
+Slack : -4.291
+TNS   : -140.606
 
 Type  : Fast 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_2|count[0]'
-Slack : 0.087
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5|count[0]'
-Slack : 0.097
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_4|count[0]'
-Slack : 0.099
+Slack : 0.016
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_10:mod10|count[0]'
-Slack : 0.177
+Slack : 0.031
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5|count[0]'
+Slack : 0.058
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_4|count[0]'
+Slack : 0.097
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'display_clock:refresh_clock|contador_mod_5:mod5_3|count[0]'
+Slack : 0.239
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'display_clock:refresh_clock|clk_saida'
-Slack : 0.565
+Slack : 0.567
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Hold 'trocar'
-Slack : -0.575
-TNS   : -9.379
-
-Type  : Fast 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_10:mod10|count[0]'
-Slack : 0.035
+Type  : Fast 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_3|count[0]'
+Slack : 0.048
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_4|count[0]'
-Slack : 0.052
+Slack : 0.048
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Hold 'ajuste'
-Slack : 0.187
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : 0.141
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'display_clock:refresh_clock|clk_saida'
 Slack : 0.187
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Hold 'clk'
-Slack : 0.192
+Type  : Fast 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_10:mod10|count[0]'
+Slack : 0.196
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_2|count[0]'
-Slack : 0.201
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mod5_3|count[0]'
 Slack : 0.201
 TNS   : 0.000
 
@@ -290,17 +226,9 @@ Type  : Fast 1200mV 0C Model Hold 'display_clock:refresh_clock|contador_mod_5:mo
 Slack : 0.201
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ajuste'
-Slack : -3.000
-TNS   : -55.866
-
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'trocar'
-Slack : -3.000
-TNS   : -47.900
-
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
 Slack : -3.000
-TNS   : -21.240
+TNS   : -154.492
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'display_clock:refresh_clock|contador_mod_5:mod5_4|count[0]'
 Slack : -1.000

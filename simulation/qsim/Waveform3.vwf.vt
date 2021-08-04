@@ -19,48 +19,48 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "07/24/2021 13:30:28"
+// Generated on "08/04/2021 01:40:50"
                                                                                 
-// Verilog Test Bench (with test vectors) for design :                          divisor_clock
+// Verilog Test Bench (with test vectors) for design :                          debounce
 // 
 // Simulation tool : 3rd Party
 // 
 
 `timescale 1 ps/ 1 ps
-module divisor_clock_vlg_vec_tst();
+module debounce_vlg_vec_tst();
 // constants                                           
 // general purpose registers
-reg clock;
-reg enable;
-reg teste;
+reg btn;
+reg clk;
 // wires                                               
-wire clock_saida;
+wire tecla;
 
 // assign statements (if any)                          
-divisor_clock i1 (
+debounce i1 (
 // port map - connection between master ports and signals/registers   
-	.clock(clock),
-	.clock_saida(clock_saida),
-	.enable(enable),
-	.teste(teste)
+	.btn(btn),
+	.clk(clk),
+	.tecla(tecla)
 );
 initial 
 begin 
-#1000000 $finish;
+#1000000 $stop;
 end 
 
-// clock
+// clk
 always
 begin
-	clock = 1'b0;
-	clock = #1000 1'b1;
-	#1000;
+	clk = 1'b0;
+	clk = #500 1'b1;
+	#500;
 end 
 
-// enable
-initial
+// btn
+always
 begin
-	enable = 1'b1;
+	btn = 1'b0;
+	btn = #1000 1'b1;
+	#4000;
 end 
 endmodule
 

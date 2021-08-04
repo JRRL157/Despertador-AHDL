@@ -1,0 +1,21 @@
+SUBDESIGN debounce
+(
+	clk, btn : INPUT;
+	tecla : OUTPUT;
+)
+VARIABLE
+	count[6..0] : DFF;
+
+BEGIN
+	count[].clk = clk;
+	count[].clrn = btn;
+	
+	IF (count[].q <= 126) & btn THEN
+		count[].d = count[].q + 1;
+	IF count[].q == 126 THEN
+		tecla = VCC;
+	ELSE
+		tecla = GND;
+	END IF;
+
+END;

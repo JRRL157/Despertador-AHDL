@@ -331,8 +331,54 @@ R25
 !i113 1
 R10
 R11
+vdebounce
+Z33 !s110 1628052052
+!i10b 1
+!s100 hZU<;eVQ1`kR:=[6n=o7U3
+R1
+IKhhl1GXQYdXakfLBU=RR@2
+R2
+R3
+w1628052051
+R4
+R5
+!i122 513
+L0 32 74
+R6
+r1
+!s85 0
+31
+Z34 !s108 1628052052.000000
+R8
+R9
+!i113 1
+R10
+R11
+vdebounce_vlg_vec_tst
+R33
+!i10b 1
+!s100 _zf2NzRmIaGg9I[_[^J:`2
+R1
+Ia[9M6R9WeEKhn8?PjY54d1
+R2
+R3
+w1628052050
+8Waveform3.vwf.vt
+FWaveform3.vwf.vt
+!i122 514
+R14
+R6
+r1
+!s85 0
+31
+R34
+!s107 Waveform3.vwf.vt|
+!s90 -work|work|Waveform3.vwf.vt|
+!i113 1
+R10
+R11
 vdespertador
-Z33 !s110 1628048382
+Z35 !s110 1628048382
 !i10b 1
 !s100 @_4;2MI>:WC7]XBSVbzk`1
 R1
@@ -355,7 +401,7 @@ R9
 R10
 R11
 vdespertador_vlg_vec_tst
-R33
+R35
 !i10b 1
 !s100 B0GnTo6;nk07oPl:oko7o2
 R1
@@ -378,14 +424,14 @@ R25
 R10
 R11
 vdivisor_clock
-Z34 !s110 1627145546
+Z36 !s110 1627145546
 !i10b 1
 !s100 QOkZgITAf5mhaK9LIDXB50
 R1
 IP1Q=5m:cnP;^ed3^_VDKG0
 R2
 R3
-Z35 w1627145545
+Z37 w1627145545
 R4
 R5
 !i122 241
@@ -394,21 +440,21 @@ R6
 r1
 !s85 0
 31
-Z36 !s108 1627145546.000000
+Z38 !s108 1627145546.000000
 R8
 R9
 !i113 1
 R10
 R11
 vdivisor_clock_vlg_vec_tst
-R34
+R36
 !i10b 1
 !s100 @<cGKYPEDh?n[16oA4D[K2
 R1
 INX8P;@D=FnOgRdDenB;z@0
 R2
 R3
-R35
+R37
 R22
 R23
 !i122 242
@@ -417,21 +463,21 @@ R6
 r1
 !s85 0
 31
-R36
+R38
 R24
 R25
 !i113 1
 R10
 R11
 vfrequencia_contador_1Hz
-Z37 !s110 1628048295
+Z39 !s110 1628048295
 !i10b 1
 !s100 [URSJLA58Bo]XbcngQZ?O1
 R1
 I=9VjUOCbfPb^bGBb7lIEc2
 R2
 R3
-Z38 w1628048294
+Z40 w1628048294
 R4
 R5
 !i122 493
@@ -440,7 +486,7 @@ R6
 r1
 !s85 0
 31
-Z39 !s108 1628048295.000000
+Z41 !s108 1628048295.000000
 R8
 R9
 !i113 1
@@ -448,14 +494,14 @@ R10
 R11
 nfrequencia_contador_1@hz
 vfrequencia_contador_1Hz_vlg_vec_tst
-R37
+R39
 !i10b 1
 !s100 U:gS3;`bX_F[A]3CSFLI]1
 R1
 IOIfjZWJM2E]9<RfB^LeI42
 R2
 R3
-R38
+R40
 8Waveform2.vwf.vt
 FWaveform2.vwf.vt
 !i122 494
@@ -464,7 +510,7 @@ R6
 r1
 !s85 0
 31
-R39
+R41
 !s107 Waveform2.vwf.vt|
 !s90 -work|work|Waveform2.vwf.vt|
 !i113 1
@@ -472,7 +518,7 @@ R10
 R11
 nfrequencia_contador_1@hz_vlg_vec_tst
 vfrequency_divider
-Z40 !s110 1627955817
+Z42 !s110 1627955817
 !i10b 1
 !s100 P^aQ7o]M_1^Q??VhJCjiQ3
 R1
@@ -495,7 +541,7 @@ R9
 R10
 R11
 vfrequency_divider_vlg_vec_tst
-R40
+R42
 !i10b 1
 !s100 i8QH7HgSj]X^1IdmP;;7o0
 R1
@@ -541,7 +587,7 @@ R9
 R10
 R11
 vselecionador_digito
-Z41 !s110 1627345220
+Z43 !s110 1627345220
 !i10b 1
 !s100 0ATnzP8EN8C;fZ6NMUDo@3
 R1
@@ -557,14 +603,14 @@ R6
 r1
 !s85 0
 31
-Z42 !s108 1627345220.000000
+Z44 !s108 1627345220.000000
 R8
 R9
 !i113 1
 R10
 R11
 vselecionador_digito_vlg_vec_tst
-R41
+R43
 !i10b 1
 !s100 YIa=nAd^<]Gig_3zjK]jU1
 R1
@@ -580,7 +626,7 @@ R6
 r1
 !s85 0
 31
-R42
+R44
 R24
 R25
 !i113 1

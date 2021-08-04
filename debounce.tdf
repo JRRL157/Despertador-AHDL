@@ -1,0 +1,18 @@
+SUBDESIGN debounce
+(
+	clk, btn : INPUT;
+	tecla : OUTPUT;
+)
+VARIABLE
+	OP1, OP2, OP3 : NODE;
+
+BEGIN
+	IF clk THEN
+		OP1 = btn;
+		OP2 = OP1;
+		OP3 = OP2;
+	END IF;
+	
+	tecla = OP1 & OP2 & OP3;
+
+END;

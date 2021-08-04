@@ -1,4 +1,7 @@
 |despertador
+clk => debounce:up.clk
+clk => debounce:trocar.clk
+clk => debounce:troca_modo.clk
 clk => buzzer_clock:buzzer_clk.clock
 clk => display_clock:refresh_clock.clock
 clk => frequencia_contador_1Hz:cont_clock.clock
@@ -7,18 +10,9 @@ ajuste => _.IN0
 ajuste => _.IN1
 ajuste => _.IN0
 ajuste => _.IN1
-up => _.IN0
-up => _.IN0
-up => _.IN0
-up => _.IN0
-up => _.IN0
-up => _.IN0
-up => _.IN0
-up => _.IN0
-trocar => selecionador_digito:select_dig.trocar
-trocar => _.IN0
-troca_modo => controle_modo_alarme.IN1
-troca_modo => _.IN1
+up_sd => debounce:up.btn
+trocar_sd => debounce:trocar.btn
+troca_modo_sd => debounce:troca_modo.btn
 sec_unidades[0] <= sec_unidades[0].DB_MAX_OUTPUT_PORT_TYPE
 sec_unidades[1] <= sec_unidades[1].DB_MAX_OUTPUT_PORT_TYPE
 sec_unidades[2] <= sec_unidades[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -456,5 +450,29 @@ saida[0] <= saida[0].DB_MAX_OUTPUT_PORT_TYPE
 saida[1] <= saida[1].DB_MAX_OUTPUT_PORT_TYPE
 saida[2] <= saida[2].DB_MAX_OUTPUT_PORT_TYPE
 saida[3] <= saida[3].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|debounce:up
+clk => OP1.IN0
+clk => OP2.IN0
+clk => OP3.IN0
+btn => OP1.IN1
+tecla <= tecla.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|debounce:trocar
+clk => OP1.IN0
+clk => OP2.IN0
+clk => OP3.IN0
+btn => OP1.IN1
+tecla <= tecla.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|despertador|debounce:troca_modo
+clk => OP1.IN0
+clk => OP2.IN0
+clk => OP3.IN0
+btn => OP1.IN1
+tecla <= tecla.DB_MAX_OUTPUT_PORT_TYPE
 
 

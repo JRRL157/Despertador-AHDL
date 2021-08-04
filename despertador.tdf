@@ -11,14 +11,15 @@ INCLUDE "2x4_decoder.inc";
 INCLUDE "BCD_7Segment_Decoder.inc";
 INCLUDE "frequencia_contador_1Hz.inc";
 INCLUDE "selecionador_digito.inc";
+INCLUDE "debounce.inc";
 
 SUBDESIGN despertador
 (
 	clk: INPUT;						%50Mhz%
 	ajuste : INPUT; 				%key1 %
-	up : INPUT; 					%key2/button2 %
-	trocar : INPUT; 				%key3/button3 %
-	troca_modo : INPUT;			%key4/button4 %
+	up_sd : INPUT; 					%key2/button2 %
+	trocar_sd : INPUT; 				%key3/button3 %
+	troca_modo_sd : INPUT;			%key4/button4 %
 	
 	sec_unidades[3..0],sec_dezenas[3..0],min_unidades[3..0] : OUTPUT;
 	min_dezenas[3..0],horas_unidades[3..0],horas_dezenas[3..0] : OUTPUT;
@@ -73,8 +74,20 @@ VARIABLE
 	%Variável booleana para comparar a hora do relógio com a hora do alarme %
 	comparador : NODE;
 	
+	%Variáveis com debounce%
+	up : debounce;
+	trocar : debounce;
+	troca_modo : debounce;
+	
 BEGIN			
-	select_dig.trocar = trocar;
+	up.clk = clk;
+	up.btn = up_sd;
+	trocar.clk = clk;
+	trocar.btn = trocar_sd;
+	troca_modo.clk = clk;
+	troca_modo.btn = troca_modo_sd;
+	
+	select_dig.trocar = trocar.tecla;
 		
 	%Debugging %
 	digito_selecionado[] = select_dig.digito[];
@@ -85,14 +98,14 @@ BEGIN
 
 	controle_modo_alarme.j = VCC;
 	controle_modo_alarme.k = VCC;
-	controle_modo_alarme.clk = ajuste & troca_modo;
+	controle_modo_alarme.clk = ajuste & troca_modo.tecla;
 
 	%Variável Boleana que guarda o valor da comparação entre a hora atual e a hora do desperatador.
 	Além disso, também há dois botões que precisam ser pressionados para que a variável seja falsa %
 	
 	comparador = (acorda_hora.msd[] == mod24.msd[] & acorda_hora.lsd[] == mod24.lsd[] 
 						& acorda_min_d.q[] == mod6_min.q[] & acorda_min_u.q[] == mod10_min.q[])
-						& !(trocar & troca_modo) & mod10_min.q[] != 0;
+						& !(trocar.tecla & troca_modo.tecla) & mod10_min.q[] != 0;
 		
 	%Divisão de frequência% 	
 	
@@ -161,8 +174,8 @@ BEGIN
 			tc_segundos = mod6_seg.tc;
 			
 			%Começando a contar os minutos%
-			mod10_min.clock = up & select_dig.digito[0];
-			mod6_min.clock = up & select_dig.digito[1];
+			mod10_min.clock = up.tecla & select_dig.digito[0];
+			mod6_min.clock = up.tecla & select_dig.digito[1];
 			
 			mod10_min.enable = VCC;
 			mod6_min.enable = VCC;
@@ -174,8 +187,8 @@ BEGIN
 			
 			%Começando a contar as horas%	
 			mod24.ajuste = ajuste;
-			mod24.clock_low = up & select_dig.digito[2];
-			mod24.clock_high = up & select_dig.digito[3];
+			mod24.clock_low = up.tecla & select_dig.digito[2];
+			mod24.clock_high = up.tecla & select_dig.digito[3];
 			mod24.enable = VCC;
 			
 			horas_unidades[3..0] = mod24.lsd[3..0];
@@ -184,20 +197,20 @@ BEGIN
 			tc_horas = mod24.tc;		
 		ELSE
 			acorda_min_u.enable = VCC;
-			acorda_min_u.clock = up & select_dig.digito[0];
+			acorda_min_u.clock = up.tecla & select_dig.digito[0];
 			
 			acorda_min_d.enable = VCC;
-			acorda_min_d.clock = up & select_dig.digito[1];
+			acorda_min_d.clock = up.tecla & select_dig.digito[1];
 			
 			acorda_hora.enable = VCC;
 			acorda_hora.ajuste = VCC;		
-			acorda_hora.clock_low = up & select_dig.digito[2];
-			acorda_hora.clock_high = up & select_dig.digito[3];
+			acorda_hora.clock_low = up.tecla & select_dig.digito[2];
+			acorda_hora.clock_high = up.tecla & select_dig.digito[3];
 			
 			min_unidades[] = acorda_min_u.q[];
 			min_dezenas[] = acorda_min_d.q[];
 			horas_unidades[] = acorda_hora.lsd[];
-			horas_dezenas[] = acorda_hora.msd[];		
+			horas_dezenas[] = acorda_hora.msd[];
 		END IF;
 	ELSIF comparador THEN
 		horas_unidades[3..0] = mod24.lsd[3..0];
