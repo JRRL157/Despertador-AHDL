@@ -9,17 +9,18 @@ VARIABLE
 	flag : NODE;
 	
 BEGIN
-	count[].clk = clock;
+	count[].clk = !clock;
 	
 	IF enable THEN					
-		IF count[].q < 5 THEN
+		IF count[].q >= 0 & count[].q <= 3 THEN
 			clock_saida = GND;
-		ELSIF count[].q > 5 & count[].q < 10 THEN
+			count[].d = count[].q + 1;
+		ELSIF count[].q >= 4 & count[].q <= 8 THEN
 			clock_saida =  VCC;
+			count[].d = count[].q + 1;
 		ELSE
 			count[].d = 0;
-		END IF;		
-		count[].d = count[].q + 1;
+		END IF;				
 	ELSE
 		count[].d = count[].q;
 	END IF;

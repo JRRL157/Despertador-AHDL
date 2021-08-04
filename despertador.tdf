@@ -5,6 +5,7 @@ INCLUDE "contador_mod_10_inicial.inc";
 INCLUDE "contador_mod_24.inc";
 INCLUDE "contador_clock.inc";
 INCLUDE "display_clock.inc";
+INCLUDE "buzzer_clock.inc";
 INCLUDE "multiplexador_display.inc";
 INCLUDE "2x4_decoder.inc";
 INCLUDE "BCD_7Segment_Decoder.inc";
@@ -28,12 +29,14 @@ SUBDESIGN despertador
 	digito_selecionado[3..0] : OUTPUT;
 	
 	acorda_mu[3..0],acorda_md[3..0],acorda_hu[3..0],acorda_hd[3..0] : OUTPUT;
+	buzzer : OUTPUT;
 )
 
 VARIABLE
 	%Clocks para testar na placa%
 	cont_clock : frequencia_contador_1Hz;
 	refresh_clock : display_clock;
+	buzzer_clk : buzzer_clock;
 	
 	% Horas%
 	mod24 : contador_mod_24;
@@ -92,6 +95,12 @@ BEGIN
 						& !(trocar & troca_modo) & mod10_min.q[] != 0;
 		
 	%Divisão de frequência% 	
+	
+	%Buzzer%
+	buzzer_clk.clock = clk;
+	buzzer_clk.enable = VCC;
+	
+	
 	%Visor %
 	refresh_clock.clock = clk;
 	refresh_clock.enable = VCC;
@@ -234,7 +243,7 @@ BEGIN
 		AnodeOutput[1] = !decoder.saida[1] & (cont_clock.clock_saida & select_dig.digito[1]);
 		AnodeOutput[2] = !decoder.saida[2] & (cont_clock.clock_saida & select_dig.digito[2]);
 		AnodeOutput[3] = !decoder.saida[3] & (cont_clock.clock_saida & select_dig.digito[3]);
-	ELSE
+	ELSE				
 		%Selecionando o display a ser exibido %
 		chaveador.enable = VCC;
 		chaveador.clock = refresh_clock.clock_saida;
@@ -269,5 +278,8 @@ BEGIN
 		AnodeOutput[1] = !decoder.saida[1] & cont_clock.clock_saida;
 		AnodeOutput[2] = !decoder.saida[2] & cont_clock.clock_saida;
 		AnodeOutput[3] = !decoder.saida[3] & cont_clock.clock_saida;
+		
+		%Sinal para o Buzzer%
+		buzzer = buzzer_clk.clock_saida;
 	END IF;
 END;
