@@ -1,6 +1,6 @@
 SUBDESIGN contador_mod_10
 (
-	clock,enable : INPUT;
+	clock,enable,load[3..0] : INPUT;
 	q[3..0], tc : OUTPUT;
 )
 

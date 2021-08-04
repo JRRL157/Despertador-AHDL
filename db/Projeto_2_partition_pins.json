@@ -164,6 +164,62 @@
 					"strict" : false
 				},
 				{
+					"name" : "acorda_mu[0]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_mu[1]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_mu[2]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_mu[3]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_md[0]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_md[1]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_md[2]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_md[3]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hu[0]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hu[1]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hu[2]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hu[3]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hd[0]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hd[1]",
+					"strict" : false
+				},
+				{
 					"name" : "trocar",
 					"strict" : false
 				},

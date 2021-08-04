@@ -60,6 +60,22 @@ digito_selecionado[0] <= selecionador_digito:select_dig.digito[0]
 digito_selecionado[1] <= selecionador_digito:select_dig.digito[1]
 digito_selecionado[2] <= selecionador_digito:select_dig.digito[2]
 digito_selecionado[3] <= selecionador_digito:select_dig.digito[3]
+acorda_mu[0] <= contador_mod_6:acorda_min_d.q[0]
+acorda_mu[1] <= contador_mod_6:acorda_min_d.q[1]
+acorda_mu[2] <= contador_mod_6:acorda_min_d.q[2]
+acorda_mu[3] <= contador_mod_6:acorda_min_d.q[3]
+acorda_md[0] <= contador_mod_6:acorda_min_d.q[0]
+acorda_md[1] <= contador_mod_6:acorda_min_d.q[1]
+acorda_md[2] <= contador_mod_6:acorda_min_d.q[2]
+acorda_md[3] <= contador_mod_6:acorda_min_d.q[3]
+acorda_hu[0] <= contador_mod_24:acorda_hora.lsd[0]
+acorda_hu[1] <= contador_mod_24:acorda_hora.lsd[1]
+acorda_hu[2] <= contador_mod_24:acorda_hora.lsd[2]
+acorda_hu[3] <= contador_mod_24:acorda_hora.lsd[3]
+acorda_hd[0] <= contador_mod_24:acorda_hora.msd[0]
+acorda_hd[1] <= contador_mod_24:acorda_hora.msd[1]
+acorda_hd[2] <= contador_mod_24:acorda_hora.msd[2]
+acorda_hd[3] <= contador_mod_24:acorda_hora.msd[3]
 
 
 |despertador|frequencia_contador_1Hz:cont_clock
@@ -70,7 +86,11 @@ clock => count[0].CLK
 enable => _.IN0
 enable => _.IN0
 enable => _.IN0
-clock_saida <= flag.DB_MAX_OUTPUT_PORT_TYPE
+enable => _.IN0
+enable => _.IN0
+enable => _.IN0
+enable => _.IN0
+clock_saida <= clock_saida.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |despertador|display_clock:refresh_clock
@@ -148,6 +168,10 @@ enable => _.IN0
 enable => _.IN0
 enable => _.IN0
 enable => tc.IN0
+load[0] => ~NO_FANOUT~
+load[1] => ~NO_FANOUT~
+load[2] => ~NO_FANOUT~
+load[3] => ~NO_FANOUT~
 q[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
 q[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
 q[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -196,7 +220,7 @@ q[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
 tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|despertador|contador_mod_10:mod10_min
+|despertador|contador_mod_10_inicial:mod10_min
 clock => count[3].CLK
 clock => count[2].CLK
 clock => count[1].CLK
@@ -228,7 +252,7 @@ q[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
 tc <= tc.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|despertador|contador_mod_10:mod10_seg
+|despertador|contador_mod_10_inicial:mod10_seg
 clock => count[3].CLK
 clock => count[2].CLK
 clock => count[1].CLK
@@ -304,6 +328,10 @@ enable => _.IN0
 enable => _.IN0
 enable => _.IN0
 enable => tc.IN0
+load[0] => ~NO_FANOUT~
+load[1] => ~NO_FANOUT~
+load[2] => ~NO_FANOUT~
+load[3] => ~NO_FANOUT~
 q[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
 q[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
 q[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE

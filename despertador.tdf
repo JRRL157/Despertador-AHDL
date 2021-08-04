@@ -1,6 +1,7 @@
 INCLUDE "contador_mod_4.inc";
 INCLUDE "contador_mod_6.inc";
 INCLUDE "contador_mod_10.inc";
+INCLUDE "contador_mod_10_inicial.inc";
 INCLUDE "contador_mod_24.inc";
 INCLUDE "contador_clock.inc";
 INCLUDE "display_clock.inc";
@@ -18,12 +19,15 @@ SUBDESIGN despertador
 	trocar : INPUT; 				%key3/button3 %
 	troca_modo : INPUT;			%key4/button4 %
 	
-	sec_unidades[3..0],sec_dezenas[3..0],min_unidades[3..0],min_dezenas[3..0],horas_unidades[3..0],horas_dezenas[3..0] : OUTPUT;
-	tc_segundos,tc_minutos,tc_horas : OUTPUT;	
+	sec_unidades[3..0],sec_dezenas[3..0],min_unidades[3..0] : OUTPUT;
+	min_dezenas[3..0],horas_unidades[3..0],horas_dezenas[3..0] : OUTPUT;
+	tc_segundos,tc_minutos,tc_horas : OUTPUT;
 	
 	Seg7Output[6..0] : OUTPUT;
 	AnodeOutput[3..0] : OUTPUT;
 	digito_selecionado[3..0] : OUTPUT;
+	
+	acorda_mu[3..0],acorda_md[3..0],acorda_hu[3..0],acorda_hd[3..0] : OUTPUT;
 )
 
 VARIABLE
@@ -35,10 +39,10 @@ VARIABLE
 	mod24 : contador_mod_24;
 	% Minutos%
 	mod6_min : contador_mod_6;
-	mod10_min : contador_mod_10;
+	mod10_min : contador_mod_10_inicial;
 	% Segundos %
 	mod6_seg : contador_mod_6;
-	mod10_seg : contador_mod_10;
+	mod10_seg : contador_mod_10_inicial;
 	
 	%Cuida do dígito que está sendo incrementado%
 	select_dig : selecionador_digito;
@@ -62,14 +66,19 @@ VARIABLE
 	
 	%Decoder 2 : 4 %
 	decoder : 2x4_decoder;
-	
-	
+		
 	%Variável booleana para comparar a hora do relógio com a hora do alarme %
 	comparador : NODE;
 	
-BEGIN		
+BEGIN			
 	select_dig.trocar = trocar;
+		
+	%Debugging %
 	digito_selecionado[] = select_dig.digito[];
+	acorda_mu[] = acorda_min_d.q[];
+	acorda_md[] = acorda_min_d.q[];
+	acorda_hu[] = acorda_hora.lsd[3..0];
+	acorda_hd[] = acorda_hora.msd[3..0];
 
 	controle_modo_alarme.j = VCC;
 	controle_modo_alarme.k = VCC;
@@ -78,8 +87,9 @@ BEGIN
 	%Variável Boleana que guarda o valor da comparação entre a hora atual e a hora do desperatador.
 	Além disso, também há dois botões que precisam ser pressionados para que a variável seja falsa %
 	
-	comparador = (acorda_hora.msd[] == mod24.msd[] & acorda_hora.lsd[] == mod24.lsd[] & acorda_min_d.q[] == mod6_min.q[] & acorda_min_u.q[] == mod10_min.q[])
-					& !(trocar & troca_modo);
+	comparador = (acorda_hora.msd[] == mod24.msd[] & acorda_hora.lsd[] == mod24.lsd[] 
+						& acorda_min_d.q[] == mod6_min.q[] & acorda_min_u.q[] == mod10_min.q[])
+						& !(trocar & troca_modo) & mod10_min.q[] != 0;
 		
 	%Divisão de frequência% 	
 	%Visor %
@@ -188,8 +198,7 @@ BEGIN
 		sec_unidades[3..0] = mod10_seg.q[3..0];
 		sec_dezenas[3..0] = mod6_seg.q[3..0];
 	END IF;
-	
-	
+		
 	IF !comparador THEN	
 		%Selecionando o display a ser exibido %
 		chaveador.enable = VCC;

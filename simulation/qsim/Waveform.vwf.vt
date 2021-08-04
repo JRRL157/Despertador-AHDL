@@ -19,7 +19,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "07/30/2021 16:29:44"
+// Generated on "08/04/2021 00:04:08"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          despertador
 // 
@@ -36,6 +36,10 @@ reg troca_modo;
 reg trocar;
 reg up;
 // wires                                               
+wire [3:0] acorda_hd;
+wire [3:0] acorda_hu;
+wire [3:0] acorda_md;
+wire [3:0] acorda_mu;
 wire [3:0] AnodeOutput;
 wire [3:0] digito_selecionado;
 wire [3:0] horas_dezenas;
@@ -52,6 +56,10 @@ wire tc_segundos;
 // assign statements (if any)                          
 despertador i1 (
 // port map - connection between master ports and signals/registers   
+	.acorda_hd(acorda_hd),
+	.acorda_hu(acorda_hu),
+	.acorda_md(acorda_md),
+	.acorda_mu(acorda_mu),
 	.ajuste(ajuste),
 	.AnodeOutput(AnodeOutput),
 	.clk(clk),
@@ -79,43 +87,46 @@ end
 always
 begin
 	clk = 1'b0;
-	clk = #1000 1'b1;
-	#1000;
+	clk = #500 1'b1;
+	#500;
 end 
 
 // ajuste
 initial
 begin
-	ajuste = 1'b1;
-	ajuste = #500000 1'b0;
+	repeat(3)
+	begin
+		ajuste = 1'b0;
+		ajuste = #180000 1'b1;
+		# 120000;
+	end
+	ajuste = 1'b0;
 end 
 
 // up
 always
 begin
 	up = 1'b0;
-	up = #2500 1'b1;
-	#2500;
+	up = #4000 1'b1;
+	#4000;
 end 
 
 // trocar
 always
 begin
 	trocar = 1'b0;
-	trocar = #10000 1'b1;
-	#10000;
+	trocar = #20000 1'b1;
+	#20000;
 end 
 
 // troca_modo
 initial
 begin
-	repeat(6)
-	begin
-		troca_modo = 1'b0;
-		troca_modo = #148500 1'b1;
-		# 1500;
-	end
-	troca_modo = 1'b0;
+	troca_modo = 1'b1;
+	troca_modo = #5000 1'b0;
+	troca_modo = #490000 1'b1;
+	troca_modo = #10000 1'b0;
+	troca_modo = #490000 1'b1;
 end 
 endmodule
 

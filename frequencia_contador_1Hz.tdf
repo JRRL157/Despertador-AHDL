@@ -11,20 +11,17 @@ VARIABLE
 BEGIN
 	count[].clk = clock;
 	
-	IF enable THEN	
+	IF enable THEN					
 		IF count[].q < 5 THEN
-			count[].d = count[].q + 1;
-			flag = GND;
-		ELSIF count[].q >= 5 & count[].q < 10 THEN
-			count[].d = count[].q + 1;
-			flag = VCC;
+			clock_saida = GND;
+		ELSIF count[].q > 5 & count[].q < 10 THEN
+			clock_saida =  VCC;
 		ELSE
 			count[].d = 0;
-		END IF;
+		END IF;		
+		count[].d = count[].q + 1;
 	ELSE
 		count[].d = count[].q;
 	END IF;
-	
-	clock_saida = flag;
 
 END;

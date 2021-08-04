@@ -1,0 +1,31 @@
+SUBDESIGN contador_mod_10_inicial
+(
+	clock,enable : INPUT;
+	q[3..0], tc  : OUTPUT;
+)
+
+VARIABLE
+	count[3..0] : DFF;
+	
+BEGIN
+	DEFAULTS
+		count[] = B"0111";
+	END DEFAULTS;
+	
+	count[].clk = clock;
+	
+	IF enable THEN
+		IF count[].q < 9 THEN
+			count[].d = count[].q + 1;
+		ELSE
+			count[].d = 0;
+		END IF;
+	ELSE
+		count[].d = count[].q;
+	END IF;
+	
+	tc = enable & count[].q == 9;
+	
+	q[] = count[].q;
+
+END;
