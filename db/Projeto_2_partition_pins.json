@@ -4,15 +4,243 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "clock_saida",
+					"name" : "sec_unidades[0]",
 					"strict" : false
 				},
 				{
-					"name" : "enable",
+					"name" : "sec_unidades[1]",
 					"strict" : false
 				},
 				{
-					"name" : "clock",
+					"name" : "sec_unidades[2]",
+					"strict" : false
+				},
+				{
+					"name" : "sec_unidades[3]",
+					"strict" : false
+				},
+				{
+					"name" : "sec_dezenas[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sec_dezenas[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sec_dezenas[2]",
+					"strict" : false
+				},
+				{
+					"name" : "sec_dezenas[3]",
+					"strict" : false
+				},
+				{
+					"name" : "min_unidades[0]",
+					"strict" : false
+				},
+				{
+					"name" : "min_unidades[1]",
+					"strict" : false
+				},
+				{
+					"name" : "min_unidades[2]",
+					"strict" : false
+				},
+				{
+					"name" : "min_unidades[3]",
+					"strict" : false
+				},
+				{
+					"name" : "min_dezenas[0]",
+					"strict" : false
+				},
+				{
+					"name" : "min_dezenas[1]",
+					"strict" : false
+				},
+				{
+					"name" : "min_dezenas[2]",
+					"strict" : false
+				},
+				{
+					"name" : "min_dezenas[3]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_unidades[0]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_unidades[1]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_unidades[2]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_unidades[3]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_dezenas[0]",
+					"strict" : false
+				},
+				{
+					"name" : "horas_dezenas[1]",
+					"strict" : false
+				},
+				{
+					"name" : "tc_segundos",
+					"strict" : false
+				},
+				{
+					"name" : "tc_minutos",
+					"strict" : false
+				},
+				{
+					"name" : "tc_horas",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Seg7Output[6]",
+					"strict" : false
+				},
+				{
+					"name" : "AnodeOutput[0]",
+					"strict" : false
+				},
+				{
+					"name" : "AnodeOutput[1]",
+					"strict" : false
+				},
+				{
+					"name" : "AnodeOutput[2]",
+					"strict" : false
+				},
+				{
+					"name" : "AnodeOutput[3]",
+					"strict" : false
+				},
+				{
+					"name" : "digito_selecionado[0]",
+					"strict" : false
+				},
+				{
+					"name" : "digito_selecionado[1]",
+					"strict" : false
+				},
+				{
+					"name" : "digito_selecionado[2]",
+					"strict" : false
+				},
+				{
+					"name" : "digito_selecionado[3]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_mu[0]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_mu[1]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_mu[2]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_mu[3]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_md[0]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_md[1]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_md[2]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_md[3]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hu[0]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hu[1]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hu[2]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hu[3]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hd[0]",
+					"strict" : false
+				},
+				{
+					"name" : "acorda_hd[1]",
+					"strict" : false
+				},
+				{
+					"name" : "buzzer",
+					"strict" : false
+				},
+				{
+					"name" : "trocar",
+					"strict" : false
+				},
+				{
+					"name" : "troca_modo",
+					"strict" : false
+				},
+				{
+					"name" : "ajuste",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "up",
 					"strict" : false
 				}
 			]
